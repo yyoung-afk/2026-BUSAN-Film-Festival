@@ -105,42 +105,41 @@
   <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-xl border-b border-slate-200 shadow-sm safe-top">
     <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-18 flex items-center justify-between gap-2">
       
-      <!-- Brand Logo with Neutral Seal Icon (Red background removed) -->
-      <div class="flex items-center space-x-2.5 sm:space-x-3 shrink-0">
+      <!-- Brand Logo with Neutral Seal Icon (Visible on all screens) -->
+      <div class="flex items-center space-x-2 sm:space-x-3 shrink-0">
         <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-xl sm:text-2xl select-none border border-slate-200 shadow-sm transition">
           🦭
         </div>
         <div>
           <div class="flex items-center space-x-1.5 sm:space-x-2">
-            <h1 class="text-sm sm:text-lg font-black tracking-tight text-slate-900 flex items-center gap-1.5">
+            <h1 class="text-xs sm:text-lg font-black tracking-tight text-slate-900 flex items-center gap-1.5">
               <span>BIFF 2026</span>
-              <span class="text-[10px] sm:text-xs font-bold px-1.5 py-0.5 rounded bg-biff-red text-white">31st</span>
+              <span class="text-[9px] sm:text-xs font-bold px-1.5 py-0.5 rounded bg-biff-red text-white">31st</span>
             </h1>
-            <span class="hidden md:inline-block text-[11px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200 font-medium">10.06 - 10.15</span>
+            <span class="hidden sm:inline-block text-[11px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200 font-medium">10.06 - 10.15</span>
           </div>
-          <p class="text-[10px] sm:text-[11px] text-slate-500 font-medium">부산국제영화제 스마트 시간표</p>
+          <p class="text-[10px] sm:text-[11px] text-slate-500 font-medium hidden xs:block">부산국제영화제 스마트 시간표</p>
         </div>
       </div>
 
       <!-- Plan Switcher (1안 / 2안 / 3안) in Light Mode -->
       <div class="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200 shadow-inner shrink-0">
-        <button id="plan-btn-1" onclick="switchPlan(1)" class="px-2.5 sm:px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-black transition-all flex items-center space-x-1 bg-biff-red text-white shadow-glow-red">
+        <button id="plan-btn-1" onclick="switchPlan(1)" class="px-2 sm:px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-black transition-all flex items-center space-x-1 bg-biff-red text-white shadow-glow-red">
           <span>1안</span>
           <span id="badge-plan-1" class="text-[10px] px-1.5 py-0.2 rounded-full bg-black/20 text-white font-bold">0</span>
         </button>
-        <button id="plan-btn-2" onclick="switchPlan(2)" class="px-2.5 sm:px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold transition-all flex items-center space-x-1 text-slate-600 hover:text-slate-900">
+        <button id="plan-btn-2" onclick="switchPlan(2)" class="px-2 sm:px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold transition-all flex items-center space-x-1 text-slate-600 hover:text-slate-900">
           <span>2안</span>
           <span id="badge-plan-2" class="text-[10px] px-1.5 py-0.2 rounded-full bg-white text-slate-600 border border-slate-200">0</span>
         </button>
-        <button id="plan-btn-3" onclick="switchPlan(3)" class="px-2.5 sm:px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold transition-all flex items-center space-x-1 text-slate-600 hover:text-slate-900">
+        <button id="plan-btn-3" onclick="switchPlan(3)" class="px-2 sm:px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold transition-all flex items-center space-x-1 text-slate-600 hover:text-slate-900">
           <span>3안</span>
           <span id="badge-plan-3" class="text-[10px] px-1.5 py-0.2 rounded-full bg-white text-slate-600 border border-slate-200">0</span>
         </button>
       </div>
 
-      <!-- Action Tools in Light Mode (Retaining only plan clear menu) -->
+      <!-- Action Tools in Light Mode -->
       <div class="flex items-center space-x-1.5 sm:space-x-2 shrink-0">
-        <!-- Plan Clearing Dropdown Menu in Light Mode -->
         <div class="relative inline-block text-left">
           <button onclick="toggleClearMenu(event)" title="시간표 비우기 옵션" class="h-9 w-9 flex items-center justify-center rounded-xl bg-slate-100 text-slate-600 hover:text-biff-red hover:bg-slate-200 border border-slate-200 transition active:scale-95 shadow-sm">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
@@ -148,17 +147,13 @@
           <div id="clear-plan-menu" class="hidden absolute right-0 mt-2 w-48 rounded-2xl bg-white border border-slate-200 shadow-xl z-50 py-1.5 text-xs divide-y divide-slate-100">
             <div class="px-3.5 py-1.5 text-[11px] font-bold text-slate-500 uppercase tracking-wider">시간표 비우기</div>
             <div class="py-1">
-              <button onclick="promptClearPlan('current')" class="w-full text-left px-3.5 py-2 text-slate-700 hover:bg-slate-50 flex items-center justify-between">
-                <span>현재 플랜 전체 비우기</span>
-              </button>
+              <button onclick="promptClearPlan('current')" class="w-full text-left px-3.5 py-2 text-slate-700 hover:bg-slate-50">현재 플랜 전체 비우기</button>
               <button onclick="promptClearPlan(1)" class="w-full text-left px-3.5 py-2 text-slate-700 hover:bg-slate-50">1안 전체 비우기</button>
               <button onclick="promptClearPlan(2)" class="w-full text-left px-3.5 py-2 text-slate-700 hover:bg-slate-50">2안 전체 비우기</button>
               <button onclick="promptClearPlan(3)" class="w-full text-left px-3.5 py-2 text-slate-700 hover:bg-slate-50">3안 전체 비우기</button>
             </div>
             <div class="py-1">
-              <button onclick="promptClearPlan('all')" class="w-full text-left px-3.5 py-2 text-biff-red hover:bg-red-50 font-black flex items-center space-x-1">
-                <span>모든 플랜(1~3안) 초기화</span>
-              </button>
+              <button onclick="promptClearPlan('all')" class="w-full text-left px-3.5 py-2 text-biff-red hover:bg-red-50 font-black">모든 플랜(1~3안) 초기화</button>
             </div>
           </div>
         </div>
@@ -196,20 +191,17 @@
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-6 items-start">
       
-      <!-- LEFT COLUMN: Search, Date Pills, Filtering, and Movie List in Light Mode -->
+      <!-- LEFT COLUMN: Search & Movie List -->
       <section id="section-search" class="lg:col-span-5 xl:col-span-5 space-y-3 sm:space-y-4">
-        
-        <!-- Search Filter Card -->
         <div class="bg-white p-3.5 sm:p-4 rounded-2xl border border-slate-200 shadow-sm space-y-3">
           <div class="flex items-center justify-between pb-2 border-b border-slate-100">
             <h2 class="font-black text-slate-900 flex items-center gap-2 text-sm sm:text-base">
               <span class="w-2 h-4 bg-biff-red rounded-full inline-block"></span>
               <span>상영작 & 시간표 검색</span>
             </h2>
-            <span id="search-result-count" class="text-xs text-slate-500 font-mono font-medium">총 0개 상영</span>
+            <span id="search-result-count" class="text-xs text-slate-500 font-mono font-medium">상영 0회차 (0개 작품)</span>
           </div>
 
-          <!-- Search Input -->
           <div class="relative">
             <input 
               type="text" 
@@ -224,11 +216,10 @@
             </button>
           </div>
 
-          <!-- Date Filter Pills -->
           <div class="space-y-1.5">
             <div class="flex items-center justify-between text-[11px] font-bold text-slate-500">
               <span class="uppercase tracking-wider">상영 날짜</span>
-              <span class="text-[10px] text-slate-400">좌우로 스크롤 가능</span>
+              <span class="text-[10px] text-slate-400">좌우 스크롤 가능</span>
             </div>
             <div class="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none" id="date-filter-pills">
               <button onclick="setDateFilter('ALL')" data-date="ALL" class="date-pill px-3 py-1.5 rounded-lg text-xs font-black bg-biff-red text-white whitespace-nowrap transition shadow-glow-red">전체</button>
@@ -245,7 +236,6 @@
             </div>
           </div>
 
-          <!-- Secondary Filters (Theater Venue & GV) in Light Mode -->
           <div class="flex flex-wrap items-center gap-2 pt-1">
             <select id="venue-filter" onchange="handleFilterChange()" class="bg-slate-50 text-xs text-slate-800 border border-slate-200 rounded-xl px-2.5 py-2 focus:outline-none focus:border-biff-red">
               <option value="ALL">전체 상영관</option>
@@ -265,22 +255,19 @@
           </div>
         </div>
 
-        <!-- Movie Search Results List Container in Light Mode -->
         <div class="bg-white rounded-2xl border border-slate-200 p-2.5 sm:p-3 overflow-hidden shadow-sm">
           <div class="text-xs font-bold text-slate-500 px-2 py-1.5 flex items-center justify-between border-b border-slate-100">
             <span>상영작 리스트</span>
             <span class="text-[11px] text-slate-400">클릭: 상세정보 | + 버튼: 플랜 담기</span>
           </div>
           <div id="movie-list-container" class="space-y-2 max-h-[60vh] lg:max-h-[640px] overflow-y-auto pr-1 mt-2">
-            <!-- Dynamically populated by JS -->
+            <!-- Populated by JS -->
           </div>
         </div>
       </section>
 
-      <!-- RIGHT COLUMN: User's Festival Timetable & Calendar Schedule View in Light Mode -->
       <section id="section-schedule" class="lg:col-span-7 xl:col-span-7 space-y-3 sm:space-y-4">
         
-        <!-- Current Plan Header Status Bar -->
         <div class="bg-white p-3.5 sm:p-4 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-3">
           <div>
             <div class="flex items-center space-x-2">
@@ -323,15 +310,9 @@
               <div id="plan-copy-menu" class="hidden absolute right-0 mt-2 w-40 rounded-2xl bg-white border border-slate-200 shadow-xl z-50 py-1 text-xs divide-y divide-slate-100">
                 <div class="px-3 py-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider">대상 플랜 선택</div>
                 <div class="py-1">
-                  <button onclick="copyCurrentPlanTo(1)" class="w-full text-left px-3.5 py-2 text-slate-700 hover:bg-slate-50 flex items-center justify-between">
-                    <span>1안으로 복사</span>
-                  </button>
-                  <button onclick="copyCurrentPlanTo(2)" class="w-full text-left px-3.5 py-2 text-slate-700 hover:bg-slate-50 flex items-center justify-between">
-                    <span>2안으로 복사</span>
-                  </button>
-                  <button onclick="copyCurrentPlanTo(3)" class="w-full text-left px-3.5 py-2 text-slate-700 hover:bg-slate-50 flex items-center justify-between">
-                    <span>3안으로 복사</span>
-                  </button>
+                  <button onclick="copyCurrentPlanTo(1)" class="w-full text-left px-3.5 py-2 text-slate-700 hover:bg-slate-50">1안으로 복사</button>
+                  <button onclick="copyCurrentPlanTo(2)" class="w-full text-left px-3.5 py-2 text-slate-700 hover:bg-slate-50">2안으로 복사</button>
+                  <button onclick="copyCurrentPlanTo(3)" class="w-full text-left px-3.5 py-2 text-slate-700 hover:bg-slate-50">3안으로 복사</button>
                 </div>
               </div>
             </div>
@@ -340,7 +321,7 @@
 
         <!-- Timetable Viewport -->
         <div id="schedule-viewport" class="space-y-4">
-          <!-- Dynamic rendering by JS based on currentPlan and viewMode -->
+          <!-- Populated by JS -->
         </div>
 
       </section>
@@ -349,8 +330,6 @@
 
   <div id="detail-modal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-slate-900/50 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4">
     <div class="relative bg-white border border-slate-200 rounded-t-3xl sm:rounded-2xl max-w-lg w-full p-5 sm:p-6 shadow-2xl text-slate-900 space-y-4 max-h-[85vh] overflow-y-auto">
-      
-      <!-- Top modal bar & close button -->
       <div class="flex items-start justify-between">
         <div>
           <div class="flex items-center space-x-2 mb-1">
@@ -365,40 +344,21 @@
         </button>
       </div>
 
-      <!-- Quick Info Matrix in Light Mode -->
       <div class="grid grid-cols-2 gap-2.5 py-3 border-y border-slate-100 text-xs">
-        <div>
-          <span class="text-slate-400">감독:</span>
-          <span id="modal-director" class="font-bold text-slate-800 ml-1">-</span>
-        </div>
-        <div>
-          <span class="text-slate-400">러닝타임:</span>
-          <span id="modal-runtime" class="font-bold text-slate-800 ml-1">-</span>
-        </div>
-        <div>
-          <span class="text-slate-400">국가/연도:</span>
-          <span id="modal-country" class="font-bold text-slate-800 ml-1">-</span>
-        </div>
-        <div>
-          <span class="text-slate-400">자막 정보:</span>
-          <span id="modal-subtitles" class="font-bold text-slate-800 ml-1">-</span>
-        </div>
+        <div><span class="text-slate-400">감독:</span><span id="modal-director" class="font-bold text-slate-800 ml-1">-</span></div>
+        <div><span class="text-slate-400">러닝타임:</span><span id="modal-runtime" class="font-bold text-slate-800 ml-1">-</span></div>
+        <div><span class="text-slate-400">국가/연도:</span><span id="modal-country" class="font-bold text-slate-800 ml-1">-</span></div>
+        <div><span class="text-slate-400">자막 정보:</span><span id="modal-subtitles" class="font-bold text-slate-800 ml-1">-</span></div>
       </div>
 
-      <!-- Synopsis in Light Mode -->
       <div>
         <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">프로그램 노트 & 시놉시스</h4>
-        <p id="modal-synopsis" class="text-xs sm:text-sm text-slate-700 leading-relaxed max-h-36 overflow-y-auto p-3 bg-slate-50 rounded-xl border border-slate-200">
-          영화 설명 내용입니다.
-        </p>
+        <p id="modal-synopsis" class="text-xs sm:text-sm text-slate-700 leading-relaxed max-h-36 overflow-y-auto p-3 bg-slate-50 rounded-xl border border-slate-200">영화 설명</p>
       </div>
 
-      <!-- Screenings Sessions for this film -->
       <div>
         <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">영화제 전체 상영 회차</h4>
-        <div id="modal-screenings-list" class="space-y-2 max-h-40 overflow-y-auto pr-1">
-          <!-- Dynamically populated -->
-        </div>
+        <div id="modal-screenings-list" class="space-y-2 max-h-40 overflow-y-auto pr-1"></div>
       </div>
 
       <div class="pt-2 flex justify-end">
@@ -413,9 +373,7 @@
         <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
         <h3 class="font-black text-base text-slate-900">시간표 비우기 확인</h3>
       </div>
-      <p id="confirm-modal-text" class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-        해당 시간표를 모두 비우시겠습니까? 이 작업은 되돌릴 수 없습니다.
-      </p>
+      <p id="confirm-modal-text" class="text-xs sm:text-sm text-slate-600 leading-relaxed">해당 시간표를 모두 비우시겠습니까?</p>
       <div class="flex items-center justify-end space-x-2 pt-2">
         <button onclick="closeConfirmModal()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold border border-slate-200 transition">취소</button>
         <button id="confirm-modal-action-btn" class="px-4 py-2 rounded-xl bg-biff-red hover:bg-biff-crimson text-white text-xs font-black shadow-glow-red transition">비우기</button>
@@ -423,18 +381,15 @@
     </div>
   </div>
 
-  <!-- Image Fallback Modal in Light Mode -->
   <div id="image-copy-modal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="bg-white border border-slate-200 rounded-2xl max-w-2xl w-full p-5 shadow-2xl text-slate-900 space-y-3">
       <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-        <span class="text-slate-900 font-black text-sm sm:text-base flex items-center gap-2">
-          <span>📋 타임테이블 이미지 복사</span>
-        </span>
+        <span class="text-slate-900 font-black text-sm sm:text-base flex items-center gap-2"><span>📋 타임테이블 이미지 복사</span></span>
         <button onclick="closeImageCopyModal()" class="text-slate-400 hover:text-slate-700 p-1 rounded-lg bg-slate-100">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
         </button>
       </div>
-      <p class="text-xs text-slate-600">브라우저 보안 제약으로 인해 아래 이미지를 <strong>우클릭 후 [이미지 복사]</strong> 하거나 모바일에서 <strong>길게 터치 후 [복사]</strong>하여 카카오톡에 바로 붙여넣기(`Ctrl+V`)하세요.</p>
+      <p class="text-xs text-slate-600">브라우저 보안 제약으로 인해 아래 이미지를 <strong>우클릭 후 [이미지 복사]</strong> 하거나 모바일에서 <strong>길게 터치 후 [복사]</strong>하여 카카오톡에 바로 붙여넣기하세요.</p>
       <div class="max-h-[60vh] overflow-auto rounded-xl border border-slate-200 bg-slate-50 p-2 flex justify-center">
         <img id="clipboard-preview-img" class="max-w-full h-auto rounded-lg shadow-md" alt="BIFF 2026 시간표" />
       </div>
@@ -444,1205 +399,175 @@
     </div>
   </div>
 
-  <!-- Global Toast Feedback Message Container -->
   <div id="toast-container" class="fixed bottom-5 right-5 z-50 space-y-2 pointer-events-none"></div>
 
   <script>
-    // Complete Official Screenings Dataset from Catalog Pages 8~14 (All Sessions & Multi-Screenings)
     const SCREENINGS_DATA = [
       // 10.06(화)
-      {
-        id: "s_001", code: "001", titleKo: "낮과 밤은 서로에게", titleEn: "The Table: Day and Night",
-        director: "김종관", country: "한국", year: "2026", runtime: 80, rating: "12세",
-        date: "10/06(화)", timeStart: "18:00", timeEnd: "21:20", theater: "영화의전당 루프씨어터",
-        gv: false, section: "개막식/개막작", subtitles: "한글+영어자막", page: "043",
-        synopsis: "다른 시간대 같은 카페에 머문 유진과 현오의 마주침, 중학 시절 친구 상미와 영민의 재회, 웹소설 작가 혜진과 감독 동남의 첫만남까지 4쌍의 남녀가 나누는 대화의 영화."
-      },
-
+      { id: "s_001", code: "001", titleKo: "낮과 밤은 서로에게", titleEn: "The Table: Day and Night", director: "김종관", country: "한국", year: "2026", runtime: 80, rating: "12세", date: "10/06(화)", timeStart: "18:00", timeEnd: "21:20", theater: "영화의전당 루프씨어터", gv: false, section: "개막식/개막작", subtitles: "한글+영어자막", page: "043", synopsis: "다른 시간대 같은 카페에 머문 유진과 현오의 마주침 등 4쌍의 남녀 대화." },
       // 10.07(수)
-      {
-        id: "s_003", code: "003", titleKo: "룩백", titleEn: "Look Back",
-        director: "고레에다 히로카즈", country: "일본", year: "2025", runtime: 100, rating: "전체",
-        date: "10/07(수)", timeStart: "20:00", timeEnd: "21:40", theater: "영화의전당 루프씨어터",
-        gv: true, section: "오픈 시네마 / 갈라", subtitles: "한글+영어자막", page: "060",
-        synopsis: "후지모토 타츠키의 명작 만화를 거장 고레에다 히로카즈가 실사화한 작품. 두 소녀의 찬란했던 우정과 만화 창작의 희열."
-      },
-      {
-        id: "s_004", code: "004", titleKo: "아버지의 방", titleEn: "In My Father's Room",
-        director: "하라다 마하", country: "일본", year: "2026", runtime: 109, rating: "12세",
-        date: "10/07(수)", timeStart: "09:20", timeEnd: "11:09", theater: "하늘연극장",
-        gv: false, section: "아시아영화의 창", subtitles: "한글+영어자막", page: "104",
-        synopsis: "사이가 소원했던 아버지가 남긴 의문의 열쇠를 찾아 나선 사토미(아오이 유우)의 치유의 여정."
-      },
-      {
-        id: "s_005", code: "005", titleKo: "사토코는 언제나", titleEn: "Satoko Always",
-        director: "오키타 슈이치", country: "일본", year: "2026", runtime: 138, rating: "12세",
-        date: "10/07(수)", timeStart: "12:20", timeEnd: "14:38", theater: "하늘연극장",
-        gv: false, section: "경쟁 (뉴 커런츠)", subtitles: "한글+영어자막", page: "053",
-        synopsis: "15세 중학생, 35세 홍보담당자, 55세 주부까지 세 명의 사토코가 펜을 들며 마주하는 생의 온기와 위로."
-      },
-      {
-        id: "s_006", code: "006", titleKo: "처음 만난 외로움", titleEn: "The First Taste of Loneliness",
-        director: "구유", country: "중국", year: "2026", runtime: 135, rating: "12세",
-        date: "10/07(수)", timeStart: "16:30", timeEnd: "18:45", theater: "하늘연극장",
-        gv: true, section: "경쟁 (뉴 커런츠)", subtitles: "한글+영어자막", page: "048",
-        synopsis: "아버지가 떠난 집을 비추는 롱테이크와 모녀 삼대의 외로움과 치유의 길. 저우쉰 주연의 유려한 산수 영화 3부작 완결편."
-      },
-      {
-        id: "s_007", code: "007", titleKo: "일요일 다음날", titleEn: "The Day After Sunday",
-        director: "가토 다쿠야", country: "일본/프랑스", year: "2026", runtime: 82, rating: "15세",
-        date: "10/07(수)", timeStart: "20:40", timeEnd: "22:02", theater: "하늘연극장",
-        gv: true, section: "경쟁 (뉴 커런츠)", subtitles: "한글+영어자막", page: "047",
-        synopsis: "리조트 호텔로 여행을 떠난 부부의 신경전과 현대 가족 내면의 정서적 단절을 차갑게 파고드는 심리 드라마."
-      },
-      {
-        id: "s_008", code: "008", titleKo: "그대, 별처럼", titleEn: "You, Like a Star",
-        director: "후지이 미치히토", country: "일본", year: "2026", runtime: 135, rating: "12세",
-        date: "10/07(수)", timeStart: "08:40", timeEnd: "10:55", theater: "중극장",
-        gv: true, section: "아시아영화의 창", subtitles: "한글+영어자막", page: "109",
-        synopsis: "17살 동갑내기 카이와 아키미가 15년이라는 시간을 관통하며 겪는 애틋한 사랑의 여정."
-      },
-      {
-        id: "s_009", code: "009", titleKo: "천사의 알", titleEn: "Angel's Egg",
-        director: "오시이 마모루", country: "일본", year: "1985", runtime: 72, rating: "전체",
-        date: "10/07(수)", timeStart: "12:30", timeEnd: "13:42", theater: "중극장",
-        gv: false, section: "특별기획 (애니메이션)", subtitles: "한글자막", page: "165",
-        synopsis: "물에 잠긴 폐허의 도시에서 알을 품고 다니는 소녀와 청년의 만남. 오시이 마모루의 침묵의 묵시록."
-      },
-      {
-        id: "s_010", code: "010", titleKo: "버스정류장 + 플레시 임팩트", titleEn: "Bus Stop + Flesh Impact",
-        director: "조슈아 로건, 매기 질렌할", country: "미국", year: "1956/2026", runtime: 115, rating: "12세",
-        date: "10/07(수)", timeStart: "15:30", timeEnd: "17:23", theater: "중극장",
-        gv: true, section: "특별상영 (마릴린 먼로 100주년)", subtitles: "한글+영어자막", page: "187",
-        synopsis: "마릴린 먼로 주연의 명작 <버스정류장>과 매기 질렌할 감독의 신작 단편 <플레시 임팩트> 연속 특별상영."
-      },
-      {
-        id: "s_011", code: "011", titleKo: "우리 할머니는 큐브왕", titleEn: "It's My Time",
-        director: "바이 슈에", country: "중국", year: "2026", runtime: 107, rating: "12세",
-        date: "10/07(수)", timeStart: "19:30", timeEnd: "21:17", theater: "중극장",
-        gv: true, section: "특별기획 (양자경)", subtitles: "한글+영어자막", page: "060",
-        synopsis: "사기로 집을 잃고 양로원에 입소한 자오(양자경)가 전 챔피언 청년에게 매직큐브를 배우며 삶의 난제를 풀어가는 힐링 드라마."
-      },
-      {
-        id: "s_012", code: "012", titleKo: "스킨타운", titleEn: "Skintown",
-        director: "키어런 J. 월시", country: "아일랜드/영국", year: "2026", runtime: 99, rating: "15세",
-        date: "10/07(수)", timeStart: "10:00", timeEnd: "11:39", theater: "소극장",
-        gv: false, section: "월드 시네마", subtitles: "한글+영어자막", page: "131",
-        synopsis: "1994년 북아일랜드의 잿빛 도시 스킨타운. 피자집 알바생 비니와 존티에게 찾아온 거액의 마약 밀매 기회."
-      },
-      {
-        id: "s_013", code: "013", titleKo: "첫세계", titleEn: "The World Before",
-        director: "윤단비", country: "한국", year: "2026", runtime: 115, rating: "15세",
-        date: "10/07(수)", timeStart: "12:30", timeEnd: "14:25", theater: "소극장",
-        gv: false, section: "한국영화의 오늘 - 파노라마", subtitles: "한글자막", page: "117",
-        synopsis: "작은 섬마을 열일곱 소녀 진과 할머니 장례를 위해 돌아온 어릴 적 친구 두재가 나누는 아찔하고 애틋한 시간."
-      },
-      {
-        id: "s_014", code: "014", titleKo: "겨울 이야기", titleEn: "In Winter",
-        director: "예를란 누르무함베토프", country: "카자흐스탄", year: "2026", runtime: 87, rating: "12세",
-        date: "10/07(수)", timeStart: "16:00", timeEnd: "17:27", theater: "소극장",
-        gv: false, section: "아시아영화의 창", subtitles: "한글+영어자막", page: "105",
-        synopsis: "아파트 마당 눈밭에 묻힌 거액의 현금 자루를 발견한 물리교사 가빗이 겪는 딜레마와 건조한 유머의 코미디."
-      },
-      {
-        id: "s_015", code: "015", titleKo: "그날 밤, 클라리사에게", titleEn: "Clarissa",
-        director: "아리 에시리, 추코 에시리", country: "나이지리아", year: "2026", runtime: 134, rating: "15세",
-        date: "10/07(수)", timeStart: "20:00", timeEnd: "22:14", theater: "소극장",
-        gv: false, section: "월드 시네마 (칸 감독주간)", subtitles: "한글+영어자막", page: "120",
-        synopsis: "버지니아 울프의 <댈러웨이 부인>을 21세기 나이지리아 라고스로 옮겨와 식민과 탈식민, 계급을 성찰한 수작."
-      },
-      {
-        id: "s_016", code: "016", titleKo: "텐더 러빙 케어", titleEn: "Tender Loving Care",
-        director: "마이크 리", country: "영국", year: "2026", runtime: 107, rating: "15세",
-        date: "10/07(수)", timeStart: "08:20", timeEnd: "10:07", theater: "시네마테크",
-        gv: false, section: "아이콘", subtitles: "한글+영어자막", page: "079",
-        synopsis: "두 여성 사회복지사가 만나는 소외된 이들의 삶과 관계의 미세한 간극들을 섬세하게 응시하는 마이크 리 신작."
-      },
-      {
-        id: "s_017", code: "017", titleKo: "아이언 보이", titleEn: "Iron Boy",
-        director: "루이 클리시", country: "프랑스/벨기에", year: "2026", runtime: 90, rating: "전체",
-        date: "10/07(수)", timeStart: "13:00", timeEnd: "14:30", theater: "시네마테크",
-        gv: false, section: "월드 시네마 (칸 주목할만한시선)", subtitles: "한글+영어자막", page: "126",
-        synopsis: "철제 보조기를 차게 된 농부 소년 크리스토프가 음악과 우정을 통해 새로운 세계로 도약하는 성장 애니메이션."
-      },
-      {
-        id: "s_018", code: "018", titleKo: "메리 크리스마스, 엄마", titleEn: "The Fire Within You",
-        director: "에도아르도 데 안젤리스", country: "이탈리아", year: "2026", runtime: 93, rating: "15세",
-        date: "10/07(수)", timeStart: "16:30", timeEnd: "18:03", theater: "시네마테크",
-        gv: false, section: "월드 시네마 (베니스 경쟁)", subtitles: "한글+영어자막", page: "122",
-        synopsis: "밀라노 아들의 집을 찾아온 나폴리 괴짜 어머니와의 크리스마스 전야 소동극과 진한 가족애."
-      },
-      {
-        id: "s_021", code: "021", titleKo: "마더 메리", titleEn: "Mother Mary",
-        director: "데이빗 로워리", country: "미국", year: "2026", runtime: 112, rating: "15세",
-        date: "10/07(수)", timeStart: "19:00", timeEnd: "20:52", theater: "시네마테크",
-        gv: true, section: "아이콘", subtitles: "한글+영어자막", page: "073",
-        synopsis: "앤 해서웨이, 미카엘라 코엘 주연. 최정상 팝스타와 전속 디자이너가 펼치는 잔혹하고 아름다운 심리 스릴러."
-      },
-      {
-        id: "s_019", code: "019", titleKo: "호프", titleEn: "HOPE",
-        director: "나홍진", country: "한국", year: "2026", runtime: 156, rating: "15세",
-        date: "10/07(수)", timeStart: "09:30", timeEnd: "12:06", theater: "CGV 센텀시티 IMAX",
-        gv: false, section: "한국영화의 오늘 - 파노라마", subtitles: "한글+영어자막", page: "115",
-        synopsis: "마을, 숲, 도로로 이어지는 극한의 질주와 추격. 외계의 미지의 존재와 인간의 공포를 정면으로 돌파하는 나홍진 신작."
-      },
-      {
-        id: "s_020", code: "020", titleKo: "가능한 사랑", titleEn: "Possible Love",
-        director: "이창동", country: "한국", year: "2026", runtime: 164, rating: "15세",
-        date: "10/07(수)", timeStart: "15:00", timeEnd: "17:44", theater: "CGV 센텀시티 IMAX",
-        gv: true, section: "아이콘", subtitles: "한글+영어자막", page: "077",
-        synopsis: "해고노동자 가족과 다큐 감독 부부의 조우. 전도연, 설경구, 조인성, 조여정이 빚어내는 삶과 사랑의 묵직한 진동."
-      },
-      {
-        id: "s_022", code: "022", titleKo: "고래사냥", titleEn: "Whale Hunting",
-        director: "배창호", country: "한국", year: "1984", runtime: 112, rating: "12세",
-        date: "10/07(수)", timeStart: "12:00", timeEnd: "13:52", theater: "CGV 센텀시티 1관",
-        gv: false, section: "특별기획 (안성기 추모)", subtitles: "한글+영어자막", page: "175",
-        synopsis: "김수철, 안성기, 이미숙 주연. 고래를 잡으러 남쪽으로 떠나는 세 청춘의 잊을 수 없는 방랑기."
-      },
-      {
-        id: "s_023", code: "023", titleKo: "바람불어 좋은날", titleEn: "A Fine, Windy Day",
-        director: "이장호", country: "한국", year: "1980", runtime: 119, rating: "15세",
-        date: "10/07(수)", timeStart: "15:30", timeEnd: "17:29", theater: "CGV 센텀시티 1관",
-        gv: true, section: "특별기획 (안성기 추모)", subtitles: "한글+영어자막", page: "174",
-        synopsis: "안성기, 유지인 주연. 격변하는 1980년대 강남 개발 현장을 배경으로 살아가는 청춘들의 초상."
-      },
-      {
-        id: "s_024", code: "024", titleKo: "하얀전쟁", titleEn: "White Badge",
-        director: "정지영", country: "한국", year: "1992", runtime: 124, rating: "15세",
-        date: "10/07(수)", timeStart: "11:00", timeEnd: "13:04", theater: "CGV 센텀시티 2관",
-        gv: false, section: "특별기획 (안성기 추모)", subtitles: "한글+영어자막", page: "175",
-        synopsis: "안성기, 이경영 주연. 베트남전 참전 군인들의 깊은 트라우마와 상흔을 직시한 반전 명작."
-      },
-      {
-        id: "s_025", code: "025", titleKo: "칠수와 만수", titleEn: "Chil-su and Man-su",
-        director: "박광수", country: "한국", year: "1988", runtime: 108, rating: "15세",
-        date: "10/07(수)", timeStart: "15:00", timeEnd: "16:48", theater: "CGV 센텀시티 2관",
-        gv: false, section: "특별기획 (안성기 추모)", subtitles: "한글+영어자막", page: "173",
-        synopsis: "박중훈, 안성기 주연. 극장 간판을 그리며 불합리한 세상의 벽을 향해 소리치는 청춘들의 절규."
-      },
-      {
-        id: "s_026", code: "026", titleKo: "개그맨", titleEn: "Gagman",
-        director: "이명세", country: "한국", year: "1988", runtime: 125, rating: "15세",
-        date: "10/07(수)", timeStart: "18:20", timeEnd: "20:25", theater: "CGV 센텀시티 2관",
-        gv: false, section: "특별기획 (안성기 추모)", subtitles: "한글+영어자막", page: "174",
-        synopsis: "안성기, 배창호, 황신혜 주연. 찰리 채플린의 애수를 품은 삼류 개그맨의 기상천외한 탈출극."
-      },
-      {
-        id: "s_027", code: "027", titleKo: "피오르", titleEn: "Fjord",
-        director: "크리스티안 문쥬", country: "루마니아/프랑스", year: "2026", runtime: 146, rating: "15세",
-        date: "10/07(수)", timeStart: "12:20", timeEnd: "14:46", theater: "CGV 센텀시티 3관",
-        gv: false, section: "아이콘 (황금종려상)", subtitles: "한글+영어자막", page: "069",
-        synopsis: "노르웨이 작은 마을에서 발생한 아동 위탁 보호 조치와 부모의 싸움. 진보적 시스템과 전통 가치의 충돌을 다룬 법정 스릴러."
-      },
-      {
-        id: "s_028", code: "028", titleKo: "새드 걸즈", titleEn: "Sad Girlz",
-        director: "페르난다 토바르", country: "멕시코/프랑스", year: "2026", runtime: 90, rating: "15세",
-        date: "10/07(수)", timeStart: "16:00", timeEnd: "17:30", theater: "CGV 센텀시티 3관",
-        gv: false, section: "플래시 포워드 (베를린 수정곰상)", subtitles: "한글+영어자막", page: "139",
-        synopsis: "첫 섹스 이후 그것이 폭력이었음을 깨달아가는 소녀와 그녀 곁을 지키는 단짝 친구의 치유와 연대."
-      },
-      {
-        id: "s_029", code: "029", titleKo: "필리피냐나", titleEn: "Filipiñana",
-        director: "라파엘 마누엘", country: "싱가포르/필리핀", year: "2026", runtime: 100, rating: "15세",
-        date: "10/07(수)", timeStart: "19:00", timeEnd: "20:40", theater: "CGV 센텀시티 3관",
-        gv: false, section: "아시아영화의 창 (선댄스 심사위원특별상)", subtitles: "한글+영어자막", page: "100",
-        synopsis: "호화 골프클럽의 티걸 이사벨의 시선으로 바라본 필리핀 사회의 뒤틀린 계급 구조와 기형적 현실."
-      },
-      {
-        id: "s_030", code: "030", titleKo: "불타는 거인들", titleEn: "The Burning Giants",
-        director: "푸티퐁 아룬팽", country: "태국", year: "2026", runtime: 118, rating: "15세",
-        date: "10/07(수)", timeStart: "12:00", timeEnd: "13:58", theater: "CGV 센텀시티 4관",
-        gv: false, section: "아시아영화의 창", subtitles: "한글+영어자막", page: "098",
-        synopsis: "정체 모를 연기가 산속에 퍼지고 화마를 입은 카렌족 주민들의 강제 이주와 실종된 남편을 찾는 여정."
-      },
-      {
-        id: "s_031", code: "031", titleKo: "유니온 타운: 뉴욕을 달리는 사람들", titleEn: "Union Town",
-        director: "바바라 코플", country: "미국", year: "2026", runtime: 110, rating: "12세",
-        date: "10/07(수)", timeStart: "16:00", timeEnd: "17:50", theater: "CGV 센텀시티 4관",
-        gv: true, section: "와이드 앵글 - 다큐멘터리", subtitles: "한글+영어자막", page: "159",
-        synopsis: "아마존, UPS 물류 노동자들의 뜨거운 연대와 노동 현장을 3년간 기록한 시네마베리테 다큐멘터리."
-      },
-      {
-        id: "s_032", code: "032", titleKo: "내 친구로 남아줄래?", titleEn: "Will You Still Be My Friend",
-        director: "뤼포쉰", country: "대만", year: "2026", runtime: 101, rating: "12세",
-        date: "10/07(수)", timeStart: "19:20", timeEnd: "21:01", theater: "CGV 센텀시티 4관",
-        gv: false, section: "아시아영화의 창", subtitles: "한글+영어자막", page: "109",
-        synopsis: "대만 남부 어촌 마을 소년 준과 싱가포르 도시 소년 제스퍼의 비밀스러운 우정과 개발의 소용돌이."
-      },
-      {
-        id: "s_033", code: "033", titleKo: "메모리즈", titleEn: "MEMORIES",
-        director: "오토모 가쓰히로", country: "일본", year: "1995", runtime: 113, rating: "12세",
-        date: "10/07(수)", timeStart: "09:00", timeEnd: "10:53", theater: "CGV 센텀시티 5관",
-        gv: false, section: "특별기획 (애니메이션 30주년)", subtitles: "한글+영어자막", page: "179",
-        synopsis: "오토모 가쓰히로, 모리모토 고지, 오카무라 텐사이가 빚어낸 일본 SF 애니메이션의 불멸의 금자탑 4K 리마스터링."
-      },
-      {
-        id: "s_034", code: "034", titleKo: "숨바꼭질 + 시라누이", titleEn: "Kakurenbo + Shiranui",
-        director: "모리타 슈헤이, 가타노사카 료", country: "일본", year: "2004/2026", runtime: 60, rating: "12세",
-        date: "10/07(수)", timeStart: "12:00", timeEnd: "13:00", theater: "CGV 센텀시티 5관",
-        gv: false, section: "특별기획 (애니메이션)", subtitles: "한글+영어자막", page: "178",
-        synopsis: "지하 골목 오니들의 숨바꼭질 전설 <숨바꼭질>과 수평선의 신비로운 불빛을 좇는 소년의 <시라누이> 연속 상영."
-      },
-      {
-        id: "s_035", code: "035", titleKo: "미친 노인의 일기", titleEn: "Diary of a Mad Old Man",
-        director: "웨인 왕", country: "미국", year: "2026", runtime: 120, rating: "15세",
-        date: "10/07(수)", timeStart: "15:40", timeEnd: "17:40", theater: "CGV 센텀시티 5관",
-        gv: true, section: "아시아영화의 창", subtitles: "한글+영어자막", page: "099",
-        synopsis: "릴리 프랭키, 판빙빙 주연. 다니자키 준이치로 소설 원작, 노년의 관능적 집착과 욕망의 초상."
-      },
-      {
-        id: "s_036", code: "036", titleKo: "우리는 외계인", titleEn: "We Are Aliens",
-        director: "가도와키 고헤이", country: "일본/프랑스", year: "2026", runtime: 117, rating: "12세",
-        date: "10/07(수)", timeStart: "19:20", timeEnd: "21:17", theater: "CGV 센텀시티 5관",
-        gv: false, section: "특별기획 (애니메이션)", subtitles: "한글+영어자막", page: "182",
-        synopsis: "초등학교 시절 친구들의 기억과 사춘기의 격변을 로토스코핑으로 서정적이고 역동적으로 담아낸 화제작."
-      },
-      {
-        id: "s_037", code: "037", titleKo: "장미의 사슬", titleEn: "The Chain of Roses",
-        director: "사토 사키치", country: "일본", year: "2026", runtime: 83, rating: "15세",
-        date: "10/07(수)", timeStart: "09:00", timeEnd: "10:23", theater: "CGV 센텀시티 6관",
-        gv: true, section: "미드나잇 패션", subtitles: "한글+영어자막", page: "166",
-        synopsis: "사와지리 에리카, 마루야마 류헤이 주연. 수갑이 채워진 채 깨어난 남녀의 록앤롤 범죄 탈출극."
-      },
-      {
-        id: "s_038", code: "038", titleKo: "지 (zi)", titleEn: "zi",
-        director: "코고나다", country: "미국/홍콩", year: "2026", runtime: 100, rating: "12세",
-        date: "10/07(수)", timeStart: "12:20", timeEnd: "14:00", theater: "CGV 센텀시티 6관",
-        gv: true, section: "아이콘", subtitles: "한글+영어자막", page: "081",
-        synopsis: "사카모토 류이치의 음악과 코고나다의 시선이 만난 홍콩의 풍경, 찰나의 시간 속 기억과 감각의 틈새."
-      },
-      {
-        id: "s_039", code: "039", titleKo: "오래오래 행복하게", titleEn: "Happily Ever After",
-        director: "펑이 피오나 로안", country: "대만", year: "2026", runtime: 95, rating: "12세",
-        date: "10/07(수)", timeStart: "16:00", timeEnd: "17:35", theater: "CGV 센텀시티 6관",
-        gv: true, section: "아시아영화의 창", subtitles: "한글+영어자막", page: "103",
-        synopsis: "K팝 그룹 (여자)아이들 슈화 주연. 전혀 다른 성격의 두 자매가 자신만의 행복을 찾아가는 온기 어린 여정."
-      },
-      {
-        id: "s_040", code: "040", titleKo: "사피엔스", titleEn: "Sapiens",
-        director: "이후빈", country: "한국", year: "2026", runtime: 101, rating: "15세",
-        date: "10/07(수)", timeStart: "19:40", timeEnd: "21:21", theater: "CGV 센텀시티 6관",
-        gv: true, section: "한국영화의 오늘 - 스페셜 프리미어", subtitles: "한글+영어자막", page: "113",
-        synopsis: "유재명, 정성일 주연. 재벌 3세 납치 사건과 다중인격 용의자의 엇갈리는 기억을 추적하는 치밀한 심리 퍼즐."
-      },
-      {
-        id: "s_041", code: "041", titleKo: "붉은 바위에 아이들이 있다", titleEn: "Red Rocks",
-        director: "브루노 뒤몽", country: "프랑스", year: "2026", runtime: 90, rating: "12세",
-        date: "10/07(수)", timeStart: "12:00", timeEnd: "13:30", theater: "롯데시네마 2관",
-        gv: false, section: "아이콘", subtitles: "한글+영어자막", page: "078",
-        synopsis: "지중해 절벽에서 뛰어내리는 예닐곱 살 아이들의 천진무구함과 영화의 유년기로 돌아간 브루노 뒤몽의 수작."
-      },
-      {
-        id: "s_042", code: "042", titleKo: "버킹 패스타드", titleEn: "Bucking Fastard",
-        director: "베르너 헤어초크", country: "미국/아일랜드", year: "2026", runtime: 109, rating: "15세",
-        date: "10/07(수)", timeStart: "14:30", timeEnd: "16:19", theater: "롯데시네마 2관",
-        gv: false, section: "아이콘 (베니스 경쟁)", subtitles: "한글+영어자막", page: "066",
-        synopsis: "케이트 마라, 루니 마라 자매 주연. 둘이자 하나인 자매가 펼치는 기묘하고도 숭고한 여정."
-      },
-      {
-        id: "s_043", code: "043", titleKo: "조용히 귀 기울이면", titleEn: "Hearing",
-        director: "레 바오", country: "베트남/싱가포르", year: "2026", runtime: 120, rating: "15세",
-        date: "10/07(수)", timeStart: "17:30", timeEnd: "19:30", theater: "롯데시네마 2관",
-        gv: false, section: "아시아영화의 창", subtitles: "한글+영어자막", page: "104",
-        synopsis: "소음 측정기를 설치하는 남자의 일상과 침묵 속에 쌓인 가족과의 거리감을 그림처럼 담아낸 미학."
-      },
-      {
-        id: "s_044", code: "044", titleKo: "눈에는 눈", titleEn: "Head to Head",
-        director: "가시데 골마카니", country: "이란/독일", year: "2026", runtime: 80, rating: "15세",
-        date: "10/07(수)", timeStart: "10:00", timeEnd: "11:20", theater: "롯데시네마 3관",
-        gv: false, section: "아시아영화의 창", subtitles: "한글+영어자막", page: "103",
-        synopsis: "이란 사회 속 여성의 일상과 남성 배우들의 여장 촬영 현장을 유쾌하고 통렬하게 꼬집는 풍자극."
-      },
-      {
-        id: "s_045", code: "045", titleKo: "수능, 출제의 비밀", titleEn: "Ugly Duckling Ms. Maeng",
-        director: "이용재", country: "한국", year: "2026", runtime: 99, rating: "12세",
-        date: "10/07(수)", timeStart: "12:20", timeEnd: "13:59", theater: "롯데시네마 3관",
-        gv: false, section: "한국영화의 오늘 - 파노라마", subtitles: "한글자막", page: "116",
-        synopsis: "이선빈, 유재명, 김영민 주연. 수능 출제위원 합숙소에서 벌어지는 좌충우돌 블랙코미디."
-      },
-      {
-        id: "s_046", code: "046", titleKo: "이성과 감성", titleEn: "Sense and Sensibility",
-        director: "조지아 오클리", country: "영국/미국", year: "2026", runtime: 131, rating: "12세",
-        date: "10/07(수)", timeStart: "15:40", timeEnd: "17:51", theater: "롯데시네마 3관",
-        gv: false, section: "월드 시네마", subtitles: "한글+영어자막", page: "130",
-        synopsis: "제인 오스틴 명작을 현대적이고 생생한 두 자매의 심리적 연대기로 재해석한 작품."
-      },
-      {
-        id: "s_047", code: "047", titleKo: "흐르는 세월", titleEn: "Time and Tide",
-        director: "비 쉬", country: "호주", year: "2026", runtime: 99, rating: "12세",
-        date: "10/07(수)", timeStart: "19:00", timeEnd: "20:39", theater: "롯데시네마 3관",
-        gv: false, section: "와이드 앵글 - 다큐멘터리", subtitles: "한글+영어자막", page: "159",
-        synopsis: "뇌졸중으로 쓰러진 아버지와 오랜 고통을 견뎌온 가족의 관계를 다큐멘터리로 담아낸 감동 실화."
-      },
-      {
-        id: "s_048", code: "048", titleKo: "꿀알바", titleEn: "Dead-End Job",
-        director: "김다민", country: "한국", year: "2026", runtime: 142, rating: "15세",
-        date: "10/07(수)", timeStart: "09:40", timeEnd: "12:02", theater: "롯데시네마 4관",
-        gv: false, section: "온스크린", subtitles: "한글자막", page: "171",
-        synopsis: "이재욱, 이희준, 고민시, 김민하 주연. 정체불명의 고수익 알바 현장에서 벌어지는 기상천외한 미스터리 시리즈."
-      },
-      {
-        id: "s_049", code: "049", titleKo: "자필", titleEn: "SINNER",
-        director: "홍성민", country: "한국", year: "2026", runtime: 110, rating: "15세",
-        date: "10/07(수)", timeStart: "13:40", timeEnd: "15:30", theater: "롯데시네마 4관",
-        gv: false, section: "한국영화의 오늘 - 파노라마", subtitles: "한글자막", page: "115",
-        synopsis: "정성일, 박지현 주연. 1994년 방화살인사건의 진실과 검사의 양심이 부딪히는 묵직한 법정 드라마."
-      },
-      {
-        id: "s_050", code: "050", titleKo: "정가네", titleEn: "Cattle Run",
-        director: "김지현", country: "한국", year: "2026", runtime: 110, rating: "12세",
-        date: "10/07(수)", timeStart: "17:10", timeEnd: "19:00", theater: "롯데시네마 4관",
-        gv: false, section: "한국영화의 오늘 - 스페셜 프리미어", subtitles: "한글자막", page: "112",
-        synopsis: "류승룡, 박해준 주연. 30년째 말 한마디 섞지 않은 목장주 형제가 송아지를 살리기 위해 손을 잡는다."
-      },
-      {
-        id: "s_051", code: "051", titleKo: "젠틀몬스터", titleEn: "Gentle Monster",
-        director: "마리 크로이처", country: "오스트리아/프랑스", year: "2026", runtime: 115, rating: "청불",
-        date: "10/07(수)", timeStart: "20:00", timeEnd: "22:35", theater: "롯데시네마 4관",
-        gv: false, section: "월드 시네마 (칸 경쟁)", subtitles: "한글+영어자막", page: "123",
-        synopsis: "레아 세두 주연. 평온했던 교외의 일상에서 남편의 충격적인 범죄 혐의를 마주한 피아니스트의 윤리적 붕괴."
-      },
-      {
-        id: "s_052", code: "052", titleKo: "라두 주데의 어느 하녀의 일기", titleEn: "The Diary of a Chambermaid",
-        director: "라두 주데", country: "프랑스/루마니아", year: "2026", runtime: 94, rating: "15세",
-        date: "10/07(수)", timeStart: "10:20", timeEnd: "11:54", theater: "롯데시네마 5관",
-        gv: false, section: "아이콘", subtitles: "한글+영어자막", page: "067",
-        synopsis: "미르보 원작의 대담한 재해석. 이주 가사 노동자의 현실과 계급의 허위를 은근한 미소로 겨누는 라두 주데 신작."
-      },
-      {
-        id: "s_053", code: "053", titleKo: "눈 둘 데가 없네", titleEn: "Nowhere to Lay My Eyes",
-        director: "홍상수", country: "한국", year: "2026", runtime: 72, rating: "12세",
-        date: "10/07(수)", timeStart: "13:00", timeEnd: "14:12", theater: "롯데시네마 5관",
-        gv: false, section: "아이콘 (로카르노 감독상, 최우수연기상)", subtitles: "한글자막", page: "075",
-        synopsis: "김민희, 최명길 주연. 재혼한 엄마를 찾아 제주도를 방문한 상희가 겪는 바람과 마음의 진동."
-      },
-      {
-        id: "s_054", code: "054", titleKo: "마인드 게임", titleEn: "MIND GAME",
-        director: "유아사 마사아키", country: "일본", year: "2004", runtime: 103, rating: "15세",
-        date: "10/07(수)", timeStart: "16:00", timeEnd: "17:43", theater: "롯데시네마 5관",
-        gv: false, section: "특별기획 (애니메이션)", subtitles: "한글+영어자막", page: "180",
-        synopsis: "야쿠자의 총에 맞아 죽음을 앞둔 만화가 지망생이 삶으로 역주행하며 고래 뱃속에서 펼치는 괴작이자 걸작."
-      },
-      {
-        id: "s_055", code: "055", titleKo: "나기 노트", titleEn: "Nagi Notes",
-        director: "후카다 코지", country: "일본", year: "2026", runtime: 110, rating: "전체",
-        date: "10/07(수)", timeStart: "19:00", timeEnd: "20:50", theater: "롯데시네마 5관",
-        gv: true, section: "아이콘 (칸 경쟁)", subtitles: "한글+영어자막", page: "074",
-        synopsis: "전 올케를 조각하는 전시누이와 옛 연인의 등장. 가족의 경계를 넘어 결핍과 외로움을 응시하는 후카다 코지 신작."
-      },
-      {
-        id: "s_056", code: "056", titleKo: "최종면접", titleEn: "Final Interview",
-        director: "김정훈", country: "한국/일본", year: "2026", runtime: 106, rating: "15세",
-        date: "10/07(수)", timeStart: "10:00", timeEnd: "11:45", theater: "롯데시네마 6관",
-        gv: false, section: "한국영화의 오늘 - 파노라마", subtitles: "한글자막", page: "114",
-        synopsis: "단 한 명만 뽑는 신입사원 최종 면접장에서 벌어진 의문의 폭로와 6년 뒤의 인터뷰가 엮어내는 진실 추적."
-      },
-      {
-        id: "s_057", code: "057", titleKo: "푸른길", titleEn: "The Blue Road",
-        director: "한준희", country: "한국", year: "2026", runtime: 138, rating: "15세",
-        date: "10/07(수)", timeStart: "13:30", timeEnd: "15:48", theater: "롯데시네마 6관",
-        gv: false, section: "온스크린", subtitles: "한글자막", page: "170",
-        synopsis: "손석구, 나가야마 에이타 주연. 시체를 미술품처럼 전시하는 연쇄살인을 쫓는 한일 양국 형사의 공조 추적극."
-      },
-      {
-        id: "s_058", code: "058", titleKo: "바이 애니 민즈: 자비는 없다", titleEn: "By Any Means",
-        director: "엘러건스 브래턴", country: "미국", year: "2026", runtime: 107, rating: "15세",
-        date: "10/07(수)", timeStart: "17:30", timeEnd: "19:17", theater: "롯데시네마 6관",
-        gv: false, section: "월드 시네마", subtitles: "한글+영어자막", page: "119",
-        synopsis: "마크 월버그 주연. 1966년 미시시피를 뒤흔든 인권 운동가 피살 사건을 파헤치는 흑인 FBI 요원과 마피아의 기묘한 공조."
-      },
-      {
-        id: "s_059", code: "059", titleKo: "겁쟁이", titleEn: "Coward",
-        director: "뤼카스 돈트", country: "벨기에/프랑스", year: "2026", runtime: 127, rating: "15세",
-        date: "10/07(수)", timeStart: "20:20", timeEnd: "22:27", theater: "롯데시네마 6관",
-        gv: false, section: "아이콘 (칸 남우주연상)", subtitles: "한글+영어자막", page: "067",
-        synopsis: "제1차 세계대전 참호에서 피어난 두 젊은 병사의 은밀한 유대와 진정한 용기의 의미를 묻는 뤼카스 돈트 신작."
-      },
-      {
-        id: "s_060", code: "060", titleKo: "무명소녀", titleEn: "A Girl Unknown",
-        director: "쩌우징", country: "중국/프랑스", year: "2026", runtime: 128, rating: "15세",
-        date: "10/07(수)", timeStart: "13:20", timeEnd: "15:20", theater: "롯데시네마 7관",
-        gv: false, section: "아시아영화의 창 (칸 비평가주간)", subtitles: "한글+영어자막", page: "102",
-        synopsis: "시골 소녀 주안이 도시의 낯선 집에 맡겨져 자신의 이름과 자리를 찾아가는 감동적인 성장기."
-      },
-      {
-        id: "s_061", code: "061", titleKo: "이야기, 이야기", titleEn: "Gu Shi",
-        director: "에이미 송", country: "미국/홍콩/태국", year: "2026", runtime: 83, rating: "12세",
-        date: "10/07(수)", timeStart: "16:30", timeEnd: "17:53", theater: "롯데시네마 7관",
-        gv: false, section: "아시아영화의 창", subtitles: "한글+영어자막", page: "102",
-        synopsis: "기억을 숲의 유령에게 넘겨주고 이야기를 얻는 신비로운 세계 속 가족의 시적이고 신화적인 서사."
-      },
-      {
-        id: "s_062", code: "062", titleKo: "아시아 단편 경쟁 1", titleEn: "Asian Short Film Competition 1",
-        director: "다양한 아시아 신예 감독", country: "아시아", year: "2026", runtime: 78, rating: "12세",
-        date: "10/07(수)", timeStart: "19:20", timeEnd: "20:38", theater: "롯데시네마 7관",
-        gv: false, section: "와이드 앵글 - 아시아 단편", subtitles: "한글+영어자막", page: "144",
-        synopsis: "<메마른 땅 아래>, <바람을 타고>, <소금 전기>, <그녀가 말했다(판빙빙 주연)> 4편 묶음 상영."
-      },
-      {
-        id: "s_063", code: "063", titleKo: "백사전", titleEn: "The White Snake Enchantress",
-        director: "야부시타 다이지", country: "일본", year: "1958", runtime: 78, rating: "전체",
-        date: "10/07(수)", timeStart: "09:30", timeEnd: "10:48", theater: "KOFIC 표준시사실",
-        gv: false, section: "특별기획 (일본 애니 원점)", subtitles: "한글자막", page: "183",
-        synopsis: "미야자키 하야오를 울리고 일본 애니메이션의 역사를 열어젖힌 일본 최초의 장편 컬러 애니메이션."
-      },
-      {
-        id: "s_064", code: "064", titleKo: "베드포드 파크", titleEn: "Bedford Park",
-        director: "스테파니 안", country: "미국", year: "2026", runtime: 120, rating: "15세",
-        date: "10/07(수)", timeStart: "12:00", timeEnd: "14:00", theater: "KOFIC 표준시사실",
-        gv: false, section: "플래시 포워드 (선댄스 심사위원특별상)", subtitles: "한글+영어자막", page: "134",
-        synopsis: "최희서, 손석구 주연. 교통사고 수습 과정에서 만난 두 재미 한인이 서로의 상처를 치유해 가는 섬세한 멜로."
-      },
-      {
-        id: "s_065", code: "065", titleKo: "가바초 챔피언", titleEn: "Campeón Gabacho",
-        director: "호나스 쿠아론", country: "멕시코", year: "2026", runtime: 108, rating: "15세",
-        date: "10/07(수)", timeStart: "15:40", timeEnd: "17:28", theater: "KOFIC 표준시사실",
-        gv: false, section: "월드 시네마", subtitles: "한글+영어자막", page: "119",
-        synopsis: "더 나은 삶을 찾아 미국으로 향한 멕시코 청년의 거친 현실과 마법적 사실주의의 결합."
-      },
-      {
-        id: "s_066", code: "066", titleKo: "자바의 사계절", titleEn: "Four Seasons in Java",
-        director: "카밀라 안디니", country: "인도네시아", year: "2026", runtime: 137, rating: "15세",
-        date: "10/07(수)", timeStart: "19:10", timeEnd: "21:27", theater: "KOFIC 표준시사실",
-        gv: true, section: "아시아영화의 창", subtitles: "한글+영어자막", page: "101",
-        synopsis: "20년 만에 고향으로 돌아온 전과자 여성을 대하는 마을 공동체의 위선과 폭력을 응시한 대작."
-      },
-      {
-        id: "s_067", code: "067", titleKo: "좋은 남자는 없다", titleEn: "No Good Men",
-        director: "샤르바누 사다트", country: "아프가니스탄/독일", year: "2026", runtime: 104, rating: "18세",
-        date: "10/07(수)", timeStart: "12:00", timeEnd: "13:44", theater: "부산시청자미디어센터 공개홀",
-        gv: false, section: "아시아영화의 창 (베를린 개막작)", subtitles: "한글+영어자막", page: "106",
-        synopsis: "탈레반의 위협 속에서 카불 방송국 카메라 기자와 앵커가 겪는 로맨스와 아프간 여성들의 고통."
-      },
-      {
-        id: "s_069", code: "069", titleKo: "천국으로 가는 아홉 사원", titleEn: "9 Temples to Heaven",
-        director: "솜풋 칫께손품", country: "태국", year: "2026", runtime: 141, rating: "15세",
-        date: "10/07(수)", timeStart: "18:00", timeEnd: "20:21", theater: "부산시청자미디어센터 공개홀",
-        gv: false, section: "아시아영화의 창 (칸 감독주간)", subtitles: "한글+영어자막", page: "096",
-        synopsis: "어머니의 수명을 늘리기 위해 하루 동안 9개 사원을 방문해 공양을 올리려는 가족의 유쾌하고 뭉클한 여정."
-      },
+      { id: "s_003", code: "003", titleKo: "룩백", titleEn: "Look Back", director: "고레에다 히로카즈", country: "일본", year: "2025", runtime: 100, rating: "전체", date: "10/07(수)", timeStart: "20:00", timeEnd: "21:40", theater: "영화의전당 루프씨어터", gv: true, section: "오픈 시네마", subtitles: "한글+영어자막", page: "060", synopsis: "후지모토 타츠키 만화 실사화. 두 소녀의 찬란한 우정과 창작의 희열." },
+      { id: "s_004", code: "004", titleKo: "아버지의 방", titleEn: "In My Father's Room", director: "하라다 마하", country: "일본", year: "2026", runtime: 109, rating: "12세", date: "10/07(수)", timeStart: "09:20", timeEnd: "11:09", theater: "하늘연극장", gv: false, section: "아시아영화의 창", subtitles: "한글+영어자막", page: "104", synopsis: "아버지가 남긴 의문의 열쇠를 찾아 나선 치유의 여정." },
+      { id: "s_005", code: "005", titleKo: "사토코는 언제나", titleEn: "Satoko Always", director: "오키타 슈이치", country: "일본", year: "2026", runtime: 138, rating: "12세", date: "10/07(수)", timeStart: "12:20", timeEnd: "14:38", theater: "하늘연극장", gv: false, section: "경쟁 (뉴 커런츠)", subtitles: "한글+영어자막", page: "053", synopsis: "세 명의 사토코가 펜을 들며 마주하는 생의 온기와 위로." },
+      { id: "s_006", code: "006", titleKo: "처음 만난 외로움", titleEn: "The First Taste of Loneliness", director: "구유", country: "중국", year: "2026", runtime: 135, rating: "12세", date: "10/07(수)", timeStart: "16:30", timeEnd: "18:45", theater: "하늘연극장", gv: true, section: "경쟁 (뉴 커런츠)", subtitles: "한글+영어자막", page: "048", synopsis: "모녀 삼대의 외로움과 치유의 길. 저우쉰 주연의 유려한 산수 영화." },
+      { id: "s_007", code: "007", titleKo: "일요일 다음날", titleEn: "The Day After Sunday", director: "가토 다쿠야", country: "일본/프랑스", year: "2026", runtime: 82, rating: "15세", date: "10/07(수)", timeStart: "20:40", timeEnd: "22:02", theater: "하늘연극장", gv: true, section: "경쟁 (뉴 커런츠)", subtitles: "한글+영어자막", page: "047", synopsis: "부부의 신경전과 정서적 단절을 파고드는 심리 드라마." },
+      { id: "s_008", code: "008", titleKo: "그대, 별처럼", titleEn: "You, Like a Star", director: "후지이 미치히토", country: "일본", year: "2026", runtime: 135, rating: "12세", date: "10/07(수)", timeStart: "08:40", timeEnd: "10:55", theater: "중극장", gv: true, section: "아시아영화의 창", subtitles: "한글+영어자막", page: "109", synopsis: "17살 동갑내기 카이와 아키미의 애틋한 사랑의 여정." },
+      { id: "s_009", code: "009", titleKo: "천사의 알", titleEn: "Angel's Egg", director: "오시이 마모루", country: "일본", year: "1985", runtime: 72, rating: "전체", date: "10/07(수)", timeStart: "12:30", timeEnd: "13:42", theater: "중극장", gv: false, section: "특별기획 (애니메이션)", subtitles: "한글자막", page: "165", synopsis: "오시이 마모루의 침묵의 묵시록." },
+      { id: "s_010", code: "010", titleKo: "버스정류장 + 플레시 임팩트", titleEn: "Bus Stop + Flesh Impact", director: "조슈아 로건, 매기 질렌할", country: "미국", year: "1956/2026", runtime: 115, rating: "12세", date: "10/07(수)", timeStart: "15:30", timeEnd: "17:23", theater: "중극장", gv: true, section: "특별상영", subtitles: "한글+영어자막", page: "187", synopsis: "마릴린 먼로 주연 명작과 매기 질렌할 감독 신작 단편 연속 상영." },
+      { id: "s_011", code: "011", titleKo: "우리 할머니는 큐브왕", titleEn: "It's My Time", director: "바이 슈에", country: "중국", year: "2026", runtime: 107, rating: "12세", date: "10/07(수)", timeStart: "19:30", timeEnd: "21:17", theater: "중극장", gv: true, section: "특별기획 (양자경)", subtitles: "한글+영어자막", page: "060", synopsis: "자오(양자경)가 큐브를 배우며 삶의 난제를 푸는 힐링 드라마." },
+      { id: "s_012", code: "012", titleKo: "스킨타운", titleEn: "Skintown", director: "키어런 J. 월시", country: "아일랜드/영국", year: "2026", runtime: 99, rating: "15세", date: "10/07(수)", timeStart: "10:00", timeEnd: "11:39", theater: "소극장", gv: false, section: "월드 시네마", subtitles: "한글+영어자막", page: "131", synopsis: "1994년 북아일랜드 알바생들에게 찾아온 거액의 마약 밀매 기회." },
+      { id: "s_013", code: "013", titleKo: "첫세계", titleEn: "The World Before", director: "윤단비", country: "한국", year: "2026", runtime: 115, rating: "15세", date: "10/07(수)", timeStart: "12:30", timeEnd: "14:25", theater: "소극장", gv: false, section: "한국영화의 오늘 - 파노라마", subtitles: "한글자막", page: "117", synopsis: "열일곱 소녀 진과 친구 두재가 나누는 애틋한 시간." },
+      { id: "s_014", code: "014", titleKo: "겨울 이야기", titleEn: "In Winter", director: "예를란 누르무함베토프", country: "카자흐스탄", year: "2026", runtime: 87, rating: "12세", date: "10/07(수)", timeStart: "16:00", timeEnd: "17:27", theater: "소극장", gv: false, section: "아시아영화의 창", subtitles: "한글+영어자막", page: "105", synopsis: "눈밭에 묻힌 거액의 현금 자루를 발견한 교사의 딜레마." },
+      { id: "s_015", code: "015", titleKo: "그날 밤, 클라리사에게", titleEn: "Clarissa", director: "아리 에시리, 추코 에시리", country: "나이지리아", year: "2026", runtime: 134, rating: "15세", date: "10/07(수)", timeStart: "20:00", timeEnd: "22:14", theater: "소극장", gv: false, section: "월드 시네마", subtitles: "한글+영어자막", page: "120", synopsis: "버지니아 울프 소설을 라고스로 옮겨온 수작." },
+      { id: "s_016", code: "016", titleKo: "텐더 러빙 케어", titleEn: "Tender Loving Care", director: "마이크 리", country: "영국", year: "2026", runtime: 107, rating: "15세", date: "10/07(수)", timeStart: "08:20", timeEnd: "10:07", theater: "시네마테크", gv: false, section: "아이콘", subtitles: "한글+영어자막", page: "079", synopsis: "소외된 이들의 삶과 관계의 미세한 간극들을 응시." },
+      { id: "s_017", code: "017", titleKo: "아이언 보이", titleEn: "Iron Boy", director: "루이 클리시", country: "프랑스/벨기에", year: "2026", runtime: 90, rating: "전체", date: "10/07(수)", timeStart: "13:00", timeEnd: "14:30", theater: "시네마테크", gv: false, section: "월드 시네마", subtitles: "한글+영어자막", page: "126", synopsis: "철제 보조기를 찬 소년의 성장 애니메이션." },
+      { id: "s_018", code: "018", titleKo: "메리 크리스마스, 엄마", titleEn: "The Fire Within You", director: "에도아르도 데 안젤리스", country: "이탈리아", year: "2026", runtime: 93, rating: "15세", date: "10/07(수)", timeStart: "16:30", timeEnd: "18:03", theater: "시네마테크", gv: false, section: "월드 시네마", subtitles: "한글+영어자막", page: "122", synopsis: "밀라노 아들 집을 찾아온 나폴리 괴짜 어머니와의 크리스마스 전야 소동." },
+      { id: "s_021", code: "021", titleKo: "마더 메리", titleEn: "Mother Mary", director: "데이빗 로워리", country: "미국", year: "2026", runtime: 112, rating: "15세", date: "10/07(수)", timeStart: "19:00", timeEnd: "20:52", theater: "시네마테크", gv: true, section: "아이콘", subtitles: "한글+영어자막", page: "073", synopsis: "팝스타와 전속 디자이너가 펼치는 심리 스릴러." },
+      { id: "s_019", code: "019", titleKo: "호프", titleEn: "HOPE", director: "나홍진", country: "한국", year: "2026", runtime: 156, rating: "15세", date: "10/07(수)", timeStart: "09:30", timeEnd: "12:06", theater: "CGV 센텀시티 IMAX", gv: false, section: "한국영화의 오늘 - 파노라마", subtitles: "한글+영어자막", page: "115", synopsis: "외계의 미지의 존재와 인간의 공포를 정면 돌파하는 나홍진 신작." },
+      { id: "s_020", code: "020", titleKo: "가능한 사랑", titleEn: "Possible Love", director: "이창동", country: "한국", year: "2026", runtime: 164, rating: "15세", date: "10/07(수)", timeStart: "15:00", timeEnd: "17:44", theater: "CGV 센텀시티 IMAX", gv: true, section: "아이콘", subtitles: "한글+영어자막", page: "077", synopsis: "전도연, 설경구, 조인성, 조여정이 빚어내는 삶과 사랑의 묵직한 진동." },
+      { id: "s_022", code: "022", titleKo: "고래사냥", titleEn: "Whale Hunting", director: "배창호", country: "한국", year: "1984", runtime: 112, rating: "12세", date: "10/07(수)", timeStart: "12:00", timeEnd: "13:52", theater: "CGV 센텀시티 1관", gv: false, section: "특별기획 (안성기 추모)", subtitles: "한글+영어자막", page: "175", synopsis: "고래를 잡으러 떠나는 세 청춘의 방랑기." },
+      { id: "s_023", code: "023", titleKo: "바람불어 좋은날", titleEn: "A Fine, Windy Day", director: "이장호", country: "한국", year: "1980", runtime: 119, rating: "15세", date: "10/07(수)", timeStart: "15:30", timeEnd: "17:29", theater: "CGV 센텀시티 1관", gv: true, section: "특별기획 (안성기 추모)", subtitles: "한글+영어자막", page: "174", synopsis: "1980년대 강남 개발 현장 청춘들의 초상." },
+      { id: "s_024", code: "024", titleKo: "하얀전쟁", titleEn: "White Badge", director: "정지영", country: "한국", year: "1992", runtime: 124, rating: "15세", date: "10/07(수)", timeStart: "11:00", timeEnd: "13:04", theater: "CGV 센텀시티 2관", gv: false, section: "특별기획 (안성기 추모)", subtitles: "한글+영어자막", page: "175", synopsis: "베트남전 참전 군인들의 깊은 트라우마를 직시한 반전 명작." },
+      { id: "s_025", code: "025", titleKo: "칠수와 만수", titleEn: "Chil-su and Man-su", director: "박광수", country: "한국", year: "1988", runtime: 108, rating: "15세", date: "10/07(수)", timeStart: "15:00", timeEnd: "16:48", theater: "CGV 센텀시티 2관", gv: false, section: "특별기획 (안성기 추모)", subtitles: "한글+영어자막", page: "173", synopsis: "극장 간판을 그리며 세상의 벽을 향해 소리치는 청춘들." },
+      { id: "s_026", code: "026", titleKo: "개그맨", titleEn: "Gagman", director: "이명세", country: "한국", year: "1988", runtime: 125, rating: "15세", date: "10/07(수)", timeStart: "18:20", timeEnd: "20:25", theater: "CGV 센텀시티 2관", gv: false, section: "특별기획 (안성기 추모)", subtitles: "한글+영어자막", page: "174", synopsis: "삼류 개그맨의 기상천외한 탈출극." },
+      { id: "s_027", code: "027", titleKo: "피오르", titleEn: "Fjord", director: "크리스티안 문쥬", country: "루마니아/프랑스", year: "2026", runtime: 146, rating: "15세", date: "10/07(수)", timeStart: "12:20", timeEnd: "14:46", theater: "CGV 센텀시티 3관", gv: false, section: "아이콘", subtitles: "한글+영어자막", page: "069", synopsis: "아동 위탁 보호 조치와 전통 가치의 충돌을 다룬 스릴러." },
+      { id: "s_028", code: "028", titleKo: "새드 걸즈", titleEn: "Sad Girlz", director: "페르난다 토바르", country: "멕시코/프랑스", year: "2026", runtime: 90, rating: "15세", date: "10/07(수)", timeStart: "16:00", timeEnd: "17:30", theater: "CGV 센텀시티 3관", gv: false, section: "플래시 포워드", subtitles: "한글+영어자막", page: "139", synopsis: "소녀의 치유와 연대." },
+      { id: "s_029", code: "029", titleKo: "필리피냐나", titleEn: "Filipiñana", director: "라파엘 마누엘", country: "싱가포르/필리핀", year: "2026", runtime: 100, rating: "15세", date: "10/07(수)", timeStart: "19:00", timeEnd: "20:40", theater: "CGV 센텀시티 3관", gv: false, section: "아시아영화의 창", subtitles: "한글+영어자막", page: "100", synopsis: "골프클럽 티걸의 시선으로 본 필리핀 사회의 뒤틀린 계급 구조." },
+      { id: "s_030", code: "030", titleKo: "불타는 거인들", titleEn: "The Burning Giants", director: "푸티퐁 아룬팽", country: "태국", year: "2026", runtime: 118, rating: "15세", date: "10/07(수)", timeStart: "12:00", timeEnd: "13:58", theater: "CGV 센텀시티 4관", gv: false, section: "아시아영화의 창", subtitles: "한글+영어자막", page: "098", synopsis: "카렌족 주민들의 강제 이주와 실종된 남편을 찾는 여정." },
+      { id: "s_031", code: "031", titleKo: "유니온 타운: 뉴욕을 달리는 사람들", titleEn: "Union Town", director: "바바라 코플", country: "미국", year: "2026", runtime: 110, rating: "12세", date: "10/07(수)", timeStart: "16:00", timeEnd: "17:50", theater: "CGV 센텀시티 4관", gv: true, section: "와이드 앵글 - 다큐멘터리", subtitles: "한글+영어자막", page: "159", synopsis: "물류 노동자들의 뜨거운 연대와 노동 현장을 기록한 다큐." },
+      { id: "s_032", code: "032", titleKo: "내 친구로 남아줄래?", titleEn: "Will You Still Be My Friend", director: "뤼포쉰", country: "대만", year: "2026", runtime: 101, rating: "12세", date: "10/07(수)", timeStart: "19:20", timeEnd: "21:01", theater: "CGV 센텀시티 4관", gv: false, section: "아시아영화의 창", subtitles: "한글+영어자막", page: "109", synopsis: "소년들의 비밀스러운 우정과 개발의 소용돌이." },
+      { id: "s_033", code: "033", titleKo: "메모리즈", titleEn: "MEMORIES", director: "오토모 가쓰히로", country: "일본", year: "1995", runtime: 113, rating: "12세", date: "10/07(수)", timeStart: "09:00", timeEnd: "10:53", theater: "CGV 센텀시티 5관", gv: false, section: "특별기획 (애니메이션 30주년)", subtitles: "한글+영어자막", page: "179", synopsis: "일본 SF 애니메이션의 불멸의 금자탑 4K 리마스터링." },
+      { id: "s_034", code: "034", titleKo: "숨바꼭질 + 시라누이", titleEn: "Kakurenbo + Shiranui", director: "모리타 슈헤이, 가타노사카 료", country: "일본", year: "2004/2026", runtime: 60, rating: "12세", date: "10/07(수)", timeStart: "12:00", timeEnd: "13:00", theater: "CGV 센텀시티 5관", gv: false, section: "특별기획 (애니메이션)", subtitles: "한글+영어자막", page: "178", synopsis: "지하 골목 오니들의 숨바꼭질 전설과 신비로운 불빛을 좇는 소년." },
+      { id: "s_035", code: "035", titleKo: "미친 노인의 일기", titleEn: "Diary of a Mad Old Man", director: "웨인 왕", country: "미국", year: "2026", runtime: 120, rating: "15세", date: "10/07(수)", timeStart: "15:40", timeEnd: "17:40", theater: "CGV 센텀시티 5관", gv: true, section: "아시아영화의 창", subtitles: "한글+영어자막", page: "099", synopsis: "릴리 프랭키, 판빙빙 주연. 노년의 관능적 집착과 욕망." },
+      { id: "s_036", code: "036", titleKo: "우리는 외계인", titleEn: "We Are Aliens", director: "가도와키 고헤이", country: "일본/프랑스", year: "2026", runtime: 117, rating: "12세", date: "10/07(수)", timeStart: "19:20", timeEnd: "21:17", theater: "CGV 센텀시티 5관", gv: false, section: "특별기획 (애니메이션)", subtitles: "한글+영어자막", page: "182", synopsis: "사춘기의 격변을 로토스코핑으로 서정적으로 담아낸 화제작." },
+      { id: "s_037", code: "037", titleKo: "장미의 사슬", titleEn: "The Chain of Roses", director: "사토 사키치", country: "일본", year: "2026", runtime: 83, rating: "15세", date: "10/07(수)", timeStart: "09:00", timeEnd: "10:23", theater: "CGV 센텀시티 6관", gv: true, section: "미드나잇 패션", subtitles: "한글+영어자막", page: "166", synopsis: "사와지리 에리카 주연의 록앤롤 범죄 탈출극." },
+      { id: "s_038", code: "038", titleKo: "지 (zi)", titleEn: "zi", director: "코고나다", country: "미국/홍콩", year: "2026", runtime: 100, rating: "12세", date: "10/07(수)", timeStart: "12:20", timeEnd: "14:00", theater: "CGV 센텀시티 6관", gv: true, section: "아이콘", subtitles: "한글+영어자막", page: "081", synopsis: "사카모토 류이치의 음악과 코고나다의 시선이 만난 홍콩 풍경." },
+      { id: "s_039", code: "039", titleKo: "오래오래 행복하게", titleEn: "Happily Ever After", director: "펑이 피오나 로안", country: "대만", year: "2026", runtime: 95, rating: "12세", date: "10/07(수)", timeStart: "16:00", timeEnd: "17:35", theater: "CGV 센텀시티 6관", gv: true, section: "아시아영화의 창", subtitles: "한글+영어자막", page: "103", synopsis: "(여자)아이들 슈화 주연의 온기 어린 여정." },
+      { id: "s_040", code: "040", titleKo: "사피엔스", titleEn: "Sapiens", director: "이후빈", country: "한국", year: "2026", runtime: 101, rating: "15세", date: "10/07(수)", timeStart: "19:40", timeEnd: "21:21", theater: "CGV 센텀시티 6관", gv: true, section: "한국영화의 오늘 - 스페셜 프리미어", subtitles: "한글+영어자막", page: "113", synopsis: "유재명, 정성일 주연의 치밀한 심리 퍼즐." },
+      { id: "s_041", code: "041", titleKo: "붉은 바위에 아이들이 있다", titleEn: "Red Rocks", director: "브루노 뒤몽", country: "프랑스", year: "2026", runtime: 90, rating: "12세", date: "10/07(수)", timeStart: "12:00", timeEnd: "13:30", theater: "롯데시네마 2관", gv: false, section: "아이콘", subtitles: "한글+영어자막", page: "078", synopsis: "지중해 절벽 아이들의 천진무구함과 영화의 유년기." },
+      { id: "s_042", code: "042", titleKo: "버킹 패스타드", titleEn: "Bucking Fastard", director: "베르너 헤어초크", country: "미국/아일랜드", year: "2026", runtime: 109, rating: "15세", date: "10/07(수)", timeStart: "14:30", timeEnd: "16:19", theater: "롯데시네마 2관", gv: false, section: "아이콘", subtitles: "한글+영어자막", page: "066", synopsis: "케이트 마라, 루니 마라 자매의 기묘한 여정." },
+      { id: "s_043", code: "043", titleKo: "조용히 귀 기울이면", titleEn: "Hearing", director: "레 바오", country: "베트남/싱가포르", year: "2026", runtime: 120, rating: "15세", date: "10/07(수)", timeStart: "17:30", timeEnd: "19:30", theater: "롯데시네마 2관", gv: false, section: "아시아영화의 창", subtitles: "한글+영어자막", page: "104", synopsis: "소음 측정기를 설치하는 남자의 일상과 침묵." },
+      { id: "s_044", code: "044", titleKo: "눈에는 눈", titleEn: "Head to Head", director: "가시데 골마카니", country: "이란/독일", year: "2026", runtime: 80, rating: "15세", date: "10/07(수)", timeStart: "10:00", timeEnd: "11:20", theater: "롯데시네마 3관", gv: false, section: "아시아영화의 창", subtitles: "한글+영어자막", page: "103", synopsis: "이란 사회 여성의 일상을 통렬하게 꼬집는 풍자극." },
+      { id: "s_045", code: "045", titleKo: "수능, 출제의 비밀", titleEn: "Ugly Duckling Ms. Maeng", director: "이용재", country: "한국", year: "2026", runtime: 99, rating: "12세", date: "10/07(수)", timeStart: "12:20", timeEnd: "13:59", theater: "롯데시네마 3관", gv: false, section: "한국영화의 오늘 - 파노라마", subtitles: "한글자막", page: "116", synopsis: "이선빈, 유재명 주연의 수능 출제위원 합숙소 블랙코미디." },
+      { id: "s_046", code: "046", titleKo: "이성과 감성", titleEn: "Sense and Sensibility", director: "조지아 오클리", country: "영국/미국", year: "2026", runtime: 131, rating: "12세", date: "10/07(수)", timeStart: "15:40", timeEnd: "17:51", theater: "롯데시네마 3관", gv: false, section: "월드 시네마", subtitles: "한글+영어자막", page: "130", synopsis: "제인 오스틴 명작의 현대적 자매 심리 연대기." },
+      { id: "s_047", code: "047", titleKo: "흐르는 세월", titleEn: "Time and Tide", director: "비 쉬", country: "호주", year: "2026", runtime: 99, rating: "12세", date: "10/07(수)", timeStart: "19:00", timeEnd: "20:39", theater: "롯데시네마 3관", gv: false, section: "와이드 앵글 - 다큐멘터리", subtitles: "한글+영어자막", page: "159", synopsis: "뇌졸중 아버지를 둔 가족의 감동 실화." },
+      { id: "s_048", code: "048", titleKo: "꿀알바", titleEn: "Dead-End Job", director: "김다민", country: "한국", year: "2026", runtime: 142, rating: "15세", date: "10/07(수)", timeStart: "09:40", timeEnd: "12:02", theater: "롯데시네마 4관", gv: false, section: "온스크린", subtitles: "한글자막", page: "171", synopsis: "이재욱, 이희준, 고민시, 김민하 주연의 미스터리 시리즈." },
+      { id: "s_049", code: "049", titleKo: "자필", titleEn: "SINNER", director: "홍성민", country: "한국", year: "2026", runtime: 110, rating: "15세", date: "10/07(수)", timeStart: "13:40", timeEnd: "15:30", theater: "롯데시네마 4관", gv: false, section: "한국영화의 오늘 - 파노라마", subtitles: "한글자막", page: "115", synopsis: "정성일, 박지현 주연의 묵직한 법정 드라마." },
+      { id: "s_050", code: "050", titleKo: "정가네", titleEn: "Cattle Run", director: "김지현", country: "한국", year: "2026", runtime: 110, rating: "12세", date: "10/07(수)", timeStart: "17:10", timeEnd: "19:00", theater: "롯데시네마 4관", gv: false, section: "한국영화의 오늘 - 스페셜 프리미어", subtitles: "한글자막", page: "112", synopsis: "류승룡, 박해준 주연. 30년 만에 손을 잡은 목장주 형제." },
+      { id: "s_051", code: "051", titleKo: "젠틀몬스터", titleEn: "Gentle Monster", director: "마리 크로이처", country: "오스트리아/프랑스", year: "2026", runtime: 115, rating: "청불", date: "10/07(수)", timeStart: "20:00", timeEnd: "22:35", theater: "롯데시네마 4관", gv: false, section: "월드 시네마", subtitles: "한글+영어자막", page: "123", synopsis: "레아 세두 주연의 윤리적 붕괴 심리극." },
+      { id: "s_052", code: "052", titleKo: "라두 주데의 어느 하녀의 일기", titleEn: "The Diary of a Chambermaid", director: "라두 주데", country: "프랑스/루마니아", year: "2026", runtime: 94, rating: "15세", date: "10/07(수)", timeStart: "10:20", timeEnd: "11:54", theater: "롯데시네마 5관", gv: false, section: "아이콘", subtitles: "한글+영어자막", page: "067", synopsis: "이주 가사 노동자의 현실과 계급의 허위." },
+      { id: "s_053", code: "053", titleKo: "눈 둘 데가 없네", titleEn: "Nowhere to Lay My Eyes", director: "홍상수", country: "한국", year: "2026", runtime: 72, rating: "12세", date: "10/07(수)", timeStart: "13:00", timeEnd: "14:12", theater: "롯데시네마 5관", gv: false, section: "아이콘", subtitles: "한글자막", page: "075", synopsis: "김민희, 최명길 주연의 제주도 방문기." },
+      { id: "s_054", code: "054", titleKo: "마인드 게임", titleEn: "MIND GAME", director: "유아사 마사아키", country: "일본", year: "2004", runtime: 103, rating: "15세", date: "10/07(수)", timeStart: "16:00", timeEnd: "17:43", theater: "롯데시네마 5관", gv: false, section: "특별기획 (애니메이션)", subtitles: "한글+영어자막", page: "180", synopsis: "고래 뱃속에서 펼치는 애니메이션 괴작이자 걸작." },
+      { id: "s_055", code: "055", titleKo: "나기 노트", titleEn: "Nagi Notes", director: "후카다 코지", country: "일본", year: "2026", runtime: 110, rating: "전체", date: "10/07(수)", timeStart: "19:00", timeEnd: "20:50", theater: "롯데시네마 5관", gv: true, section: "아이콘", subtitles: "한글+영어자막", page: "074", synopsis: "가족 경계를 넘어 결핍과 외로움을 응시하는 후카다 코지 신작." },
+      { id: "s_056", code: "056", titleKo: "최종면접", titleEn: "Final Interview", director: "김정훈", country: "한국/일본", year: "2026", runtime: 106, rating: "15세", date: "10/07(수)", timeStart: "10:00", timeEnd: "11:45", theater: "롯데시네마 6관", gv: false, section: "한국영화의 오늘 - 파노라마", subtitles: "한글자막", page: "114", synopsis: "신입사원 최종 면접장 폭로와 6년 뒤의 진실 추적." },
+      { id: "s_057", code: "057", titleKo: "푸른길", titleEn: "The Blue Road", director: "한준희", country: "한국", year: "2026", runtime: 138, rating: "15세", date: "10/07(수)", timeStart: "13:30", timeEnd: "15:48", theater: "롯데시네마 6관", gv: false, section: "온스크린", subtitles: "한글자막", page: "170", synopsis: "손석구, 나가야마 에이타 주연의 한일 공조 추적극." },
+      { id: "s_058", code: "058", titleKo: "바이 애니 민즈: 자비는 없다", titleEn: "By Any Means", director: "엘러건스 브래턴", country: "미국", year: "2026", runtime: 107, rating: "15세", date: "10/07(수)", timeStart: "17:30", timeEnd: "19:17", theater: "롯데시네마 6관", gv: false, section: "월드 시네마", subtitles: "한글+영어자막", page: "119", synopsis: "마크 월버그 주연의 인권 운동 피살 사건 추적극." },
+      { id: "s_059", code: "059", titleKo: "겁쟁이", titleEn: "Coward", director: "뤼카스 돈트", country: "벨기에/프랑스", year: "2026", runtime: 127, rating: "15세", date: "10/07(수)", timeStart: "20:20", timeEnd: "22:27", theater: "롯데시네마 6관", gv: false, section: "아이콘", subtitles: "한글+영어자막", page: "067", synopsis: "제1차 세계대전 참호에서 피어난 두 병사의 유대." },
+      { id: "s_060", code: "060", titleKo: "무명소녀", titleEn: "A Girl Unknown", director: "쩌우징", country: "중국/프랑스", year: "2026", runtime: 128, rating: "15세", date: "10/07(수)", timeStart: "13:20", timeEnd: "15:20", theater: "롯데시네마 7관", gv: false, section: "아시아영화의 창", subtitles: "한글+영어자막", page: "102", synopsis: "도시의 낯선 집에 맡겨진 시골 소녀의 감동 성장기." },
+      { id: "s_061", code: "061", titleKo: "이야기, 이야기", titleEn: "Gu Shi", director: "에이미 송", country: "미국/홍콩/태국", year: "2026", runtime: 83, rating: "12세", date: "10/07(수)", timeStart: "16:30", timeEnd: "17:53", theater: "롯데시네마 7관", gv: false, section: "아시아영화의 창", subtitles: "한글+영어자막", page: "102", synopsis: "기억을 유령에게 넘기고 이야기를 얻는 신비로운 가족 서사." },
+      { id: "s_062", code: "062", titleKo: "아시아 단편 경쟁 1", titleEn: "Asian Short Film Competition 1", director: "다양한 감독", country: "아시아", year: "2026", runtime: 78, rating: "12세", date: "10/07(수)", timeStart: "19:20", timeEnd: "20:38", theater: "롯데시네마 7관", gv: false, section: "와이드 앵글 - 아시아 단편", subtitles: "한글+영어자막", page: "144", synopsis: "아시아 신예 단편 4편 묶음 상영." },
+      { id: "s_063", code: "063", titleKo: "백사전", titleEn: "The White Snake Enchantress", director: "야부시타 다이지", country: "일본", year: "1958", runtime: 78, rating: "전체", date: "10/07(수)", timeStart: "09:30", timeEnd: "10:48", theater: "KOFIC 표준시사실", gv: false, section: "특별기획", subtitles: "한글자막", page: "183", synopsis: "일본 최초의 장편 컬러 애니메이션." },
+      { id: "s_064", code: "064", titleKo: "베드포드 파크", titleEn: "Bedford Park", director: "스테파니 안", country: "미국", year: "2026", runtime: 120, rating: "15세", date: "10/07(수)", timeStart: "12:00", timeEnd: "14:00", theater: "KOFIC 표준시사실", gv: false, section: "플래시 포워드", subtitles: "한글+영어자막", page: "134", synopsis: "최희서, 손석구 주연의 따스한 치유 멜로." },
+      { id: "s_065", code: "065", titleKo: "가바초 챔피언", titleEn: "Campeón Gabacho", director: "호나스 쿠아론", country: "멕시코", year: "2026", runtime: 108, rating: "15세", date: "10/07(수)", timeStart: "15:40", timeEnd: "17:28", theater: "KOFIC 표준시사실", gv: false, section: "월드 시네마", subtitles: "한글+영어자막", page: "119", synopsis: "미국으로 향한 멕시코 청년의 거친 현실." },
+      { id: "s_066", code: "066", titleKo: "자바의 사계절", titleEn: "Four Seasons in Java", director: "카밀라 안디니", country: "인도네시아", year: "2026", runtime: 137, rating: "15세", date: "10/07(수)", timeStart: "19:10", timeEnd: "21:27", theater: "KOFIC 표준시사실", gv: true, section: "아시아영화의 창", subtitles: "한글+영어자막", page: "101", synopsis: "전과자 여성을 대하는 마을 공동체의 위선." },
+      { id: "s_067", code: "067", titleKo: "좋은 남자는 없다", titleEn: "No Good Men", director: "샤르바누 사다트", country: "아프가니스탄/독일", year: "2026", runtime: 104, rating: "18세", date: "10/07(수)", timeStart: "12:00", timeEnd: "13:44", theater: "부산시청자미디어센터 공개홀", gv: false, section: "아시아영화의 창", subtitles: "한글+영어자막", page: "106", synopsis: "카불 방송국 기자와 앵커의 로맨스." },
+      { id: "s_069", code: "069", titleKo: "천국으로 가는 아홉 사원", titleEn: "9 Temples to Heaven", director: "솜풋 칫께손품", country: "태국", year: "2026", runtime: 141, rating: "15세", date: "10/07(수)", timeStart: "18:00", timeEnd: "20:21", theater: "부산시청자미디어센터 공개홀", gv: false, section: "아시아영화의 창", subtitles: "한글+영어자막", page: "096", synopsis: "사원 9곳을 방문하는 가족의 유쾌한 여정." },
 
       // 10.08(목)
-      {
-        id: "s_070", code: "070", titleKo: "아름다운 초저녁달", titleEn: "In the Clear Moonlit Dusk",
-        director: "타케무라 켄타로", country: "일본", year: "2026", runtime: 120, rating: "전체",
-        date: "10/08(목)", timeStart: "20:00", timeEnd: "22:00", theater: "영화의전당 루프씨어터",
-        gv: true, section: "오픈 시네마", subtitles: "한글+영어자막", page: "161",
-        synopsis: "미치에다 슌스케, 안자이 세이라 주연. 두 '왕자'가 서로의 진짜 모습을 들여다보며 용기를 찾아가는 달콤한 첫사랑."
-      },
-      {
-        id: "s_071", code: "071", titleKo: "피오르", titleEn: "Fjord",
-        director: "크리스티안 문쥬", country: "루마니아/프랑스", year: "2026", runtime: 146, rating: "15세",
-        date: "10/08(목)", timeStart: "09:00", timeEnd: "11:26", theater: "하늘연극장",
-        gv: false, section: "아이콘", subtitles: "한글+영어자막", page: "069",
-        synopsis: "노르웨이 사회 속 이민자 가족의 아동 보호 위탁 조치 분쟁을 다룬 사회·사법 스릴러."
-      },
-      {
-        id: "s_072", code: "072", titleKo: "면도", titleEn: "Shaving",
-        director: "김정훈", country: "한국", year: "2026", runtime: 93, rating: "15세",
-        date: "10/08(목)", timeStart: "13:10", timeEnd: "14:43", theater: "하늘연극장",
-        gv: true, section: "경쟁 (뉴 커런츠)", subtitles: "한글+영어자막", page: "055",
-        synopsis: "소설가 수연(노정의)과 면도기로 얼굴을 다친 뒤 광기로 변해가는 애인(카사마츠 쇼)의 잔혹한 심리 미스터리 스릴러."
-      },
-      {
-        id: "s_073", code: "073", titleKo: "마이 마더", titleEn: "IBUKU",
-        director: "에디 카호노", country: "인도네시아/일본", year: "2026", runtime: 96, rating: "15세",
-        date: "10/08(목)", timeStart: "16:40", timeEnd: "18:16", theater: "하늘연극장",
-        gv: true, section: "경쟁 (뉴 커런츠)", subtitles: "한글+영어자막", page: "050",
-        synopsis: "사형 선고를 받은 이주노동자 딸을 만나기 위해 먼 길을 떠나는 미망인 수미아티(크리스틴 하킴)의 화해와 용서."
-      },
-      {
-        id: "s_074", code: "074", titleKo: "긴긴밤", titleEn: "Long Long Night",
-        director: "염규복", country: "한국", year: "2026", runtime: 99, rating: "전체",
-        date: "10/08(목)", timeStart: "20:30", timeEnd: "22:09", theater: "하늘연극장",
-        gv: true, section: "경쟁 (뉴 커런츠)", subtitles: "한글자막", page: "051",
-        synopsis: "흰바위코뿔소 노든과 버려진 알에서 태어난 아기 펭귄이 바다를 찾아 떠나는 위대하고 눈물겨운 여정."
-      },
-      {
-        id: "s_075", code: "075", titleKo: "미드나잇 패션 1", titleEn: "Midnight Passion 1 (Sapiens + The Chain of Roses + The Spiral)",
-        director: "이후빈/사토 사키치/파올로 스트리폴리", country: "한국/일본/이탈리아", year: "2026", runtime: 299, rating: "청불",
-        date: "10/08(목)", timeStart: "23:59", timeEnd: "04:58", theater: "하늘연극장",
-        gv: false, section: "미드나잇 패션", subtitles: "한글+영어자막", page: "165",
-        synopsis: "심야 밤샘 상영 1편: 사피엔스 + 장미의 사슬 + 스파이럴 3편 연속 상영."
-      },
-      {
-        id: "s_076", code: "076", titleKo: "이성과 감성", titleEn: "Sense and Sensibility",
-        director: "조지아 오클리", country: "영국/미국", year: "2026", runtime: 131, rating: "12세",
-        date: "10/08(목)", timeStart: "09:00", timeEnd: "11:11", theater: "중극장",
-        gv: false, section: "월드 시네마", subtitles: "한글+영어자막", page: "130",
-        synopsis: "제인 오스틴의 명작을 현대적이고 입체적인 두 자매의 생존과 심리적 연대로 탈바꿈시킨 신작."
-      },
-      {
-        id: "s_078", code: "078", titleKo: "초대받지 않은 손님", titleEn: "The Guest",
-        director: "마스 멩엘", country: "덴마크", year: "2026", runtime: 99, rating: "15세",
-        date: "10/08(목)", timeStart: "19:10", timeEnd: "20:49", theater: "중극장",
-        gv: false, section: "월드 시네마", subtitles: "한글+영어자막", page: "124",
-        synopsis: "아이의 작명 파티날 불쑥 찾아온 엄마와 덴마크 중산층 가족의 억눌린 상처를 파헤친 블랙코미디 심리극."
-      },
-      {
-        id: "s_079", code: "079", titleKo: "내가 사랑하는 남자", titleEn: "The Man I Love",
-        director: "아이라 잭스", country: "미국", year: "2026", runtime: 97, rating: "15세",
-        date: "10/08(목)", timeStart: "22:20", timeEnd: "23:57", theater: "중극장",
-        gv: false, section: "아이콘 (칸 경쟁)", subtitles: "한글+영어자막", page: "072",
-        synopsis: "라미 말렉 주연. 1980년대 말 뉴욕 다운타운에서 무대에 서며 사랑을 갈망하는 퀴어 아티스트의 초상."
-      },
-      {
-        id: "s_080", code: "080", titleKo: "유니온 타운: 뉴욕을 달리는 사람들", titleEn: "Union Town",
-        director: "바바라 코플", country: "미국", year: "2026", runtime: 110, rating: "12세",
-        date: "10/08(목)", timeStart: "08:40", timeEnd: "10:30", theater: "소극장",
-        gv: true, section: "와이드 앵글 - 다큐멘터리", subtitles: "한글+영어자막", page: "159",
-        synopsis: "아마존, UPS 물류 노동자들의 뜨거운 연대와 노동 현장을 3년간 기록한 시네마베리테 다큐멘터리."
-      },
-      {
-        id: "s_081", code: "081", titleKo: "나기 노트", titleEn: "Nagi Notes",
-        director: "후카다 코지", country: "일본", year: "2026", runtime: 110, rating: "전체",
-        date: "10/08(목)", timeStart: "12:00", timeEnd: "13:50", theater: "소극장",
-        gv: true, section: "아이콘", subtitles: "한글+영어자막", page: "074",
-        synopsis: "후카다 코지 감독 신작. 조각가와 전 올케 사이의 미묘한 동거와 사색적인 대화."
-      },
-      {
-        id: "s_082", code: "082", titleKo: "아가씨", titleEn: "The Handmaiden",
-        director: "박찬욱", country: "한국", year: "2016", runtime: 144, rating: "청불",
-        date: "10/08(목)", timeStart: "15:30", timeEnd: "17:54", theater: "소극장",
-        gv: true, section: "특별상영 (판빙빙 추천작)", subtitles: "한글+영어자막", page: "190",
-        synopsis: "1930년대 조선, 백작과 하녀와 상속녀의 뒤틀린 욕망과 해방의 드라마. 판빙빙 배우와의 특별 대담 포함."
-      },
-      {
-        id: "s_083", code: "083", titleKo: "스킨타운", titleEn: "Skintown",
-        director: "키어런 J. 월시", country: "아일랜드/영국", year: "2026", runtime: 99, rating: "15세",
-        date: "10/08(목)", timeStart: "22:00", timeEnd: "23:39", theater: "소극장",
-        gv: false, section: "월드 시네마", subtitles: "한글+영어자막", page: "131",
-        synopsis: "북아일랜드 청춘들의 엑스터시와 혼란의 레이브 에너지."
-      },
-      {
-        id: "s_084", code: "084", titleKo: "일요일 다음날", titleEn: "The Day After Sunday",
-        director: "가토 다쿠야", country: "일본/프랑스", year: "2026", runtime: 82, rating: "15세",
-        date: "10/08(목)", timeStart: "09:00", timeEnd: "10:22", theater: "시네마테크",
-        gv: false, section: "경쟁 (뉴 커런츠)", subtitles: "한글+영어자막", page: "047",
-        synopsis: "쿠로키 하루 주연. 산전 검사를 기다리며 부부간의 침묵과 균열을 집요하게 응시하는 심리극."
-      },
-      {
-        id: "s_085", code: "085", titleKo: "처음 만난 외로움", titleEn: "The First Taste of Loneliness",
-        director: "구유", country: "중국", year: "2026", runtime: 135, rating: "12세",
-        date: "10/08(목)", timeStart: "12:00", timeEnd: "14:15", theater: "시네마테크",
-        gv: false, section: "경쟁 (뉴 커런츠)", subtitles: "한글+영어자막", page: "048",
-        synopsis: "저우쉰 주연. 항저우 강의 수려한 풍광과 모녀 삼대의 상실 치유기."
-      },
-      {
-        id: "s_086", code: "086", titleKo: "내가 사랑한 빌 에반스", titleEn: "Everybody Digs Bill Evans",
-        director: "그랜트 지", country: "아일랜드/영국", year: "2026", runtime: 102, rating: "12세",
-        date: "10/08(목)", timeStart: "15:50", timeEnd: "17:32", theater: "시네마테크",
-        gv: false, section: "월드 시네마 (베를린 은곰상)", subtitles: "한글+영어자막", page: "121",
-        synopsis: "전설적 재즈 피아니스트 빌 에반스의 찬란했던 20년 음악 여정과 고독을 16mm 필름에 담아낸 명작."
-      },
-      {
-        id: "s_087", code: "087", titleKo: "영웅은 아니지만", titleEn: "Not a Hero",
-        director: "리마 다스", country: "인도/싱가포르", year: "2026", runtime: 90, rating: "전체",
-        date: "10/08(목)", timeStart: "19:20", timeEnd: "20:58", theater: "시네마테크",
-        gv: true, section: "아시아영화의 창", subtitles: "한글+영어자막", page: "107",
-        synopsis: "도시에서 시골 마을로 보내진 열한 살 소년 미반의 유쾌한 저항과 아삼 자연 속 성장기."
-      },
-      {
-        id: "s_088", code: "088", titleKo: "짐승이 너무 많아", titleEn: "Too Many Beasts",
-        director: "세라 아놀드", country: "프랑스", year: "2026", runtime: 95, rating: "15세",
-        date: "10/08(목)", timeStart: "22:30", timeEnd: "00:05", theater: "시네마테크",
-        gv: false, section: "월드 시네마 (칸 감독주간)", subtitles: "한글+영어자막", page: "131",
-        synopsis: "아르덴 시골 마을에 출몰하는 멧돼지 떼와 지주 살해 사건을 추적하는 경찰의 포복절도 수사극."
-      },
-      {
-        id: "s_089", code: "089", titleKo: "가능한 사랑", titleEn: "Possible Love",
-        director: "이창동", country: "한국", year: "2026", runtime: 164, rating: "15세",
-        date: "10/08(목)", timeStart: "09:00", timeEnd: "11:44", theater: "CGV 센텀시티 IMAX",
-        gv: false, section: "아이콘", subtitles: "한글+영어자막", page: "077",
-        synopsis: "전도연, 설경구, 조인성, 조여정 주연. 삶과 사랑의 묵직한 진동을 담아낸 이창동 감독 신작."
-      },
-      {
-        id: "s_090", code: "090", titleKo: "파더랜드", titleEn: "Fatherland",
-        director: "파벨 파블리코프스키", country: "폴란드/독일", year: "2026", runtime: 82, rating: "15세",
-        date: "10/08(목)", timeStart: "13:20", timeEnd: "14:42", theater: "CGV 센텀시티 IMAX",
-        gv: false, section: "아이콘 (칸 감독상)", subtitles: "한글+영어자막", page: "069",
-        synopsis: "토마스 만의 전후 분단 독일 방문과 아들의 자살, 흑백의 숭고한 80분을 빚어낸 거장의 기적."
-      },
-      {
-        id: "s_091", code: "091", titleKo: "겁쟁이", titleEn: "Coward",
-        director: "뤼카스 돈트", country: "벨기에/프랑스", year: "2026", runtime: 127, rating: "15세",
-        date: "10/08(목)", timeStart: "15:40", timeEnd: "17:47", theater: "CGV 센텀시티 IMAX",
-        gv: false, section: "아이콘 (칸 남우주연상)", subtitles: "한글+영어자막", page: "067",
-        synopsis: "1916년 제1차 세계대전 참호에서 피어난 두 병사의 사랑과 진정한 용기의 본질."
-      },
-      {
-        id: "s_092", code: "092", titleKo: "옐로우 레터스", titleEn: "Yellow Letters",
-        director: "일커 차탁", country: "독일/프랑스", year: "2026", runtime: 127, rating: "15세",
-        date: "10/08(목)", timeStart: "19:00", timeEnd: "21:07", theater: "CGV 센텀시티 IMAX",
-        gv: true, section: "아이콘 (베를린 황금곰상)", subtitles: "한글+영어자막", page: "081",
-        synopsis: "체제와의 불화로 곤경에 처한 예술가 가족의 위기와 인간의 존엄을 긴장감 넘치게 담아낸 베를린 황금곰상 수상작."
-      },
-      {
-        id: "s_093", code: "093", titleKo: "웰컴 투 돌리 하우스", titleEn: "Welcome to Dolly's House",
-        director: "세븐 YCH, 레이디 푸", country: "대만", year: "2026", runtime: 88, rating: "15세",
-        date: "10/08(목)", timeStart: "22:00", timeEnd: "23:28", theater: "CGV 센텀시티 IMAX",
-        gv: false, section: "미드나잇 패션", subtitles: "한글+영어자막", page: "169",
-        synopsis: "납골당 청혼 사건으로 추락한 유튜버 커플이 전설적인 인형 제작자의 저택에 초대되며 벌어지는 고딕 호러 애니메이션."
-      },
-      {
-        id: "s_094", code: "094", titleKo: "리허설 포 레볼루션", titleEn: "Rehearsals for a Revolution",
-        director: "페가 아항가라니", country: "체코/스페인/이란", year: "2026", runtime: 101, rating: "12세",
-        date: "10/08(목)", timeStart: "09:40", timeEnd: "11:21", theater: "CGV 센텀시티 1관",
-        gv: false, section: "와이드 앵글 (칸 황금눈상)", subtitles: "한글+영어자막", page: "158",
-        synopsis: "이란의 1979년 이슬람 혁명 이후 역사를 5명의 사적 기록 필름으로 재구성한 저항 다큐멘터리."
-      },
-      {
-        id: "s_095", code: "095", titleKo: "젠틀몬스터", titleEn: "Gentle Monster",
-        director: "마리 크로이처", country: "오스트리아/프랑스", year: "2026", runtime: 115, rating: "청불",
-        date: "10/08(목)", timeStart: "12:40", timeEnd: "14:35", theater: "CGV 센텀시티 1관",
-        gv: false, section: "월드 시네마", subtitles: "한글+영어자막", page: "123",
-        synopsis: "레아 세두 주연. 평온했던 교외의 일상에서 남편의 충격적인 아동 성착취물 소지 혐의를 마주한 피아니스트의 붕괴."
-      },
-      {
-        id: "s_096", code: "096", titleKo: "라 그라디바", titleEn: "La Gradiva",
-        director: "마린 아틀랑", country: "프랑스", year: "2026", runtime: 145, rating: "15세",
-        date: "10/08(목)", timeStart: "15:40", timeEnd: "18:05", theater: "CGV 센텀시티 1관",
-        gv: false, section: "월드 시네마 (칸 비평가주간)", subtitles: "한글+영어자막", page: "127",
-        synopsis: "폼페이로 수학여행을 떠난 프랑스 고등학생들의 위태롭고 몽환적인 청소년기 심리극."
-      },
-      {
-        id: "s_097", code: "097", titleKo: "개그맨", titleEn: "Gagman",
-        director: "이명세", country: "한국", year: "1988", runtime: 125, rating: "15세",
-        date: "10/08(목)", timeStart: "09:20", timeEnd: "11:25", theater: "CGV 센텀시티 2관",
-        gv: true, section: "특별기획 (안성기 추모)", subtitles: "한글+영어자막", page: "174",
-        synopsis: "안성기, 배창호, 황신혜 주연. 찰리 채플린의 애수를 품은 삼류 개그맨의 탈출극."
-      },
-      {
-        id: "s_098", code: "098", titleKo: "바람불어 좋은날", titleEn: "A Fine, Windy Day",
-        director: "이장호", country: "한국", year: "1980", runtime: 119, rating: "15세",
-        date: "10/08(목)", timeStart: "13:00", timeEnd: "14:59", theater: "CGV 센텀시티 2관",
-        gv: false, section: "특별기획 (안성기 추모)", subtitles: "한글+영어자막", page: "174",
-        synopsis: "중국집 배달원 덕배(안성기)의 순박한 얼굴에 실린 1980년대 서울의 격변과 청춘들의 초상."
-      },
-      {
-        id: "s_099", code: "099", titleKo: "하얀전쟁", titleEn: "White Badge",
-        director: "정지영", country: "한국", year: "1992", runtime: 124, rating: "15세",
-        date: "10/08(목)", timeStart: "16:30", timeEnd: "18:34", theater: "CGV 센텀시티 2관",
-        gv: true, section: "특별기획 (안성기 추모)", subtitles: "한글+영어자막", page: "175",
-        synopsis: "안성기, 이경영 주연. 베트남전 참전 군인들의 깊은 트라우마를 직시한 한국 반전영화의 걸작."
-      },
-      {
-        id: "s_100", code: "100", titleKo: "고래사냥", titleEn: "Whale Hunting",
-        director: "배창호", country: "한국", year: "1984", runtime: 112, rating: "12세",
-        date: "10/08(목)", timeStart: "20:10", timeEnd: "22:02", theater: "CGV 센텀시티 2관",
-        gv: true, section: "특별기획 (안성기 추모)", subtitles: "한글+영어자막", page: "175",
-        synopsis: "안성기, 김수철, 이미숙 주연. 남쪽 바다를 향해 내달리는 청춘들의 불멸의 로드무비."
-      },
-      {
-        id: "s_101", code: "101", titleKo: "베니마나", titleEn: "Ben'imana",
-        director: "마리클레망틴 두사베잠보", country: "르완다/프랑스", year: "2026", runtime: 101, rating: "15세",
-        date: "10/08(목)", timeStart: "09:40", timeEnd: "11:21", theater: "CGV 센텀시티 3관",
-        gv: false, section: "월드 시네마 (칸 황금카메라상)", subtitles: "한글+영어자막", page: "118",
-        synopsis: "1994년 르완다 대학살 이후 진실과 정의를 찾는 공동체 재판 속에서 피어난 화해의 노래."
-      },
-      {
-        id: "s_102", code: "102", titleKo: "정가네", titleEn: "Cattle Run",
-        director: "김지현", country: "한국", year: "2026", runtime: 110, rating: "12세",
-        date: "10/08(목)", timeStart: "12:40", timeEnd: "14:30", theater: "CGV 센텀시티 3관",
-        gv: false, section: "한국영화의 오늘 - 스페셜 프리미어 (배리어프리)", subtitles: "한글자막", page: "112",
-        synopsis: "류승룡, 박해준 주연. 구제역 속에서 송아지를 살리기 위해 30년 만에 손을 맞잡은 형제."
-      },
-      {
-        id: "s_103", code: "103", titleKo: "다라, 흘러감", titleEn: "Dhara",
-        director: "아누룻다 자야싱하", country: "스리랑카/캐나다", year: "2026", runtime: 117, rating: "15세",
-        date: "10/08(목)", timeStart: "15:40", timeEnd: "17:37", theater: "CGV 센텀시티 3관",
-        gv: true, section: "아시아영화의 창", subtitles: "한글+영어자막", page: "099",
-        synopsis: "부상당한 스리랑카 반군 여성과 그녀를 구한 젊은 수도승의 신념과 번뇌가 교차하는 산사."
-      },
-      {
-        id: "s_104", code: "104", titleKo: "산디와라 + 에브리씽 에브리웨어 올 앳 원스", titleEn: "Sandiwara + EEAAO",
-        director: "션 베이커 / 다니엘스", country: "미국", year: "2026/2022", runtime: 150, rating: "15세",
-        date: "10/08(목)", timeStart: "19:40", timeEnd: "22:10", theater: "CGV 센텀시티 3관",
-        gv: false, section: "특별기획 (양자경)", subtitles: "한글+영어자막", page: "185",
-        synopsis: "션 베이커 단편 <산디와라>와 오스카 여우주연상 수상작 <EEAAO> 연속 특별상영."
-      },
-      {
-        id: "s_105", code: "105", titleKo: "구원은 없다", titleEn: "Salvation",
-        director: "에민 알페르", country: "튀르키예/프랑스", year: "2026", runtime: 120, rating: "15세",
-        date: "10/08(목)", timeStart: "09:20", timeEnd: "11:20", theater: "CGV 센텀시티 4관",
-        gv: false, section: "월드 시네마 (베를린 심사위원대상)", subtitles: "한글+영어자막", page: "130",
-        synopsis: "토지를 둘러싼 두 부족 간의 긴장과 종교적 맹신이 빚어낸 비극을 와이드스크린으로 담은 수작."
-      },
-      {
-        id: "s_106", code: "106", titleKo: "나무는 태어난 곳에서 죽는다", titleEn: "Revolving Lanterns",
-        director: "마쓰이 이타루", country: "일본/미국", year: "2026", runtime: 113, rating: "12세",
-        date: "10/08(목)", timeStart: "12:20", timeEnd: "14:13", theater: "CGV 센텀시티 4관",
-        gv: false, section: "와이드 앵글 - 다큐멘터리", subtitles: "한글+영어자막", page: "150",
-        synopsis: "후쿠시마 산골 오쿠가와 마을에서 집을 짓는 남자와 느린 일상을 살아가는 노인들의 사계절."
-      },
-      {
-        id: "s_107", code: "107", titleKo: "소울 위스퍼러", titleEn: "The Soul Whisperer",
-        director: "레오 타데우스", country: "호주/인도", year: "2026", runtime: 95, rating: "12세",
-        date: "10/08(목)", timeStart: "16:00", timeEnd: "17:35", theater: "CGV 센텀시티 4관",
-        gv: false, section: "아시아영화의 창", subtitles: "한글+영어자막", page: "108",
-        synopsis: "임종을 앞둔 환자 곁에서 기도를 올리는 테레시아와 완고한 농장주의 존엄한 죽음과 용서."
-      },
-      {
-        id: "s_108", code: "108", titleKo: "나의 사소하고도 큰 일들", titleEn: "Big Little Things",
-        director: "미셸 저우", country: "홍콩/미국", year: "2026", runtime: 109, rating: "12세",
-        date: "10/08(목)", timeStart: "20:00", timeEnd: "21:49", theater: "CGV 센텀시티 4관",
-        gv: false, section: "아시아영화의 창 (베니스 오리종티)", subtitles: "한글+영어자막", page: "097",
-        synopsis: "새해를 맞아 고향 하얼빈으로 가짜 남자친구를 데려온 레이다 가족 앞에서 겪는 선택의 기로."
-      },
-      {
-        id: "s_109", code: "109", titleKo: "타이타닉 오션", titleEn: "Titanic Ocean",
-        director: "콘스탄티나 코자마니", country: "그리스/일본", year: "2026", runtime: 132, rating: "15세",
-        date: "10/08(목)", timeStart: "09:00", timeEnd: "11:12", theater: "CGV 센텀시티 5관",
-        gv: false, section: "플래시 포워드 (칸 주목할만한시선)", subtitles: "한글+영어자막", page: "139",
-        synopsis: "일본의 인어 양성 학교에서 훈련하는 소녀들의 가혹한 규율과 몽환적인 첫사랑 판타지."
-      },
-      {
-        id: "s_110", code: "110", titleKo: "세 가지 색 : 블루", titleEn: "Three Colours: Blue",
-        director: "크쥐시토프 키에슬로브스키", country: "프랑스/폴란드", year: "1993", runtime: 99, rating: "15세",
-        date: "10/08(목)", timeStart: "12:50", timeEnd: "14:29", theater: "CGV 센텀시티 5관",
-        gv: false, section: "특별상영 (홍경표 추천작)", subtitles: "한글+영어자막", page: "191",
-        synopsis: "상실과 고독을 푸른빛의 정밀한 미학으로 형상화한 줄리엣 비노쉬 주연의 마스터피스."
-      },
-      {
-        id: "s_111", code: "111", titleKo: "마키키란 포", titleEn: "Let Us Through, Dear Ancestors",
-        director: "라브 디아즈", country: "필리핀", year: "2026", runtime: 151, rating: "15세",
-        date: "10/08(목)", timeStart: "16:30", timeEnd: "19:01", theater: "CGV 센텀시티 5관",
-        gv: true, section: "아이콘 (베니스 비경쟁)", subtitles: "한글+영어자막", page: "071",
-        synopsis: "1617년 스페인 식민 치하의 필리핀, 교회 건축용 대리석을 나르는 원주민들의 험난한 저항의 여정."
-      },
-      {
-        id: "s_112", code: "112", titleKo: "우리 할머니는 큐브왕", titleEn: "It's My Time",
-        director: "바이 슈에", country: "중국", year: "2026", runtime: 107, rating: "12세",
-        date: "10/08(목)", timeStart: "20:30", timeEnd: "22:17", theater: "CGV 센텀시티 5관",
-        gv: false, section: "특별기획 (양자경)", subtitles: "한글+영어자막", page: "060",
-        synopsis: "양자경 주연. 매직큐브를 배우며 삶의 난제를 풀어가는 힐링 가족 드라마."
-      },
-      {
-        id: "s_114", code: "114", titleKo: "비터 크리스마스", titleEn: "Bitter Christmas",
-        director: "페드로 알모도바르", country: "스페인", year: "2026", runtime: 112, rating: "15세",
-        date: "10/08(목)", timeStart: "09:00", timeEnd: "10:52", theater: "CGV 센텀시티 6관",
-        gv: false, section: "아이콘 (칸영화제 경쟁)", subtitles: "한글자막", page: "066",
-        synopsis: "자전적 궤적을 파고들며 창작의 불안과 세 뮤즈의 열연이 빚는 멜로드라마."
-      },
-      {
-        id: "s_115", code: "115", titleKo: "베드포드 파크", titleEn: "Bedford Park",
-        director: "스테파니 안", country: "미국", year: "2026", runtime: 120, rating: "15세",
-        date: "10/08(목)", timeStart: "11:50", timeEnd: "13:50", theater: "CGV 센텀시티 6관",
-        gv: false, section: "플래시 포워드", subtitles: "한글+영어자막", page: "134",
-        synopsis: "최희서, 손석구 주연. 뉴저지 물리치료사와 입양인 남자의 따스한 치유 이야기."
-      },
-      {
-        id: "s_116", code: "116", titleKo: "옛날 옛적, 미래에", titleEn: "Föa-Once Upon A Future",
-        director: "마르게리타 페라리", country: "이탈리아", year: "2026", runtime: 86, rating: "12세",
-        date: "10/08(목)", timeStart: "15:40", timeEnd: "17:06", theater: "CGV 센텀시티 6관",
-        gv: false, section: "플래시 포워드", subtitles: "한글+영어자막", page: "136",
-        synopsis: "2001년 제노바 G8 정상회담 반세계화 시위대를 집으로 들인 18세 소녀의 하루."
-      },
-      {
-        id: "s_117", code: "117", titleKo: "새드 걸즈", titleEn: "Sad Girlz",
-        director: "페르난다 토바르", country: "멕시코/프랑스", year: "2026", runtime: 90, rating: "15세",
-        date: "10/08(목)", timeStart: "18:40", timeEnd: "20:10", theater: "CGV 센텀시티 6관",
-        gv: true, section: "플래시 포워드", subtitles: "한글+영어자막", page: "139",
-        synopsis: "단짝 친구의 연대와 회색지대에 놓인 성폭력에 대한 복합적 시선."
-      },
+      { id: "s_070", code: "070", titleKo: "아름다운 초저녁달", titleEn: "In the Clear Moonlit Dusk", director: "타케무라 켄타로", country: "일본", year: "2026", runtime: 120, rating: "전체", date: "10/08(목)", timeStart: "20:00", timeEnd: "22:00", theater: "영화의전당 루프씨어터", gv: true, section: "오픈 시네마", subtitles: "한글+영어자막", page: "161", synopsis: "미치에다 슌스케 주연의 달콤한 첫사랑." },
+      { id: "s_071", code: "071", titleKo: "피오르", titleEn: "Fjord", director: "크리스티안 문쥬", country: "루마니아/프랑스", year: "2026", runtime: 146, rating: "15세", date: "10/08(목)", timeStart: "09:00", timeEnd: "11:26", theater: "하늘연극장", gv: false, section: "아이콘", subtitles: "한글+영어자막", page: "069", synopsis: "이민자 가족의 아동 보호 위탁 분쟁." },
+      { id: "s_072", code: "072", titleKo: "면도", titleEn: "Shaving", director: "김정훈", country: "한국", year: "2026", runtime: 93, rating: "15세", date: "10/08(목)", timeStart: "13:10", timeEnd: "14:43", theater: "하늘연극장", gv: true, section: "경쟁 (뉴 커런츠)", subtitles: "한글+영어자막", page: "055", synopsis: "소설가 수연과 면도기로 상처 입은 뒤 광기로 변해가는 연인의 심리 스릴러." },
+      { id: "s_073", code: "073", titleKo: "마이 마더", titleEn: "IBUKU", director: "에디 카호노", country: "인도네시아/일본", year: "2026", runtime: 96, rating: "15세", date: "10/08(목)", timeStart: "16:40", timeEnd: "18:16", theater: "하늘연극장", gv: true, section: "경쟁 (뉴 커런츠)", subtitles: "한글+영어자막", page: "050", synopsis: "사형 선고를 받은 딸을 만나기 위한 어머니의 화해와 용서." },
+      { id: "s_074", code: "074", titleKo: "긴긴밤", titleEn: "Long Long Night", director: "염규복", country: "한국", year: "2026", runtime: 99, rating: "전체", date: "10/08(목)", timeStart: "20:30", timeEnd: "22:09", theater: "하늘연극장", gv: true, section: "경쟁 (뉴 커런츠)", subtitles: "한글자막", page: "051", synopsis: "코뿔소 노든과 아기 펭귄의 위대하고 눈물겨운 여정." },
+      { id: "s_075", code: "075", titleKo: "미드나잇 패션 1", titleEn: "Midnight Passion 1", director: "다양한 감독", country: "한국/일본/이탈리아", year: "2026", runtime: 299, rating: "청불", date: "10/08(목)", timeStart: "23:59", timeEnd: "04:58", theater: "하늘연극장", gv: false, section: "미드나잇 패션", subtitles: "한글+영어자막", page: "165", synopsis: "사피엔스 + 장미의 사슬 + 스파이럴 3편 밤샘 상영." },
+      { id: "s_076", code: "076", titleKo: "이성과 감성", titleEn: "Sense and Sensibility", director: "조지아 오클리", country: "영국/미국", year: "2026", runtime: 131, rating: "12세", date: "10/08(목)", timeStart: "09:00", timeEnd: "11:11", theater: "중극장", gv: false, section: "월드 시네마", subtitles: "한글+영어자막", page: "130", synopsis: "제인 오스틴 명작의 현대적 자매 연대기." },
+      { id: "s_078", code: "078", titleKo: "초대받지 않은 손님", titleEn: "The Guest", director: "마스 멩엘", country: "덴마크", year: "2026", runtime: 99, rating: "15세", date: "10/08(목)", timeStart: "19:10", timeEnd: "20:49", theater: "중극장", gv: false, section: "월드 시네마", subtitles: "한글+영어자막", page: "124", synopsis: "작명 파티날 불쑥 찾아온 엄마와 가족의 블랙코미디." },
+      { id: "s_079", code: "079", titleKo: "내가 사랑하는 남자", titleEn: "The Man I Love", director: "아이라 잭스", country: "미국", year: "2026", runtime: 97, rating: "15세", date: "10/08(목)", timeStart: "22:20", timeEnd: "23:57", theater: "중극장", gv: false, section: "아이콘", subtitles: "한글+영어자막", page: "072", synopsis: "라미 말렉 주연의 퀴어 아티스트 초상." },
+      { id: "s_080", code: "080", titleKo: "유니온 타운: 뉴욕을 달리는 사람들", titleEn: "Union Town", director: "바바라 코플", country: "미국", year: "2026", runtime: 110, rating: "12세", date: "10/08(목)", timeStart: "08:40", timeEnd: "10:30", theater: "소극장", gv: true, section: "와이드 앵글 - 다큐멘터리", subtitles: "한글+영어자막", page: "159", synopsis: "물류 노동자들의 뜨거운 연대." },
+      { id: "s_081", code: "081", titleKo: "나기 노트", titleEn: "Nagi Notes", director: "후카다 코지", country: "일본", year: "2026", runtime: 110, rating: "전체", date: "10/08(목)", timeStart: "12:00", timeEnd: "13:50", theater: "소극장", gv: true, section: "아이콘", subtitles: "한글+영어자막", page: "074", synopsis: "조각가와 전 올케 사이의 미묘한 동거." },
+      { id: "s_082", code: "082", titleKo: "아가씨", titleEn: "The Handmaiden", director: "박찬욱", country: "한국", year: "2016", runtime: 144, rating: "청불", date: "10/08(목)", timeStart: "15:30", timeEnd: "17:54", theater: "소극장", gv: true, section: "특별상영", subtitles: "한글+영어자막", page: "190", synopsis: "판빙빙 추천작 및 특별 대담." },
+      { id: "s_083", code: "083", titleKo: "스킨타운", titleEn: "Skintown", director: "키어런 J. 월시", country: "아일랜드/영국", year: "2026", runtime: 99, rating: "15세", date: "10/08(목)", timeStart: "22:00", timeEnd: "23:39", theater: "소극장", gv: false, section: "월드 시네마", subtitles: "한글+영어자막", page: "131", synopsis: "북아일랜드 청춘들의 레이브 에너지." },
+      { id: "s_084", code: "084", titleKo: "일요일 다음날", titleEn: "The Day After Sunday", director: "가토 다쿠야", country: "일본/프랑스", year: "2026", runtime: 82, rating: "15세", date: "10/08(목)", timeStart: "09:00", timeEnd: "10:22", theater: "시네마테크", gv: false, section: "경쟁 (뉴 커런츠)", subtitles: "한글+영어자막", page: "047", synopsis: "부부간 침묵과 균열을 응시하는 심리극." },
+      { id: "s_085", code: "085", titleKo: "처음 만난 외로움", titleEn: "The First Taste of Loneliness", director: "구유", country: "중국", year: "2026", runtime: 135, rating: "12세", date: "10/08(목)", timeStart: "12:00", timeEnd: "14:15", theater: "시네마테크", gv: false, section: "경쟁 (뉴 커런츠)", subtitles: "한글+영어자막", page: "048", synopsis: "저우쉰 주연의 모녀 삼대 상실 치유기." },
+      { id: "s_086", code: "086", titleKo: "내가 사랑한 빌 에반스", titleEn: "Everybody Digs Bill Evans", director: "그랜트 지", country: "아일랜드/영국", year: "2026", runtime: 102, rating: "12세", date: "10/08(목)", timeStart: "15:50", timeEnd: "17:32", theater: "시네마테크", gv: false, section: "월드 시네마", subtitles: "한글+영어자막", page: "121", synopsis: "빌 에반스의 음악 여정과 고독." },
+      { id: "s_087", code: "087", titleKo: "영웅은 아니지만", titleEn: "Not a Hero", director: "리마 다스", country: "인도/싱가포르", year: "2026", runtime: 90, rating: "전체", date: "10/08(목)", timeStart: "19:20", timeEnd: "20:58", theater: "시네마테크", gv: true, section: "아시아영화의 창", subtitles: "한글+영어자막", page: "107", synopsis: "열한 살 소년 미반의 유쾌한 성장기." },
+      { id: "s_088", code: "088", titleKo: "짐승이 너무 많아", titleEn: "Too Many Beasts", director: "세라 아놀드", country: "프랑스", year: "2026", runtime: 95, rating: "15세", date: "10/08(목)", timeStart: "22:30", timeEnd: "00:05", theater: "시네마테크", gv: false, section: "월드 시네마", subtitles: "한글+영어자막", page: "131", synopsis: "시골 마을 멧돼지 출몰과 살해 사건 수사극." },
+      { id: "s_089", code: "089", titleKo: "가능한 사랑", titleEn: "Possible Love", director: "이창동", country: "한국", year: "2026", runtime: 164, rating: "15세", date: "10/08(목)", timeStart: "09:00", timeEnd: "11:44", theater: "CGV 센텀시티 IMAX", gv: false, section: "아이콘", subtitles: "한글+영어자막", page: "077", synopsis: "전도연, 설경구, 조인성 주연의 이창동 신작." },
+      { id: "s_090", code: "090", titleKo: "파더랜드", titleEn: "Fatherland", director: "파벨 파블리코프스키", country: "폴란드/독일", year: "2026", runtime: 82, rating: "15세", date: "10/08(목)", timeStart: "13:20", timeEnd: "14:42", theater: "CGV 센텀시티 IMAX", gv: false, section: "아이콘", subtitles: "한글+영어자막", page: "069", synopsis: "전후 분단 독일과 흑백의 숭고한 80분." },
+      { id: "s_091", code: "091", titleKo: "겁쟁이", titleEn: "Coward", director: "뤼카스 돈트", country: "벨기에/프랑스", year: "2026", runtime: 127, rating: "15세", date: "10/08(목)", timeStart: "15:40", timeEnd: "17:47", theater: "CGV 센텀시티 IMAX", gv: false, section: "아이콘", subtitles: "한글+영어자막", page: "067", synopsis: "참호 속 두 병사의 사랑." },
+      { id: "s_092", code: "092", titleKo: "옐로우 레터스", titleEn: "Yellow Letters", director: "일커 차탁", country: "독일/프랑스", year: "2026", runtime: 127, rating: "15세", date: "10/08(목)", timeStart: "19:00", timeEnd: "21:07", theater: "CGV 센텀시티 IMAX", gv: true, section: "아이콘", subtitles: "한글+영어자막", page: "081", synopsis: "베를린 황금곰상 수상작." },
+      { id: "s_093", code: "093", titleKo: "웰컴 투 돌리 하우스", titleEn: "Welcome to Dolly's House", director: "세븐 YCH, 레이디 푸", country: "대만", year: "2026", runtime: 88, rating: "15세", date: "10/08(목)", timeStart: "22:00", timeEnd: "23:28", theater: "CGV 센텀시티 IMAX", gv: false, section: "미드나잇 패션", subtitles: "한글+영어자막", page: "169", synopsis: "고딕 호러 애니메이션." },
 
       // 10.09(금)
-      {
-        id: "s_163", code: "163", titleKo: "스파이럴", titleEn: "The Spiral",
-        director: "파올로 스트리폴리", country: "이탈리아/프랑스", year: "2026", runtime: 115, rating: "15세",
-        date: "10/09(금)", timeStart: "20:00", timeEnd: "21:55", theater: "영화의전당 루프씨어터",
-        gv: true, section: "오픈 시네마", subtitles: "한글+영어자막", page: "163",
-        synopsis: "악마와의 계약으로 비극에 휩싸이는 부르주아 가문의 공포와 욕망을 나선처럼 그린 우아한 악몽."
-      },
-      {
-        id: "s_164", code: "164", titleKo: "파리스 그린이 밝는 날에", titleEn: "A New Dawn",
-        director: "시노미야 요시토시", country: "일본/프랑스", year: "2026", runtime: 75, rating: "전체",
-        date: "10/09(금)", timeStart: "09:20", timeEnd: "10:35", theater: "하늘연극장",
-        gv: false, section: "특별기획 (안시 심사위원상)", subtitles: "한글+영어자막", page: "181",
-        synopsis: "330년 역사의 불꽃 공방에서 전설의 불꽃을 좇는 청년과 소꿉친구의 마지막 이틀."
-      },
-      {
-        id: "s_165", code: "165", titleKo: "도라", titleEn: "Dora",
-        director: "정주리", country: "한국/프랑스", year: "2026", runtime: 138, rating: "15세",
-        date: "10/09(금)", timeStart: "12:10", timeEnd: "14:28", theater: "하늘연극장",
-        gv: true, section: "갈라 프레젠테이션", subtitles: "한글+영어자막", page: "058",
-        synopsis: "심인성 피부질환을 앓는 열여덟 도라(김도연)와 남해 별장에서 만난 화가의 아내 나미(안도 사쿠라)의 기이한 감정."
-      },
-      {
-        id: "s_738", code: "738", titleKo: "실낙원", titleEn: "PARADISE LOST",
-        director: "연상호", country: "한국", year: "2026", runtime: 101, rating: "15세",
-        date: "10/09(금)", timeStart: "16:20", timeEnd: "18:01", theater: "하늘연극장",
-        gv: false, section: "갈라 프레젠테이션", subtitles: "한글자막", page: "061",
-        synopsis: "김현주, 배현성 주연. 스쿨버스 실종 사건 이후 증강현실 프로그램에서 아들을 만나는 어머니의 심리 스릴러."
-      },
-      {
-        id: "s_167", code: "167", titleKo: "빵과 책", titleEn: "Midday Meal",
-        director: "마지드 마지디", country: "이란", year: "2026", runtime: 133, rating: "전체",
-        date: "10/09(금)", timeStart: "20:00", timeEnd: "22:13", theater: "하늘연극장",
-        gv: false, section: "경쟁 (뉴 커런츠)", subtitles: "한글+영어자막", page: "052",
-        synopsis: "폐교를 막고 급식을 지키기 위해 낮에는 교사, 밤에는 밀수꾼으로 위태로운 이중생활을 하는 솔란의 감동 서사."
-      },
-      {
-        id: "s_168", code: "168", titleKo: "미드나잇 패션 2", titleEn: "Midnight Passion 2 (Red Thread + The Scar-Faced Cat + L'Autre)",
-        director: "함 트란, 왕이판, 알렉상드르 프란치", country: "베트남/대만/캐나다", year: "2026", runtime: 332, rating: "청불",
-        date: "10/09(금)", timeStart: "23:59", timeEnd: "05:31", theater: "하늘연극장",
-        gv: false, section: "미드나잇 패션", subtitles: "한글+영어자막", page: "165",
-        synopsis: "심야 밤샘 상영 2편: 붉은 실 + 스카페이스 캣: 수라도 + 불청객 연속 상영."
-      },
-      {
-        id: "s_169", code: "169", titleKo: "우리, 파도처럼", titleEn: "In Waves",
-        director: "응우옌푸엉마이", country: "프랑스/벨기에", year: "2026", runtime: 91, rating: "12세",
-        date: "10/09(금)", timeStart: "09:00", timeEnd: "10:31", theater: "중극장",
-        gv: false, section: "월드 시네마 (칸 비평가주간)", subtitles: "한글+영어자막", page: "125",
-        synopsis: "캘리포니아 서핑 해변에서 펼쳐지는 소심한 아시아계 소년과 소녀의 눈부신 첫사랑 그래픽노블 원작 애니메이션."
-      },
-      {
-        id: "s_170", code: "170", titleKo: "매드 맥스", titleEn: "Mad Max",
-        director: "조지 밀러", country: "호주", year: "1979", runtime: 93, rating: "19세",
-        date: "10/09(금)", timeStart: "11:30", timeEnd: "13:03", theater: "중극장",
-        gv: true, section: "특별상영 (김지운 추천작)", subtitles: "한글+영어자막", page: "191",
-        synopsis: "가장 거칠고 원초적인 전설의 시작. 영화감독 김지운의 스페셜 토크 진행."
-      },
-      {
-        id: "s_171", code: "171", titleKo: "딥 블루", titleEn: "Deep Blue",
-        director: "에르네스토 마리아 첸소리", country: "이탈리아", year: "2026", runtime: 96, rating: "15세",
-        date: "10/09(금)", timeStart: "15:00", timeEnd: "16:36", theater: "중극장",
-        gv: false, section: "월드 시네마", subtitles: "한글자막", page: "121",
-        synopsis: "폭력의 굴레에서 벗어나기 위해 아버지의 그림자를 마주하는 청년과 지중해 해변 호텔의 이야기."
-      },
-      {
-        id: "s_172", code: "172", titleKo: "에코 체임버", titleEn: "The Echo Chamber",
-        director: "안드레아 팔라오로", country: "이탈리아", year: "2026", runtime: 120, rating: "15세",
-        date: "10/09(금)", timeStart: "18:10", timeEnd: "20:10", theater: "중극장",
-        gv: false, section: "아이콘 (베니스 경쟁)", subtitles: "한글자막", page: "068",
-        synopsis: "수잔 서랜든, 루카 마리넬리, 알리시아 비칸데르 주연. 아파트 안에서 울려 퍼지는 실내극의 미학."
-      },
-      {
-        id: "s_173", code: "173", titleKo: "패러렐 테일즈: 데칼로그", titleEn: "Parallel Tales",
-        director: "아스가르 파르하디", country: "프랑스/이란", year: "2026", runtime: 140, rating: "15세",
-        date: "10/09(금)", timeStart: "21:40", timeEnd: "00:00", theater: "중극장",
-        gv: false, section: "아이콘 (칸 경쟁)", subtitles: "한글+영어자막", page: "076",
-        synopsis: "망원경으로 이웃을 훔쳐보며 얽혀드는 복잡한 인간관계의 방정식과 평행 세계."
-      },
-      {
-        id: "s_186", code: "186", titleKo: "미노타우로스", titleEn: "Minotaur",
-        director: "안드레이 즈뱌긴체프", country: "프랑스/독일", year: "2026", runtime: 141, rating: "15세",
-        date: "10/09(금)", timeStart: "15:00", timeEnd: "17:21", theater: "CGV 센텀시티 IMAX",
-        gv: false, section: "아이콘 (칸영화제 심사위원대상)", subtitles: "한글자막", page: "072",
-        synopsis: "통제된 삶을 살던 사업가의 세계에 찾아온 균열과 스스로 파놓은 인간 미궁에 갇히는 과정."
-      },
-      {
-        id: "s_187", code: "187", titleKo: "메트로폴리스", titleEn: "Metropolis",
-        director: "린타로", country: "일본", year: "2001", runtime: 107, rating: "전체",
-        date: "10/09(금)", timeStart: "18:20", timeEnd: "20:07", theater: "CGV 센텀시티 IMAX",
-        gv: true, section: "특별기획 (애니메이션)", subtitles: "한글+영어자막", page: "180",
-        synopsis: "데즈카 오사무 원작, 린타로 연출, 오토모 가쓰히로 각본. 거대한 마천루 지구라트에서 펼쳐지는 걸작."
-      },
-      {
-        id: "s_226", code: "226", titleKo: "꿀알바", titleEn: "Dead-End Job",
-        director: "김다민", country: "한국", year: "2026", runtime: 142, rating: "15세",
-        date: "10/09(금)", timeStart: "11:50", timeEnd: "14:12", theater: "롯데시네마 4관",
-        gv: true, section: "온스크린", subtitles: "한글자막", page: "171",
-        synopsis: "이재욱, 이희준, 고민시, 김민하 주연. 정체불명의 고수익 알바 현장에서 벌어지는 기상천외한 미스터리."
-      },
-      {
-        id: "s_238", code: "238", titleKo: "재혼 황후", titleEn: "The Remarried Empress",
-        director: "조수원", country: "한국", year: "2026", runtime: 151, rating: "15세",
-        date: "10/09(금)", timeStart: "18:40", timeEnd: "21:11", theater: "롯데시네마 6관",
-        gv: true, section: "온스크린", subtitles: "한글자막", page: "171",
-        synopsis: "신민아, 주지훈, 이세영, 이종석 주연. 황제의 이혼 통보에 맞서 새로운 땅과 자신의 권력을 찾아 나서는 나비에의 여정."
-      },
+      { id: "s_163", code: "163", titleKo: "스파이럴", titleEn: "The Spiral", director: "파올로 스트리폴리", country: "이탈리아/프랑스", year: "2026", runtime: 115, rating: "15세", date: "10/09(금)", timeStart: "20:00", timeEnd: "21:55", theater: "영화의전당 루프씨어터", gv: true, section: "오픈 시네마", subtitles: "한글+영어자막", page: "163", synopsis: "악마와의 계약으로 휩싸이는 부르주아 가문의 악몽." },
+      { id: "s_164", code: "164", titleKo: "파리스 그린이 밝는 날에", titleEn: "A New Dawn", director: "시노미야 요시토시", country: "일본/프랑스", year: "2026", runtime: 75, rating: "전체", date: "10/09(금)", timeStart: "09:20", timeEnd: "10:35", theater: "하늘연극장", gv: false, section: "특별기획", subtitles: "한글+영어자막", page: "181", synopsis: "불꽃 공방의 청년과 소꿉친구의 마지막 이틀." },
+      { id: "s_165", code: "165", titleKo: "도라", titleEn: "Dora", director: "정주리", country: "한국/프랑스", year: "2026", runtime: 138, rating: "15세", date: "10/09(금)", timeStart: "12:10", timeEnd: "14:28", theater: "하늘연극장", gv: true, section: "갈라 프레젠테이션", subtitles: "한글+영어자막", page: "058", synopsis: "김도연, 안도 사쿠라 주연의 문제작." },
+      { id: "s_738", code: "738", titleKo: "실낙원", titleEn: "PARADISE LOST", director: "연상호", country: "한국", year: "2026", runtime: 101, rating: "15세", date: "10/09(금)", timeStart: "16:20", timeEnd: "18:01", theater: "하늘연극장", gv: false, section: "갈라 프레젠테이션", subtitles: "한글자막", page: "061", synopsis: "김현주, 배현성 주연의 심리 스릴러." },
+      { id: "s_167", code: "167", titleKo: "빵과 책", titleEn: "Midday Meal", director: "마지드 마지디", country: "이란", year: "2026", runtime: 133, rating: "전체", date: "10/09(금)", timeStart: "20:00", timeEnd: "22:13", theater: "하늘연극장", gv: false, section: "경쟁 (뉴 커런츠)", subtitles: "한글+영어자막", page: "052", synopsis: "급식을 지키기 위해 이중생활을 하는 교사의 감동 서사." },
+      { id: "s_168", code: "168", titleKo: "미드나잇 패션 2", titleEn: "Midnight Passion 2", director: "다양한 감독", country: "베트남/대만/캐나다", year: "2026", runtime: 332, rating: "청불", date: "10/09(금)", timeStart: "23:59", timeEnd: "05:31", theater: "하늘연극장", gv: false, section: "미드나잇 패션", subtitles: "한글+영어자막", page: "165", synopsis: "붉은 실 + 수라도 + 불청객 밤샘 상영." },
+      { id: "s_169", code: "169", titleKo: "우리, 파도처럼", titleEn: "In Waves", director: "응우옌푸엉마이", country: "프랑스/벨기에", year: "2026", runtime: 91, rating: "12세", date: "10/09(금)", timeStart: "09:00", timeEnd: "10:31", theater: "중극장", gv: false, section: "월드 시네마", subtitles: "한글+영어자막", page: "125", synopsis: "서핑 해변의 소심한 소년소녀 첫사랑 애니메이션." },
+      { id: "s_170", code: "170", titleKo: "매드 맥스", titleEn: "Mad Max", director: "조지 밀러", country: "호주", year: "1979", runtime: 93, rating: "19세", date: "10/09(금)", timeStart: "11:30", timeEnd: "13:03", theater: "중극장", gv: true, section: "특별상영", subtitles: "한글+영어자막", page: "191", synopsis: "김지운 감독 스페셜 토크 진행." },
+      { id: "s_171", code: "171", titleKo: "딥 블루", titleEn: "Deep Blue", director: "에르네스토 마리아 첸소리", country: "이탈리아", year: "2026", runtime: 96, rating: "15세", date: "10/09(금)", timeStart: "15:00", timeEnd: "16:36", theater: "중극장", gv: false, section: "월드 시네마", subtitles: "한글자막", page: "121", synopsis: "폭력의 굴레에서 벗어나려는 청년." },
+      { id: "s_172", code: "172", titleKo: "에코 체임버", titleEn: "The Echo Chamber", director: "안드레아 팔라오로", country: "이탈리아", year: "2026", runtime: 120, rating: "15세", date: "10/09(금)", timeStart: "18:10", timeEnd: "20:10", theater: "중극장", gv: false, section: "아이콘", subtitles: "한글자막", page: "068", synopsis: "수잔 서랜든, 알리시아 비칸데르 주연의 아파트 실내극." },
+      { id: "s_173", code: "173", titleKo: "패러렐 테일즈: 데칼로그", titleEn: "Parallel Tales", director: "아스가르 파르하디", country: "프랑스/이란", year: "2026", runtime: 140, rating: "15세", date: "10/09(금)", timeStart: "21:40", timeEnd: "00:00", theater: "중극장", gv: false, section: "아이콘", subtitles: "한글+영어자막", page: "076", synopsis: "망원경으로 이웃을 훔쳐보며 얽혀드는 복잡한 인간관계." },
+      { id: "s_186", code: "186", titleKo: "미노타우로스", titleEn: "Minotaur", director: "안드레이 즈뱌긴체프", country: "프랑스/독일", year: "2026", runtime: 141, rating: "15세", date: "10/09(금)", timeStart: "15:00", timeEnd: "17:21", theater: "CGV 센텀시티 IMAX", gv: false, section: "아이콘", subtitles: "한글자막", page: "072", synopsis: "인간 미궁에 갇히는 사업가의 초상." },
+      { id: "s_187", code: "187", titleKo: "메트로폴리스", titleEn: "Metropolis", director: "린타로", country: "일본", year: "2001", runtime: 107, rating: "전체", date: "10/09(금)", timeStart: "18:20", timeEnd: "20:07", theater: "CGV 센텀시티 IMAX", gv: true, section: "특별기획", subtitles: "한글+영어자막", page: "180", synopsis: "데즈카 오사무 원작, 오토모 가쓰히로 각본의 걸작." },
 
       // 10.10(토)
-      {
-        id: "s_325", code: "325", titleKo: "바이올리니스트", titleEn: "The Violinist",
-        director: "어빈 한, 라울 가르시아", country: "싱가포르/스페인", year: "2026", runtime: 114, rating: "12세",
-        date: "10/10(토)", timeStart: "20:00", timeEnd: "21:54", theater: "영화의전당 루프씨어터",
-        gv: true, section: "오픈 시네마 (안시 대상)", subtitles: "한글+영어자막", page: "164",
-        synopsis: "제2차 세계대전 격동 속에서 피어난 천재 소년과 부유한 소녀의 바이올린 선율과 사랑."
-      },
-      {
-        id: "s_265", code: "265", titleKo: "재혼 황후", titleEn: "The Remarried Empress",
-        director: "조수원", country: "한국", year: "2026", runtime: 151, rating: "15세",
-        date: "10/10(토)", timeStart: "08:20", timeEnd: "10:51", theater: "하늘연극장",
-        gv: false, section: "온스크린", subtitles: "한글자막", page: "171",
-        synopsis: "신민아, 주지훈 주연. 화제의 웹소설 시리즈를 스크린으로 만나는 온스크린 프리미어."
-      },
-      {
-        id: "s_266", code: "266", titleKo: "힐롤", titleEn: "Hilol",
-        director: "보티르 압두라흐마노프", country: "우즈베키스탄", year: "2026", runtime: 87, rating: "15세",
-        date: "10/10(토)", timeStart: "12:30", timeEnd: "13:57", theater: "하늘연극장",
-        gv: false, section: "경쟁 (뉴 커런츠)", subtitles: "한글+영어자막", page: "049",
-        synopsis: "숫자를 세며 억눌린 감정과 욕망을 견디는 전직 태권도 선수 힐롤의 이야기."
-      },
-      {
-        id: "s_267", code: "267", titleKo: "그날의 태주", titleEn: "Beach Fictions",
-        director: "임하연", country: "한국", year: "2026", runtime: 144, rating: "12세",
-        date: "10/10(토)", timeStart: "16:00", timeEnd: "18:24", theater: "하늘연극장",
-        gv: true, section: "경쟁 (뉴 커런츠)", subtitles: "한글자막", page: "045",
-        synopsis: "소문에 시달리다 해변으로 떠난 태주(박한솔)가 거리의 마술사와 소설가를 만나며 겪는 마법 같은 데뷔작."
-      },
-      {
-        id: "s_268", code: "268", titleKo: "실버 익스프레스", titleEn: "silver express",
-        director: "다나카 미키", country: "일본", year: "2026", runtime: 97, rating: "12세",
-        date: "10/10(토)", timeStart: "20:30", timeEnd: "22:07", theater: "하늘연극장",
-        gv: true, section: "경쟁 (뉴 커런츠)", subtitles: "한글+영어자막", page: "056",
-        synopsis: "무성애자인 치에리와 무로맨틱인 쇼야가 만나 새로운 사랑의 형태를 찾아가는 여정."
-      },
-      {
-        id: "s_269", code: "269", titleKo: "미드나잇 패션 3", titleEn: "Midnight Passion 3 (Jim Queen + Welcome to Dolly's House + Angel's Egg)",
-        director: "마르코 응우옌, 세븐 YCH, 오시이 마모루", country: "프랑스/대만/일본", year: "2026", runtime: 248, rating: "청불",
-        date: "10/10(토)", timeStart: "23:59", timeEnd: "04:05", theater: "하늘연극장",
-        gv: true, section: "미드나잇 패션", subtitles: "한글+영어자막", page: "165",
-        synopsis: "심야 밤샘 상영 3편: 짐 퀸 + 웰컴 투 돌리 하우스 + 천사의 알 연속 상영."
-      },
-      {
-        id: "s_270", code: "270", titleKo: "그 소녀의 기억", titleEn: "A Girl's Story",
-        director: "주디트 고드레슈", country: "프랑스", year: "2026", runtime: 117, rating: "15세",
-        date: "10/10(토)", timeStart: "16:30", timeEnd: "18:27", theater: "중극장",
-        gv: false, section: "갈라 프레젠테이션", subtitles: "한글+영어자막", page: "059",
-        synopsis: "아니 에르노의 자전 소설을 스크린에 옮긴 작품. 10대 시절의 첫사랑과 권력관계를 성찰하는 섬세한 성장기."
-      },
-      {
-        id: "s_271", code: "271", titleKo: "백 투 부에노스아이레스", titleEn: "Back to Buenos Aires",
-        director: "마르코 베키스", country: "이탈리아/브라질", year: "2026", runtime: 105, rating: "15세",
-        date: "10/10(토)", timeStart: "13:10", timeEnd: "14:55", theater: "중극장",
-        gv: true, section: "아이콘 (베니스 경쟁)", subtitles: "한글+영어자막", page: "065",
-        synopsis: "군사독재 시절 자신을 납치했던 전직 군인들의 재판 증언을 위해 귀국한 의사의 죄책감과 청춘의 유령들."
-      },
-      {
-        id: "s_272", code: "272", titleKo: "메트로폴리스", titleEn: "Metropolis",
-        director: "린타로", country: "일본", year: "2001", runtime: 107, rating: "전체",
-        date: "10/10(토)", timeStart: "20:20", timeEnd: "22:07", theater: "중극장",
-        gv: false, section: "특별기획 (애니메이션)", subtitles: "한글+영어자막", page: "180",
-        synopsis: "데즈카 오사무 원작, 린타로 연출, 오토모 가쓰히로 각본의 기념비적 애니메이션."
-      },
-      {
-        id: "s_283", code: "283", titleKo: "콜드 워 1994", titleEn: "Cold War 1994",
-        director: "렁록만", country: "홍콩/중국", year: "2026", runtime: 117, rating: "15세",
-        date: "10/10(토)", timeStart: "09:00", timeEnd: "10:57", theater: "CGV 센텀시티 IMAX",
-        gv: false, section: "특별상영", subtitles: "한글+영어자막", page: "188",
-        synopsis: "홍콩 반환 이전의 정치적 혼돈과 경찰 내부의 음모를 아이맥스 스케일로 펼쳐낸 콜드워 프리퀄."
-      },
-      {
-        id: "s_285", code: "285", titleKo: "에밀리아, 사랑을 기억하다", titleEn: "The Beloved",
-        director: "로드리고 소로고엔", country: "스페인/프랑스", year: "2026", runtime: 135, rating: "15세",
-        date: "10/10(토)", timeStart: "16:20", timeEnd: "18:35", theater: "CGV 센텀시티 IMAX",
-        gv: false, section: "아이콘 (칸영화제 경쟁)", subtitles: "한글+영어자막", page: "065",
-        synopsis: "하비에르 바르뎀 주연. 13년 만에 재회한 영화감독 아버지와 딸의 숨 막히는 대화와 멜로드라마."
-      },
-      {
-        id: "s_349", code: "349", titleKo: "갑자기 병세가 악화되다", titleEn: "All of a Sudden",
-        director: "하마구치 류스케", country: "프랑스/일본", year: "2026", runtime: 196, rating: "15세",
-        date: "10/10(토)", timeStart: "16:00", timeEnd: "19:16", theater: "롯데시네마 9관",
-        gv: false, section: "아이콘 (칸 여우주연상)", subtitles: "한글+영어자막", page: "064",
-        synopsis: "하마구치 류스케가 프랑스에서 완성한 3시간 16분의 역작. 질병과 죽음 앞에서의 연대와 대화."
-      },
+      { id: "s_325", code: "325", titleKo: "바이올리니스트", titleEn: "The Violinist", director: "어빈 한, 라울 가르시아", country: "싱가포르/스페인", year: "2026", runtime: 114, rating: "12세", date: "10/10(토)", timeStart: "20:00", timeEnd: "21:54", theater: "영화의전당 루프씨어터", gv: true, section: "오픈 시네마", subtitles: "한글+영어자막", page: "164", synopsis: "제2차 세계대전 격동 속 바이올린 선율과 사랑." },
+      { id: "s_265", code: "265", titleKo: "재혼 황후", titleEn: "The Remarried Empress", director: "조수원", country: "한국", year: "2026", runtime: 151, rating: "15세", date: "10/10(토)", timeStart: "08:20", timeEnd: "10:51", theater: "하늘연극장", gv: false, section: "온스크린", subtitles: "한글자막", page: "171", synopsis: "신민아, 주지훈 주연의 온스크린 시리즈." },
+      { id: "s_266", code: "266", titleKo: "힐롤", titleEn: "Hilol", director: "보티르 압두라흐마노프", country: "우즈베키스탄", year: "2026", runtime: 87, rating: "15세", date: "10/10(토)", timeStart: "12:30", timeEnd: "13:57", theater: "하늘연극장", gv: false, section: "경쟁 (뉴 커런츠)", subtitles: "한글+영어자막", page: "049", synopsis: "숫자를 세며 억눌린 욕망을 견디는 태권도 선수." },
+      { id: "s_267", code: "267", titleKo: "그날의 태주", titleEn: "Beach Fictions", director: "임하연", country: "한국", year: "2026", runtime: 144, rating: "12세", date: "10/10(토)", timeStart: "16:00", timeEnd: "18:24", theater: "하늘연극장", gv: true, section: "경쟁 (뉴 커런츠)", subtitles: "한글자막", page: "045", synopsis: "소문에 시달리다 해변으로 떠난 태주의 마법 같은 데뷔작." },
+      { id: "s_268", code: "268", titleKo: "실버 익스프레스", titleEn: "silver express", director: "다나카 미키", country: "일본", year: "2026", runtime: 97, rating: "12세", date: "10/10(토)", timeStart: "20:30", timeEnd: "22:07", theater: "하늘연극장", gv: true, section: "경쟁 (뉴 커런츠)", subtitles: "한글+영어자막", page: "056", synopsis: "무성애자 치에리와 무로맨틱 쇼야의 새로운 사랑 탐구." },
+      { id: "s_269", code: "269", titleKo: "미드나잇 패션 3", titleEn: "Midnight Passion 3", director: "다양한 감독", country: "프랑스/대만/일본", year: "2026", runtime: 248, rating: "청불", date: "10/10(토)", timeStart: "23:59", timeEnd: "04:05", theater: "하늘연극장", gv: true, section: "미드나잇 패션", subtitles: "한글+영어자막", page: "165", synopsis: "짐 퀸 + 웰컴 투 돌리 하우스 + 천사의 알 밤샘 상영." },
+      { id: "s_270", code: "270", titleKo: "그 소녀의 기억", titleEn: "A Girl's Story", director: "주디트 고드레슈", country: "프랑스", year: "2026", runtime: 117, rating: "15세", date: "10/10(토)", timeStart: "16:30", timeEnd: "18:27", theater: "중극장", gv: false, section: "갈라 프레젠테이션", subtitles: "한글+영어자막", page: "059", synopsis: "아니 에르노 자전 소설의 섬세한 성장기." },
+      { id: "s_271", code: "271", titleKo: "백 투 부에노스아이레스", titleEn: "Back to Buenos Aires", director: "마르코 베키스", country: "이탈리아/브라질", year: "2026", runtime: 105, rating: "15세", date: "10/10(토)", timeStart: "13:10", timeEnd: "14:55", theater: "중극장", gv: true, section: "아이콘", subtitles: "한글+영어자막", page: "065", synopsis: "군사독재 시절 납치범 재판 증언을 위해 귀국한 의사." },
+      { id: "s_272", code: "272", titleKo: "메트로폴리스", titleEn: "Metropolis", director: "린타로", country: "일본", year: "2001", runtime: 107, rating: "전체", date: "10/10(토)", timeStart: "20:20", timeEnd: "22:07", theater: "중극장", gv: false, section: "특별기획", subtitles: "한글+영어자막", page: "180", synopsis: "데즈카 오사무 원작의 애니메이션." },
+      { id: "s_283", code: "283", titleKo: "콜드 워 1994", titleEn: "Cold War 1994", director: "렁록만", country: "홍콩/중국", year: "2026", runtime: 117, rating: "15세", date: "10/10(토)", timeStart: "09:00", timeEnd: "10:57", theater: "CGV 센텀시티 IMAX", gv: false, section: "특별상영", subtitles: "한글+영어자막", page: "188", synopsis: "홍콩 반환 이전 경찰 내부 음모 프리퀄." },
+      { id: "s_285", code: "285", titleKo: "에밀리아, 사랑을 기억하다", titleEn: "The Beloved", director: "로드리고 소로고엔", country: "스페인/프랑스", year: "2026", runtime: 135, rating: "15세", date: "10/10(토)", timeStart: "16:20", timeEnd: "18:35", theater: "CGV 센텀시티 IMAX", gv: false, section: "아이콘", subtitles: "한글+영어자막", page: "065", synopsis: "하비에르 바르뎀 주연의 부녀 멜로드라마." },
+      { id: "s_349", code: "349", titleKo: "갑자기 병세가 악화되다", titleEn: "All of a Sudden", director: "하마구치 류스케", country: "프랑스/일본", year: "2026", runtime: 196, rating: "15세", date: "10/10(토)", timeStart: "16:00", timeEnd: "19:16", theater: "롯데시네마 9관", gv: false, section: "아이콘", subtitles: "한글+영어자막", page: "064", synopsis: "하마구치 류스케의 칸 여우주연상 수상작." },
 
       // 10.11(일)
-      {
-        id: "s_362", code: "362", titleKo: "인헤릿", titleEn: "Inherit",
-        director: "반종 피산다나쿤", country: "태국", year: "2026", runtime: 129, rating: "15세",
-        date: "10/11(일)", timeStart: "20:00", timeEnd: "22:09", theater: "영화의전당 루프씨어터",
-        gv: true, section: "오픈 시네마", subtitles: "한글+영어자막", page: "161",
-        synopsis: "<랑종>, <셔터>의 반종 감독 신작. 수십 년 만에 나타난 큰이모와 가문의 무시무시한 비밀을 다룬 오컬트 호러."
-      },
-      {
-        id: "s_363", code: "363", titleKo: "내가 사랑하는 남자", titleEn: "The Man I Love",
-        director: "아이라 잭스", country: "미국", year: "2026", runtime: 97, rating: "15세",
-        date: "10/11(일)", timeStart: "09:40", timeEnd: "11:17", theater: "하늘연극장",
-        gv: false, section: "아이콘", subtitles: "한글+영어자막", page: "072",
-        synopsis: "라미 말렉 주연. 1980년대 말 뉴욕 다운타운 퀴어 퍼포먼스 아티스트의 사랑과 삶."
-      },
-      {
-        id: "s_364", code: "364", titleKo: "비트윈 투 러버스", titleEn: "Between Two Lovers",
-        director: "히로세 나나코", country: "일본", year: "2026", runtime: 128, rating: "15세",
-        date: "10/11(일)", timeStart: "12:20", timeEnd: "14:28", theater: "하늘연극장",
-        gv: false, section: "경쟁 (뉴 커런츠)", subtitles: "한글+영어자막", page: "046",
-        synopsis: "나가사와 마사미, 에모토 타스쿠 주연. 세 사람이 함께 가정을 꾸리자는 파격적 대안의 드라마."
-      },
-      {
-        id: "s_365", code: "365", titleKo: "평범하기 위하여", titleEn: "To Be Ordinary",
-        director: "리원찬", country: "대만", year: "2026", runtime: 112, rating: "12세",
-        date: "10/11(일)", timeStart: "16:20", timeEnd: "18:12", theater: "하늘연극장",
-        gv: false, section: "경쟁 (뉴 커런츠)", subtitles: "한글+영어자막", page: "057",
-        synopsis: "교통사고 이후 가족들이 겪는 아이러니와 평범한 일상을 지키기 위한 이들의 온기 어린 가족 드라마."
-      },
-      {
-        id: "s_366", code: "366", titleKo: "바다에 새겨진 이름", titleEn: "The Sea Speaks His Name",
-        director: "요셉 앙기 노엔", country: "인도네시아", year: "2026", runtime: 133, rating: "15세",
-        date: "10/11(일)", timeStart: "20:10", timeEnd: "22:23", theater: "하늘연극장",
-        gv: false, section: "경쟁 (뉴 커런츠)", subtitles: "한글+영어자막", page: "054",
-        synopsis: "1990년대 인도네시아 독재 하 강제 실종된 대학생과 남겨진 가족들의 지울 수 없는 상흔과 역사극."
-      },
-      {
-        id: "s_367", code: "367", titleKo: "딥 블루", titleEn: "Deep Blue",
-        director: "에르네스토 마리아 첸소리", country: "이탈리아", year: "2026", runtime: 96, rating: "15세",
-        date: "10/11(일)", timeStart: "09:00", timeEnd: "10:35", theater: "중극장",
-        gv: true, section: "월드 시네마", subtitles: "한글+영어자막", page: "121",
-        synopsis: "비수기 바닷가 호텔을 찾은 마피아 출신 노인들과 아버지를 찾는 청년의 마주침."
-      },
-      {
-        id: "s_382", code: "382", titleKo: "레이 건", titleEn: "Ray Gunn",
-        director: "브래드 버드", country: "미국", year: "2026", runtime: 119, rating: "12세",
-        date: "10/11(일)", timeStart: "09:20", timeEnd: "11:19", theater: "CGV 센텀시티 IMAX",
-        gv: false, section: "아이콘", subtitles: "한글자막", page: "077",
-        synopsis: "<라따뚜이> 브래드 버드의 복귀작. 1930년대풍 레트로 미래도시 메트로피아를 배경으로 한 SF 느와르."
-      },
-      {
-        id: "s_384", code: "384", titleKo: "피오르", titleEn: "Fjord",
-        director: "크리스티안 문쥬", country: "루마니아/프랑스", year: "2026", runtime: 146, rating: "15세",
-        date: "10/11(일)", timeStart: "15:30", timeEnd: "17:56", theater: "CGV 센텀시티 IMAX",
-        gv: false, section: "아이콘", subtitles: "한글자막", page: "069",
-        synopsis: "세바스티안 스탠, 레나테 레인스베 주연의 치밀한 사회 드라마."
-      },
-      {
-        id: "s_430", code: "430", titleKo: "페터 춤토르 by 빔 벤더스, 3D", titleEn: "From Inside Out - The Architecture of Peter Zumthor",
-        director: "빔 벤더스", country: "독일/스위스", year: "2026", runtime: 114, rating: "전체",
-        date: "10/11(일)", timeStart: "21:40", timeEnd: "23:34", theater: "롯데시네마 4관",
-        gv: false, section: "아이콘 (3D 상영)", subtitles: "한글+영어자막", page: "070",
-        synopsis: "현대 건축 거장 페터 춤토르의 16개 건축물을 탐험하는 빔 벤더스의 3D 몰입형 다큐멘터리."
-      },
+      { id: "s_362", code: "362", titleKo: "인헤릿", titleEn: "Inherit", director: "반종 피산다나쿤", country: "태국", year: "2026", runtime: 129, rating: "15세", date: "10/11(일)", timeStart: "20:00", timeEnd: "22:09", theater: "영화의전당 루프씨어터", gv: true, section: "오픈 시네마", subtitles: "한글+영어자막", page: "161", synopsis: "반종 피산다나쿤 감독의 오컬트 호러." },
+      { id: "s_363", code: "363", titleKo: "내가 사랑하는 남자", titleEn: "The Man I Love", director: "아이라 잭스", country: "미국", year: "2026", runtime: 97, rating: "15세", date: "10/11(일)", timeStart: "09:40", timeEnd: "11:17", theater: "하늘연극장", gv: false, section: "아이콘", subtitles: "한글+영어자막", page: "072", synopsis: "뉴욕 퀴어 아티스트의 사랑과 삶." },
+      { id: "s_364", code: "364", titleKo: "비트윈 투 러버스", titleEn: "Between Two Lovers", director: "히로세 나나코", country: "일본", year: "2026", runtime: 128, rating: "15세", date: "10/11(일)", timeStart: "12:20", timeEnd: "14:28", theater: "하늘연극장", gv: false, section: "경쟁 (뉴 커런츠)", subtitles: "한글+영어자막", page: "046", synopsis: "나가사와 마사미 주연의 삼각관계 드라마." },
+      { id: "s_365", code: "365", titleKo: "평범하기 위하여", titleEn: "To Be Ordinary", director: "리원찬", country: "대만", year: "2026", runtime: 112, rating: "12세", date: "10/11(일)", timeStart: "16:20", timeEnd: "18:12", theater: "하늘연극장", gv: false, section: "경쟁 (뉴 커런츠)", subtitles: "한글+영어자막", page: "057", synopsis: "가족이 겪는 아이러니와 온기 어린 가족 드라마." },
+      { id: "s_366", code: "366", titleKo: "바다에 새겨진 이름", titleEn: "The Sea Speaks His Name", director: "요셉 앙기 노엔", country: "인도네시아", year: "2026", runtime: 133, rating: "15세", date: "10/11(일)", timeStart: "20:10", timeEnd: "22:23", theater: "하늘연극장", gv: false, section: "경쟁 (뉴 커런츠)", subtitles: "한글+영어자막", page: "054", synopsis: "강제 실종된 대학생과 남겨진 가족의 역사극." },
+      { id: "s_367", code: "367", titleKo: "딥 블루", titleEn: "Deep Blue", director: "에르네스토 마리아 첸소리", country: "이탈리아", year: "2026", runtime: 96, rating: "15세", date: "10/11(일)", timeStart: "09:00", timeEnd: "10:35", theater: "중극장", gv: true, section: "월드 시네마", subtitles: "한글+영어자막", page: "121", synopsis: "마피아 출신 노인들과 청년의 마주침." },
+      { id: "s_382", code: "382", titleKo: "레이 건", titleEn: "Ray Gunn", director: "브래드 버드", country: "미국", year: "2026", runtime: 119, rating: "12세", date: "10/11(일)", timeStart: "09:20", timeEnd: "11:19", theater: "CGV 센텀시티 IMAX", gv: false, section: "아이콘", subtitles: "한글자막", page: "077", synopsis: "브래드 버드 감독의 SF 느와르 애니메이션." },
+      { id: "s_384", code: "384", titleKo: "피오르", titleEn: "Fjord", director: "크리스티안 문쥬", country: "루마니아/프랑스", year: "2026", runtime: 146, rating: "15세", date: "10/11(일)", timeStart: "15:30", timeEnd: "17:56", theater: "CGV 센텀시티 IMAX", gv: false, section: "아이콘", subtitles: "한글자막", page: "069", synopsis: "세바스티안 스탠 주연의 사회 드라마." },
+      { id: "s_430", code: "430", titleKo: "페터 춤토르 by 빔 벤더스, 3D", titleEn: "From Inside Out", director: "빔 벤더스", country: "독일/스위스", year: "2026", runtime: 114, rating: "전체", date: "10/11(일)", timeStart: "21:40", timeEnd: "23:34", theater: "롯데시네마 4관", gv: false, section: "아이콘", subtitles: "한글+영어자막", page: "070", synopsis: "건축가 페터 춤토르의 3D 다큐멘터리." },
 
       // 10.12(월)
-      {
-        id: "s_466", code: "466", titleKo: "내일은 이름이 있다", titleEn: "All About Corinne",
-        director: "마르크 피투시", country: "프랑스/벨기에", year: "2026", runtime: 118, rating: "전체",
-        date: "10/12(월)", timeStart: "20:00", timeEnd: "21:58", theater: "영화의전당 루프씨어터",
-        gv: true, section: "오픈 시네마 / 갈라", subtitles: "한글+영어자막", page: "058",
-        synopsis: "이자벨 위페르가 단역 엑스트라 '코린'을 연기한 유쾌하고 따스한 희비극."
-      },
-      {
-        id: "s_467", code: "467", titleKo: "미친 노인의 일기", titleEn: "Diary of a Mad Old Man",
-        director: "웨인 왕", country: "미국", year: "2026", runtime: 120, rating: "15세",
-        date: "10/12(월)", timeStart: "10:00", timeEnd: "12:00", theater: "하늘연극장",
-        gv: false, section: "아시아영화의 창", subtitles: "한글+영어자막", page: "099",
-        synopsis: "릴리 프랭키, 판빙빙 주연. 다니자키 준이치로 소설 원작, 노년의 관능적 집착과 욕망의 초상."
-      },
-      {
-        id: "s_470", code: "470", titleKo: "이성과 감성", titleEn: "Sense and Sensibility",
-        director: "조지아 오클리", country: "영국/미국", year: "2026", runtime: 131, rating: "12세",
-        date: "10/12(월)", timeStart: "19:00", timeEnd: "21:11", theater: "하늘연극장",
-        gv: false, section: "월드 시네마", subtitles: "한글자막", page: "130",
-        synopsis: "제인 오스틴 명작의 새로운 감각적 해석."
-      },
-      {
-        id: "s_471", code: "471", titleKo: "갑자기 병세가 악화되다", titleEn: "All of a Sudden",
-        director: "하마구치 류스케", country: "프랑스/일본", year: "2026", runtime: 196, rating: "15세",
-        date: "10/12(월)", timeStart: "09:40", timeEnd: "12:56", theater: "중극장",
-        gv: false, section: "아이콘", subtitles: "한글자막", page: "064",
-        synopsis: "하마구치 류스케 감독의 칸 여우주연상 수상작 상영."
-      },
-      {
-        id: "s_472", code: "472", titleKo: "노트르 살뤼", titleEn: "A Man of His Time",
-        director: "에마뉘엘 마르", country: "프랑스/벨기에", year: "2026", runtime: 158, rating: "15세",
-        date: "10/12(월)", timeStart: "14:00", timeEnd: "16:38", theater: "중극장",
-        gv: true, section: "플래시 포워드 (칸 각본상)", subtitles: "한글+영어자막", page: "137",
-        synopsis: "비시 프랑스 관료로서 평범한 얼굴로 유대인 박해에 공모했던 남자의 행적을 추적한 극사실주의 수작."
-      },
-      {
-        id: "s_488", code: "488", titleKo: "칠수와 만수", titleEn: "Chil-su and Man-su",
-        director: "박광수", country: "한국", year: "1988", runtime: 108, rating: "15세",
-        date: "10/12(월)", timeStart: "19:00", timeEnd: "20:48", theater: "CGV 센텀시티 1관",
-        gv: true, section: "특별기획 (안성기 추모)", subtitles: "한글+영어자막", page: "173",
-        synopsis: "박중훈, 안성기 주연. 극장 간판을 그리며 세상의 차별과 벽에 절규하던 두 청춘의 기념비적 명작."
-      },
-      {
-        id: "s_494", code: "494", titleKo: "도라", titleEn: "Dora",
-        director: "정주리", country: "한국/프랑스", year: "2026", runtime: 138, rating: "15세",
-        date: "10/12(월)", timeStart: "13:00", timeEnd: "15:18", theater: "CGV 센텀시티 3관",
-        gv: false, section: "갈라 프레젠테이션 (배리어프리)", subtitles: "화면해설/사운드해설", page: "058",
-        synopsis: "배리어프리 상영 (시·청각 장애인 지원). 김도연, 안도 사쿠라 주연."
-      },
+      { id: "s_466", code: "466", titleKo: "내일은 이름이 있다", titleEn: "All About Corinne", director: "마르크 피투시", country: "프랑스/벨기에", year: "2026", runtime: 118, rating: "전체", date: "10/12(월)", timeStart: "20:00", timeEnd: "21:58", theater: "영화의전당 루프씨어터", gv: true, section: "오픈 시네마", subtitles: "한글+영어자막", page: "058", synopsis: "이자벨 위페르가 단역 엑스트라를 연기한 희비극." },
+      { id: "s_467", code: "467", titleKo: "미친 노인의 일기", titleEn: "Diary of a Mad Old Man", director: "웨인 왕", country: "미국", year: "2026", runtime: 120, rating: "15세", date: "10/12(월)", timeStart: "10:00", timeEnd: "12:00", theater: "하늘연극장", gv: false, section: "아시아영화의 창", subtitles: "한글+영어자막", page: "099", synopsis: "노년의 관능적 집착과 욕망." },
+      { id: "s_470", code: "470", titleKo: "이성과 감성", titleEn: "Sense and Sensibility", director: "조지아 오클리", country: "영국/미국", year: "2026", runtime: 131, rating: "12세", date: "10/12(월)", timeStart: "19:00", timeEnd: "21:11", theater: "하늘연극장", gv: false, section: "월드 시네마", subtitles: "한글자막", page: "130", synopsis: "제인 오스틴 명작의 새로운 감각적 해석." },
+      { id: "s_471", code: "471", titleKo: "갑자기 병세가 악화되다", titleEn: "All of a Sudden", director: "하마구치 류스케", country: "프랑스/일본", year: "2026", runtime: 196, rating: "15세", date: "10/12(월)", timeStart: "09:40", timeEnd: "12:56", theater: "중극장", gv: false, section: "아이콘", subtitles: "한글자막", page: "064", synopsis: "하마구치 류스케 감독의 칸 여우주연상 수상작." },
+      { id: "s_472", code: "472", titleKo: "노트르 살뤼", titleEn: "A Man of His Time", director: "에마뉘엘 마르", country: "프랑스/벨기에", year: "2026", runtime: 158, rating: "15세", date: "10/12(월)", timeStart: "14:00", timeEnd: "16:38", theater: "중극장", gv: true, section: "플래시 포워드", subtitles: "한글+영어자막", page: "137", synopsis: "비시 정부 관료의 유대인 박해 공모 추적 극사실주의 수작." },
+      { id: "s_488", code: "488", titleKo: "칠수와 만수", titleEn: "Chil-su and Man-su", director: "박광수", country: "한국", year: "1988", runtime: 108, rating: "15세", date: "10/12(월)", timeStart: "19:00", timeEnd: "20:48", theater: "CGV 센텀시티 1관", gv: true, section: "특별기획 (안성기 추모)", subtitles: "한글+영어자막", page: "173", synopsis: "박중훈, 안성기 주연의 기념비적 명작." },
+      { id: "s_494", code: "494", titleKo: "도라", titleEn: "Dora", director: "정주리", country: "한국/프랑스", year: "2026", runtime: 138, rating: "15세", date: "10/12(월)", timeStart: "13:00", timeEnd: "15:18", theater: "CGV 센텀시티 3관", gv: false, section: "갈라 프레젠테이션 (배리어프리)", subtitles: "화면해설", page: "058", synopsis: "배리어프리 상영 (시·청각 장애인 지원)." },
 
       // 10.13(화)
-      {
-        id: "s_554", code: "554", titleKo: "세대유감", titleEn: "The Sorry Generation",
-        director: "김성윤", country: "한국", year: "2026", runtime: 102, rating: "12세",
-        date: "10/13(화)", timeStart: "20:00", timeEnd: "21:42", theater: "영화의전당 루프씨어터",
-        gv: true, section: "오픈 시네마 / 한국영화의 오늘", subtitles: "한글+영어자막", page: "113",
-        synopsis: "정재영, 이이경, 김주령 주연. 종갓집 46대 장손과 고시 7수생 47대 손자의 대환장 굿판 코미디."
-      },
-      {
-        id: "s_558", code: "558", titleKo: "메모리즈", titleEn: "MEMORIES",
-        director: "오토모 가쓰히로", country: "일본", year: "1995", runtime: 113, rating: "12세",
-        date: "10/13(화)", timeStart: "19:00", timeEnd: "20:53", theater: "하늘연극장",
-        gv: false, section: "특별기획 (애니메이션)", subtitles: "한글자막", page: "179",
-        synopsis: "1996년 1회 BIFF의 열광을 30년 만에 다시 하늘연극장에서 재현하는 30주년 리마스터링 상영."
-      },
-      {
-        id: "s_562", code: "562", titleKo: "피오르", titleEn: "Fjord",
-        director: "크리스티안 문쥬", country: "루마니아/프랑스", year: "2026", runtime: 146, rating: "15세",
-        date: "10/13(화)", timeStart: "19:30", timeEnd: "21:56", theater: "중극장",
-        gv: false, section: "아이콘", subtitles: "한글자막", page: "069",
-        synopsis: "황금종려상 수상 크리스티안 문쥬 감독의 역작."
-      },
-      {
-        id: "s_570", code: "570", titleKo: "비트윈 투 러버스", titleEn: "Between Two Lovers",
-        director: "히로세 나나코", country: "일본", year: "2026", runtime: 128, rating: "15세",
-        date: "10/13(화)", timeStart: "19:20", timeEnd: "21:28", theater: "시네마테크",
-        gv: true, section: "경쟁 (뉴 커런츠)", subtitles: "한글+영어자막", page: "046",
-        synopsis: "비전통적 가족 형태와 세 사람의 동거를 담담히 응시하는 현대적 멜로."
-      },
-      {
-        id: "s_571", code: "571", titleKo: "호프", titleEn: "HOPE",
-        director: "나홍진", country: "한국", year: "2026", runtime: 156, rating: "15세",
-        date: "10/13(화)", timeStart: "10:00", timeEnd: "12:36", theater: "CGV 센텀시티 IMAX",
-        gv: false, section: "한국영화의 오늘 - 파노라마", subtitles: "한글자막", page: "115",
-        synopsis: "나홍진 감독의 극한 추격 스릴러 IMAX 상영."
-      },
+      { id: "s_554", code: "554", titleKo: "세대유감", titleEn: "The Sorry Generation", director: "김성윤", country: "한국", year: "2026", runtime: 102, rating: "12세", date: "10/13(화)", timeStart: "20:00", timeEnd: "21:42", theater: "영화의전당 루프씨어터", gv: true, section: "오픈 시네마", subtitles: "한글+영어자막", page: "113", synopsis: "정재영, 이이경 주연의 대환장 굿판 코미디." },
+      { id: "s_558", code: "558", titleKo: "메모리즈", titleEn: "MEMORIES", director: "오토모 가쓰히로", country: "일본", year: "1995", runtime: 113, rating: "12세", date: "10/13(화)", timeStart: "19:00", timeEnd: "20:53", theater: "하늘연극장", gv: false, section: "특별기획", subtitles: "한글자막", page: "179", synopsis: "제1회 BIFF 열광을 30년 만에 재현하는 리마스터링." },
+      { id: "s_562", code: "562", titleKo: "피오르", titleEn: "Fjord", director: "크리스티안 문쥬", country: "루마니아/프랑스", year: "2026", runtime: 146, rating: "15세", date: "10/13(화)", timeStart: "19:30", timeEnd: "21:56", theater: "중극장", gv: false, section: "아이콘", subtitles: "한글자막", page: "069", synopsis: "황금종려상 수상 크리스티안 문쥬 역작." },
+      { id: "s_570", code: "570", titleKo: "비트윈 투 러버스", titleEn: "Between Two Lovers", director: "히로세 나나코", country: "일본", year: "2026", runtime: 128, rating: "15세", date: "10/13(화)", timeStart: "19:20", timeEnd: "21:28", theater: "시네마테크", gv: true, section: "경쟁 (뉴 커런츠)", subtitles: "한글+영어자막", page: "046", synopsis: "세 사람의 동거를 다룬 현대적 멜로." },
+      { id: "s_571", code: "571", titleKo: "호프", titleEn: "HOPE", director: "나홍진", country: "한국", year: "2026", runtime: 156, rating: "15세", date: "10/13(화)", timeStart: "10:00", timeEnd: "12:36", theater: "CGV 센텀시티 IMAX", gv: false, section: "한국영화의 오늘 - 파노라마", subtitles: "한글자막", page: "115", synopsis: "나홍진 감독의 극한 추격 스릴러 IMAX 상영." },
 
       // 10.14(수)
-      {
-        id: "s_644", code: "644", titleKo: "그저 환상일 뿐", titleEn: "Just an Illusion",
-        director: "에리크 톨레다노, 올리비에 나카슈", country: "프랑스", year: "2026", runtime: 118, rating: "전체",
-        date: "10/14(수)", timeStart: "20:00", timeEnd: "21:58", theater: "영화의전당 루프씨어터",
-        gv: true, section: "오픈 시네마", subtitles: "한글+영어자막", page: "162",
-        synopsis: "<언터처블 1%의 우정> 감독 콤비가 1985년 파리 교외를 배경으로 그린 웃음과 눈물의 사랑스러운 시간여행."
-      },
-      {
-        id: "s_651", code: "651", titleKo: "도라", titleEn: "Dora",
-        director: "정주리", country: "한국/프랑스", year: "2026", runtime: 138, rating: "15세",
-        date: "10/14(수)", timeStart: "18:30", timeEnd: "20:48", theater: "중극장",
-        gv: true, section: "갈라 프레젠테이션", subtitles: "한글자막", page: "058",
-        synopsis: "정주리 감독, 김도연, 안도 사쿠라 주연의 문제작."
-      },
-      {
-        id: "s_654", code: "654", titleKo: "처음 만난 외로움", titleEn: "The First Taste of Loneliness",
-        director: "구유", country: "중국", year: "2026", runtime: 135, rating: "12세",
-        date: "10/14(수)", timeStart: "10:20", timeEnd: "12:35", theater: "시네마테크",
-        gv: false, section: "경쟁 (뉴 커런츠)", subtitles: "한글자막", page: "048",
-        synopsis: "저우쉰 주연의 유려한 영상미와 치유의 가족 드라마."
-      },
-      {
-        id: "s_688", code: "688", titleKo: "이성과 감성", titleEn: "Sense and Sensibility",
-        director: "조지아 오클리", country: "영국/미국", year: "2026", runtime: 131, rating: "12세",
-        date: "10/14(수)", timeStart: "09:20", timeEnd: "11:31", theater: "롯데시네마 3관",
-        gv: false, section: "월드 시네마", subtitles: "한글자막", page: "130",
-        synopsis: "조지아 오클리의 세련된 제인 오스틴 각색."
-      },
+      { id: "s_644", code: "644", titleKo: "그저 환상일 뿐", titleEn: "Just an Illusion", director: "에리크 톨레다노", country: "프랑스", year: "2026", runtime: 118, rating: "전체", date: "10/14(수)", timeStart: "20:00", timeEnd: "21:58", theater: "영화의전당 루프씨어터", gv: true, section: "오픈 시네마", subtitles: "한글+영어자막", page: "162", synopsis: "<언터처블> 감독 콤비가 그린 사랑스러운 시간여행." },
+      { id: "s_651", code: "651", titleKo: "도라", titleEn: "Dora", director: "정주리", country: "한국/프랑스", year: "2026", runtime: 138, rating: "15세", date: "10/14(수)", timeStart: "18:30", timeEnd: "20:48", theater: "중극장", gv: true, section: "갈라 프레젠테이션", subtitles: "한글자막", page: "058", synopsis: "정주리 감독, 김도연, 안도 사쿠라 주연." },
+      { id: "s_654", code: "654", titleKo: "처음 만난 외로움", titleEn: "The First Taste of Loneliness", director: "구유", country: "중국", year: "2026", runtime: 135, rating: "12세", date: "10/14(수)", timeStart: "10:20", timeEnd: "12:35", theater: "시네마테크", gv: false, section: "경쟁 (뉴 커런츠)", subtitles: "한글자막", page: "048", synopsis: "저우쉰 주연의 유려한 영상미." },
+      { id: "s_688", code: "688", titleKo: "이성과 감성", titleEn: "Sense and Sensibility", director: "조지아 오클리", country: "영국/미국", year: "2026", runtime: 131, rating: "12세", date: "10/14(수)", timeStart: "09:20", timeEnd: "11:31", theater: "롯데시네마 3관", gv: false, section: "월드 시네마", subtitles: "한글자막", page: "130", synopsis: "조지아 오클리의 세련된 제인 오스틴 각색." },
 
       // 10.15(목)
-      {
-        id: "s_002", code: "002", titleKo: "부산 어워드 수상작 (폐막작)", titleEn: "Closing Ceremony + Winner of Busan Award",
-        director: "BIFF 2026 수상 감독", country: "아시아", year: "2026", runtime: 240, rating: "15세",
-        date: "10/15(목)", timeStart: "18:00", timeEnd: "22:00", theater: "영화의전당 루프씨어터",
-        gv: true, section: "폐막식/폐막작", subtitles: "한글+영어자막", page: "043",
-        synopsis: "제31회 부산국제영화제 폐막식 및 올해의 최고 영예 '부산 어워드' 수상작 상영."
-      },
-      {
-        id: "s_731", code: "731", titleKo: "플래시 포워드 관객상 수상작", titleEn: "Winner of Flash Forward Audience Award",
-        director: "관객 투표 1위", country: "비아시아권", year: "2026", runtime: 160, rating: "15세",
-        date: "10/15(목)", timeStart: "10:00", timeEnd: "12:40", theater: "중극장",
-        gv: false, section: "수상작 특별상영", subtitles: "한글+영어자막", page: "031",
-        synopsis: "2026 플래시 포워드 부문 관객 투표 최고 득표작 앙코르 상영."
-      }
+      { id: "s_002", code: "002", titleKo: "부산 어워드 수상작 (폐막작)", titleEn: "Closing Ceremony + Winner", director: "BIFF 수상 감독", country: "아시아", year: "2026", runtime: 240, rating: "15세", date: "10/15(목)", timeStart: "18:00", timeEnd: "22:00", theater: "영화의전당 루프씨어터", gv: true, section: "폐막식/폐막작", subtitles: "한글+영어자막", page: "043", synopsis: "제31회 부산국제영화제 폐막식 및 부산 어워드 수상작 상영." },
+      { id: "s_731", code: "731", titleKo: "플래시 포워드 관객상 수상작", titleEn: "Winner of Audience Award", director: "관객 투표 1위", country: "비아시아권", year: "2026", runtime: 160, rating: "15세", date: "10/15(목)", timeStart: "10:00", timeEnd: "12:40", theater: "중극장", gv: false, section: "수상작 특별상영", subtitles: "한글+영어자막", page: "031", synopsis: "플래시 포워드 부문 관객 투표 최고 득표작 앙코르 상영." }
     ];
 
-    // Core App State
+    // Core App State (All plans start completely empty)
     const appState = {
-      currentPlanId: 1, // 1, 2, or 3
+      currentPlanId: 1,
       plans: {
         1: [],
         2: [],
@@ -1654,18 +579,16 @@
         venue: "ALL",
         gvOnly: false
       },
-      viewMode: "timeline", // 'timeline' is default
-      mobileTab: "schedule" // 'schedule' or 'search' for mobile viewport
+      viewMode: "timeline", // Timeline is default
+      mobileTab: "schedule"
     };
 
-    // Helper: Convert time string "HH:MM" to minutes
     function timeToMinutes(tStr) {
       if (!tStr) return 0;
       const parts = tStr.trim().split(":");
       return parseInt(parts[0], 10) * 60 + parseInt(parts[1], 10);
     }
 
-    // Helper: Determine conflict
     function isConflicting(s1, s2) {
       if (s1.id === s2.id) return false;
       if (s1.date !== s2.date) return false;
@@ -1676,7 +599,6 @@
       return (start1 < end2 && end1 > start2);
     }
 
-    // Calculate map of conflicts
     function findPlanConflicts(screenings) {
       const conflictMap = new Map();
       for (let i = 0; i < screenings.length; i++) {
@@ -1704,12 +626,12 @@
           secSearch.classList.remove('hidden');
           secSchedule.classList.add('hidden');
           tabSearchBtn.className = "flex-1 py-2 rounded-xl text-xs font-black transition flex items-center justify-center space-x-1.5 bg-biff-red text-white shadow-glow-red";
-          tabScheduleBtn.className = "flex-1 py-2 rounded-xl text-xs font-bold transition flex items-center justify-center space-x-1.5 bg-zinc-900 text-zinc-400 border border-zinc-800";
+          tabScheduleBtn.className = "flex-1 py-2 rounded-xl text-xs font-bold transition flex items-center justify-center space-x-1.5 bg-slate-100 text-slate-600 border border-slate-200";
         } else {
           secSearch.classList.add('hidden');
           secSchedule.classList.remove('hidden');
           tabScheduleBtn.className = "flex-1 py-2 rounded-xl text-xs font-black transition flex items-center justify-center space-x-1.5 bg-biff-red text-white shadow-glow-red";
-          tabSearchBtn.className = "flex-1 py-2 rounded-xl text-xs font-bold transition flex items-center justify-center space-x-1.5 bg-zinc-900 text-zinc-400 border border-zinc-800";
+          tabSearchBtn.className = "flex-1 py-2 rounded-xl text-xs font-bold transition flex items-center justify-center space-x-1.5 bg-slate-100 text-slate-600 border border-slate-200";
         }
       } else {
         secSearch.classList.remove('hidden');
@@ -1728,16 +650,14 @@
 
     function switchPlan(planId) {
       appState.currentPlanId = planId;
-      
       [1, 2, 3].forEach(id => {
         const btn = document.getElementById(`plan-btn-${id}`);
         if (id === planId) {
-          btn.className = "px-2.5 sm:px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-black transition-all flex items-center space-x-1 bg-biff-red text-white shadow-glow-red";
+          btn.className = "px-2 sm:px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-black transition-all flex items-center space-x-1 bg-biff-red text-white shadow-glow-red";
         } else {
-          btn.className = "px-2.5 sm:px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold transition-all flex items-center space-x-1 text-slate-600 hover:text-slate-900";
+          btn.className = "px-2 sm:px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold transition-all flex items-center space-x-1 text-slate-600 hover:text-slate-900";
         }
       });
-
       document.getElementById('current-plan-title-badge').textContent = `${planId}안 시간표`;
       updateBadges();
       renderAll();
@@ -1757,10 +677,7 @@
           badge.className = "text-[10px] px-1.5 py-0.2 rounded-full bg-slate-200 text-slate-600 font-bold";
         }
       });
-
-      // Update mobile badge count
-      const curCount = appState.plans[appState.currentPlanId].length;
-      document.getElementById('mobile-schedule-count').textContent = curCount;
+      document.getElementById('mobile-schedule-count').textContent = appState.plans[appState.currentPlanId].length;
     }
 
     function toggleMovieInCurrentPlan(movie) {
@@ -1780,7 +697,6 @@
           showToast(`[${movie.titleKo}] ${appState.currentPlanId}안에 추가되었습니다.`, 'success');
         }
       }
-
       updateBadges();
       renderAll();
     }
@@ -1799,8 +715,7 @@
 
     function toggleClearMenu(event) {
       if (event) event.stopPropagation();
-      const menu = document.getElementById('clear-plan-menu');
-      menu.classList.toggle('hidden');
+      document.getElementById('clear-plan-menu').classList.toggle('hidden');
     }
 
     function closeClearMenu() {
@@ -1809,11 +724,9 @@
     }
 
     let pendingClearTarget = null;
-
     function promptClearPlan(target) {
       closeClearMenu();
       pendingClearTarget = target;
-      
       const modal = document.getElementById('confirm-modal');
       const text = document.getElementById('confirm-modal-text');
       const actionBtn = document.getElementById('confirm-modal-action-btn');
@@ -1824,7 +737,7 @@
           showToast("모든 시간표가 이미 비어 있습니다.", "info");
           return;
         }
-        text.textContent = "1안, 2안, 3안의 모든 시간표 일정을 초기화하시겠습니까? 삭제된 일정은 복구할 수 없습니다.";
+        text.textContent = "1안, 2안, 3안의 모든 시간표 일정을 초기화하시겠습니까?";
       } else if (target === 'current') {
         const pId = appState.currentPlanId;
         if (appState.plans[pId].length === 0) {
@@ -1840,7 +753,6 @@
         }
         text.textContent = `[${pId}안]의 모든 상영 일정(${appState.plans[pId].length}편)을 비우시겠습니까?`;
       }
-
       actionBtn.onclick = executeClearPlan;
       modal.classList.remove('hidden');
     }
@@ -1852,22 +764,18 @@
 
     function executeClearPlan() {
       if (!pendingClearTarget) return;
-
       if (pendingClearTarget === 'all') {
         appState.plans[1] = [];
         appState.plans[2] = [];
         appState.plans[3] = [];
-        showToast("1안, 2안, 3안 시간표가 모두 초기화되었습니다.", "info");
+        showToast("모든 시간표가 초기화되었습니다.", "info");
       } else if (pendingClearTarget === 'current') {
-        const pId = appState.currentPlanId;
-        appState.plans[pId] = [];
-        showToast(`${pId}안 시간표가 모두 비워졌습니다.`, "info");
+        appState.plans[appState.currentPlanId] = [];
+        showToast(`${appState.currentPlanId}안 시간표가 비워졌습니다.`, "info");
       } else {
-        const pId = pendingClearTarget;
-        appState.plans[pId] = [];
-        showToast(`${pId}안 시간표가 비워졌습니다.`, "info");
+        appState.plans[pendingClearTarget] = [];
+        showToast(`${pendingClearTarget}안 시간표가 비워졌습니다.`, "info");
       }
-
       closeConfirmModal();
       updateBadges();
       renderAll();
@@ -1878,8 +786,7 @@
         showToast("동일한 플랜 번호로는 복사할 수 없습니다.", "warning");
         return;
       }
-      const sourceList = appState.plans[appState.currentPlanId];
-      appState.plans[targetPlanId] = [...sourceList];
+      appState.plans[targetPlanId] = [...appState.plans[appState.currentPlanId]];
       updateBadges();
       closePlanCopyMenu();
       showToast(`${appState.currentPlanId}안 일정이 ${targetPlanId}안으로 복사되었습니다!`, 'success');
@@ -1887,8 +794,7 @@
 
     function togglePlanCopyMenu(event) {
       if (event) event.stopPropagation();
-      const menu = document.getElementById('plan-copy-menu');
-      menu.classList.toggle('hidden');
+      document.getElementById('plan-copy-menu').classList.toggle('hidden');
     }
     function closePlanCopyMenu() {
       const menu = document.getElementById('plan-copy-menu');
@@ -1901,28 +807,21 @@
         showToast("시간표에 담긴 영화가 없습니다.", "warning");
         return;
       }
-
       const sorted = [...plan].sort((a, b) => {
         if (a.date !== b.date) return a.date.localeCompare(b.date);
         return a.timeStart.localeCompare(b.timeStart);
       });
-
-      let text = `[2026 부산국제영화제 - ${appState.currentPlanId}안 시간표]\n`;
-      text += `총 관람작: ${sorted.length}편\n====================\n`;
-      
+      let text = `[2026 부산국제영화제 - ${appState.currentPlanId}안 시간표]\n총 관람작: ${sorted.length}편\n====================\n`;
       sorted.forEach((item, idx) => {
-        text += `${idx + 1}. [${item.date} ${item.timeStart}~${item.timeEnd}] [#${item.code}]\n`;
-        text += `   제목: ${item.titleKo} (${item.titleEn})\n`;
-        text += `   장소: ${item.theater} | ${item.runtime}분 ${item.gv ? '| GV' : ''}\n\n`;
+        text += `${idx + 1}. [${item.date} ${item.timeStart}~${item.timeEnd}] [#${item.code}]\n   제목: ${item.titleKo} (${item.titleEn})\n   장소: ${item.theater} | ${item.runtime}분 ${item.gv ? '| GV' : ''}\n\n`;
       });
-
       const tempArea = document.createElement("textarea");
       tempArea.value = text;
       document.body.appendChild(tempArea);
       tempArea.select();
       try {
         document.execCommand('copy');
-        showToast(`${appState.currentPlanId}안 시간표가 복사되었습니다!`, 'success');
+        showToast(`${appState.currentPlanId}안 시간표가 텍스트로 복사되었습니다!`, 'success');
       } catch (err) {
         showToast("클립보드 복사에 실패했습니다.", 'error');
       }
@@ -1936,11 +835,11 @@
     async function shareKakaoScheduleImage() {
       const plan = appState.plans[appState.currentPlanId];
       if (!plan || plan.length === 0) {
-        showToast("공유할 시간표에 담긴 영화가 없습니다.", "warning");
+        showToast("복사할 시간표에 담긴 영화가 없습니다.", "warning");
         return;
       }
 
-      showToast("선명한 BIFF 라이트 타임테이블 이미지를 생성하고 있습니다...", "info");
+      showToast("타임테이블 이미지를 생성하고 있습니다...", "info");
 
       const sorted = [...plan].sort((a, b) => {
         if (a.date !== b.date) return a.date.localeCompare(b.date);
@@ -1949,7 +848,6 @@
 
       const conflictMap = findPlanConflicts(sorted);
       const conflictCount = conflictMap.size / 2;
-
       const datesOrder = ["10/06(화)", "10/07(수)", "10/08(목)", "10/09(금)", "10/10(토)", "10/11(일)", "10/12(월)", "10/13(화)", "10/14(수)", "10/15(목)"];
       const grouped = {};
       datesOrder.forEach(d => grouped[d] = []);
@@ -1959,9 +857,8 @@
       });
       const activeDates = datesOrder.filter(d => grouped[d].length > 0);
 
-      let minStartMin = 8 * 60; // 08:00
-      let maxEndMin = 24 * 60; // 24:00
-
+      let minStartMin = 8 * 60;
+      let maxEndMin = 26 * 60;
       sorted.forEach(m => {
         const s = timeToMinutes(m.timeStart);
         let e = timeToMinutes(m.timeEnd);
@@ -1974,9 +871,8 @@
       const endHour = Math.ceil(maxEndMin / 60);
       const totalHours = endHour - startHour;
 
-      // Rendering Dimensions: Crisp Cinema Quality
       const scale = 2;
-      const pxPerHour = 78;
+      const pxPerHour = 76; // Tall and comfortable proportion matching web view
       const pxPerMin = pxPerHour / 60;
       const timeColWidth = 86;
       const dateColWidth = Math.max(220, Math.floor(940 / Math.max(1, activeDates.length)));
@@ -1993,15 +889,13 @@
       const ctx = canvas.getContext("2d");
       ctx.scale(scale, scale);
 
-      // Clean Pure White Background
       ctx.fillStyle = "#FFFFFF";
       ctx.fillRect(0, 0, baseWidth, baseHeight);
 
-      // Top Red Accent Line
       ctx.fillStyle = "#E50914";
       ctx.fillRect(0, 0, baseWidth, 5);
 
-      // Header Seal Logo: Neutral Slate Badge (No red background!)
+      // Logo Seal Icon without Red Background
       ctx.fillStyle = "#F1F5F9";
       ctx.strokeStyle = "#CBD5E1";
       ctx.lineWidth = 1.2;
@@ -2015,7 +909,6 @@
       ctx.textBaseline = "middle";
       ctx.fillText("🦭", 48, 46);
 
-      // Header Brand Text in Crisp Dark Slate
       ctx.textAlign = "left";
       ctx.textBaseline = "alphabetic";
       ctx.font = "900 24px sans-serif";
@@ -2026,7 +919,6 @@
       ctx.fillStyle = "#64748B";
       ctx.fillText("제31회 BIFF 공식 상영시간표 | 10.06 - 10.15", 82, 62);
 
-      // Plan Pill Badge
       ctx.fillStyle = "#E50914";
       ctx.beginPath();
       ctx.roundRect(24, 86, 78, 28, 8);
@@ -2048,30 +940,25 @@
       ctx.fillStyle = "#334155";
       ctx.fillText(`총 ${sorted.length}편 관람  |  총 러닝타임: ${hours}시간 ${mins}분  |  중복: ${conflictCount > 0 ? conflictCount + '건 겹침(경고)' : '0건 (안전)'}`, 112, 100);
 
-      // Grid Coordinates
       const gridStartY = headerHeight;
       const gridStartX = 24;
       const gridWidth = baseWidth - 48;
 
-      // Date Header Background Row
       ctx.fillStyle = "#F8FAFC";
       ctx.beginPath();
       ctx.roundRect(gridStartX, gridStartY, gridWidth, dateHeaderHeight, [10, 10, 0, 0]);
       ctx.fill();
 
-      // Outer Grid Header Border
       ctx.strokeStyle = "#E2E8F0";
       ctx.lineWidth = 1;
       ctx.strokeRect(gridStartX, gridStartY, gridWidth, dateHeaderHeight);
 
-      // Time Column Header
       ctx.fillStyle = "#64748B";
       ctx.font = "bold 12px sans-serif";
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
       ctx.fillText("시간 / 일자", gridStartX + timeColWidth / 2, gridStartY + dateHeaderHeight / 2);
 
-      // Date Columns Header
       activeDates.forEach((dateStr, idx) => {
         const colX = gridStartX + timeColWidth + (idx * dateColWidth);
         const dayMovies = grouped[dateStr] || [];
@@ -2090,7 +977,6 @@
         ctx.fillText(dateStr + (hasConflictInDay ? " ⚠️" : ""), colX + dateColWidth / 2, gridStartY + dateHeaderHeight / 2);
       });
 
-      // Hour Grid Lines
       const bodyTop = gridStartY + dateHeaderHeight;
       for (let i = 0; i <= totalHours; i++) {
         const currentH = (startHour + i) % 24;
@@ -2113,11 +999,9 @@
         ctx.stroke();
       }
 
-      // Outer Grid Body Border
       ctx.strokeStyle = "#E2E8F0";
       ctx.strokeRect(gridStartX, bodyTop, gridWidth, gridBodyHeight);
 
-      // Render Movie Cards on Canvas (Light Mode Styled)
       activeDates.forEach((dateStr, colIdx) => {
         const colX = gridStartX + timeColWidth + (colIdx * dateColWidth);
         const dayItems = (grouped[dateStr] || []).sort((a, b) => a.timeStart.localeCompare(b.timeStart));
@@ -2144,7 +1028,6 @@
             }
           }
 
-          // Card Background & Border in Light Mode
           ctx.fillStyle = hasConflict ? "#FEF2F2" : "#FFFFFF";
           ctx.strokeStyle = hasConflict ? "#E50914" : "#CBD5E1";
           ctx.lineWidth = hasConflict ? 2 : 1.2;
@@ -2153,7 +1036,6 @@
           ctx.fill();
           ctx.stroke();
 
-          // Time Range & Code
           ctx.textAlign = "left";
           ctx.textBaseline = "alphabetic";
           ctx.fillStyle = hasConflict ? "#991B1B" : "#0F172A";
@@ -2176,7 +1058,6 @@
             ctx.fillText("GV", blockX + blockW - 15, topY + 13);
           }
 
-          // Title
           ctx.textAlign = "left";
           ctx.textBaseline = "alphabetic";
           ctx.fillStyle = "#0F172A";
@@ -2191,7 +1072,6 @@
           }
           ctx.fillText(titleText, blockX + 8, topY + 34);
 
-          // Venue & Runtime
           if (blockH >= 54) {
             ctx.fillStyle = "#64748B";
             ctx.font = "11px sans-serif";
@@ -2201,28 +1081,24 @@
         });
       });
 
-      // Footer
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
       ctx.font = "11px sans-serif";
       ctx.fillStyle = "#64748B";
-      ctx.fillText("BIFF 2026 스케줄러 - 카카오톡 채팅창에 붙여넣기(Ctrl+V)하여 공유하세요.", baseWidth / 2, baseHeight - 22);
+      ctx.fillText("BIFF 2026 스케줄러 - 타임테이블 뷰 이미지", baseWidth / 2, baseHeight - 22);
 
-      // Clipboard Only
       try {
         const blobPromise = new Promise((resolve) => canvas.toBlob(resolve, "image/png"));
-
         if (navigator.clipboard && window.ClipboardItem) {
           try {
             const item = new ClipboardItem({ "image/png": blobPromise });
             await navigator.clipboard.write([item]);
-            showToast("선명한 타임테이블 이미지가 클립보드에 복사되었습니다! 카톡에 붙여넣기하세요.", "success");
+            showToast("타임테이블 이미지가 클립보드에 복사되었습니다! 카톡에 붙여넣기하세요.", "success");
             return;
           } catch (clipErr) {
             console.warn("Direct clipboard.write fallback:", clipErr);
           }
         }
-
         const blob = await blobPromise;
         if (blob) {
           const previewImg = document.getElementById('clipboard-preview-img');
@@ -2278,11 +1154,9 @@
       appState.filter.gvOnly = !appState.filter.gvOnly;
       const btn = document.getElementById('filter-gv-btn');
       if (appState.filter.gvOnly) {
-        btn.classList.add('bg-emerald-950', 'text-emerald-300', 'border-emerald-500');
-        btn.classList.remove('bg-black', 'text-zinc-400');
+        btn.className = "text-xs px-2.5 py-2 rounded-xl border border-emerald-300 bg-emerald-50 text-emerald-800 font-bold transition flex items-center space-x-1.5";
       } else {
-        btn.classList.remove('bg-emerald-950', 'text-emerald-300', 'border-emerald-500');
-        btn.classList.add('bg-black', 'text-zinc-400');
+        btn.className = "text-xs px-2.5 py-2 rounded-xl border border-slate-200 bg-slate-50 text-slate-600 hover:text-slate-900 transition flex items-center space-x-1.5";
       }
       renderMovieList();
     }
@@ -2336,7 +1210,7 @@
         container.innerHTML = `
           <div class="py-12 text-center text-slate-400 text-xs">
             <svg class="w-10 h-10 mx-auto text-slate-300 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-            일치하는 상영작이 없습니다. 다른 검색어나 날짜를 선택해 보세요.
+            일치하는 상영작이 없습니다.
           </div>
         `;
         return;
@@ -2386,7 +1260,6 @@
                 ` : ''}
               </div>
 
-              <!-- Quick Action Button -->
               <button 
                 onclick="toggleMovieInCurrentPlan(SCREENINGS_DATA.find(x => x.id === '${item.id}'))"
                 class="shrink-0 mt-0.5 px-3 py-2 rounded-xl font-black text-xs transition flex items-center space-x-1 active:scale-95 ${
@@ -2445,7 +1318,6 @@
         alertBox.classList.add('hidden');
       }
 
-      // Empty State
       if (currentPlan.length === 0) {
         viewport.innerHTML = `
           <div class="p-8 sm:p-12 text-center bg-white rounded-2xl border border-dashed border-slate-300 space-y-3 shadow-sm">
@@ -2453,12 +1325,7 @@
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
             </div>
             <h3 class="font-black text-slate-900 text-sm sm:text-base">현재 ${appState.currentPlanId}안에 담긴 일정이 없습니다.</h3>
-            <p class="text-xs text-slate-500 max-w-sm mx-auto">상영작 목록에서 보고 싶은 영화의 [+ 추가] 버튼을 눌러 나만의 시간표를 완성해 보세요. 시간이 겹치면 자동으로 감지됩니다.</p>
-            <div class="pt-2 lg:hidden">
-              <button onclick="setMobileView('search')" class="px-4 py-2 bg-biff-red text-white text-xs font-black rounded-xl shadow-glow-red">
-                상영작 둘러보기
-              </button>
-            </div>
+            <p class="text-xs text-slate-500 max-w-sm mx-auto">상영작 목록에서 영화의 [+ 추가] 버튼을 눌러 나만의 시간표를 완성해 보세요.</p>
           </div>
         `;
         return;
@@ -2475,7 +1342,6 @@
       const activeDates = datesOrder.filter(d => grouped[d].length > 0);
 
       if (appState.viewMode === 'card') {
-        // CARD VIEW in Light Mode
         viewport.innerHTML = activeDates.map(dateStr => {
           const items = grouped[dateStr].sort((a, b) => a.timeStart.localeCompare(b.timeStart));
           return `
@@ -2511,10 +1377,7 @@
                           <p class="text-xs text-slate-500 line-clamp-1">${m.titleEn}</p>
                           
                           <div class="text-xs text-slate-500 mt-2 flex flex-wrap items-center gap-x-3 gap-y-1">
-                            <span class="text-slate-800 flex items-center gap-1">
-                              <svg class="w-3.5 h-3.5 text-biff-red" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
-                              ${m.theater}
-                            </span>
+                            <span class="text-slate-800 flex items-center gap-1">${m.theater}</span>
                             <span class="text-slate-300">•</span>
                             <span>${m.section}</span>
                           </div>
@@ -2527,7 +1390,7 @@
                           ` : ''}
                         </div>
 
-                        <button onclick="removeMovieFromPlan('${m.id}')" title="이 일정 제거" class="text-slate-400 hover:text-biff-red p-2 rounded-lg hover:bg-slate-100 transition">
+                        <button onclick="removeMovieFromPlan('${m.id}')" title="일정 제거" class="text-slate-400 hover:text-biff-red p-2 rounded-lg hover:bg-slate-100 transition">
                           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
                         </button>
                       </div>
@@ -2539,16 +1402,13 @@
           `;
         }).join('');
       } else {
-        // TIMELINE / CALENDAR GRID in Light Mode
         const startHour = 8;
-        const totalHours = 19; // 08:00 ~ 02:00 next day
-        const hourHeight = 60; // 1px = 1min
+        const totalHours = 19;
+        const hourHeight = 60;
         const totalGridHeight = totalHours * hourHeight;
-
         const timeSlots = [];
         for (let h = startHour; h < startHour + totalHours; h++) {
-          const displayH = h % 24;
-          timeSlots.push(`${displayH.toString().padStart(2, '0')}:00`);
+          timeSlots.push(`${(h % 24).toString().padStart(2, '0')}:00`);
         }
 
         viewport.innerHTML = `
@@ -2557,21 +1417,16 @@
               <div class="flex items-center space-x-2">
                 <span class="w-2.5 h-2.5 rounded-full bg-biff-red animate-pulse"></span>
                 <h3 class="font-black text-slate-900 text-xs sm:text-base">날짜별 타임테이블 그리드</h3>
-                <span class="text-[10px] sm:text-[11px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 font-bold border border-slate-200">시간 세로축 · 날짜 가로축</span>
               </div>
-              <span class="text-[11px] text-slate-400 hidden sm:inline-block">가로 스크롤하여 날짜별 일정을 비교하세요</span>
+              <span class="text-[11px] text-slate-400 hidden sm:inline-block">가로 스크롤하여 일정을 비교하세요</span>
             </div>
 
-            <!-- Scrollable 2D Calendar Grid in Light Mode -->
             <div class="overflow-x-auto rounded-xl border border-slate-200 bg-white scrollbar-thin">
               <div class="min-w-max flex flex-col">
-                
-                <!-- Sticky Top Header Row: Dates -->
-                <div class="flex border-b border-slate-200 bg-slate-50 sticky top-0 z-30 shadow-xs backdrop-blur">
+                <div class="flex border-b border-slate-200 bg-slate-50 sticky top-0 z-30 shadow-xs">
                   <div class="w-16 sm:w-20 shrink-0 p-2.5 text-center text-[10px] sm:text-[11px] font-black text-slate-600 border-r border-slate-200 flex items-center justify-center bg-slate-50 sticky left-0 z-40">
                     <span>시간 / 일자</span>
                   </div>
-
                   ${activeDates.map(dateStr => {
                     const dayItems = grouped[dateStr] || [];
                     const hasConflictInDay = dayItems.some(item => conflictMap.has(item.id));
@@ -2589,32 +1444,21 @@
                   }).join('')}
                 </div>
 
-                <!-- Grid Body -->
                 <div class="flex relative" style="height: ${totalGridHeight}px;">
-                  
-                  <!-- Sticky Left Time Labels Column in Light Mode -->
                   <div class="w-16 sm:w-20 shrink-0 border-r border-slate-200 bg-slate-50/95 sticky left-0 z-20 select-none text-[11px] font-mono text-slate-500">
-                    ${timeSlots.map((tStr) => `
+                    ${timeSlots.map(tStr => `
                       <div style="height: ${hourHeight}px;" class="px-2 pt-1 border-b border-slate-200/60 flex flex-col justify-start items-center">
                         <span class="font-bold text-slate-700">${tStr}</span>
                       </div>
                     `).join('')}
                   </div>
 
-                  <!-- Day Columns Track in Light Mode -->
                   ${activeDates.map(dateStr => {
                     const dayItems = (grouped[dateStr] || []).sort((a, b) => a.timeStart.localeCompare(b.timeStart));
                     const baseMin = startHour * 60;
-
                     return `
                       <div class="w-52 sm:w-64 shrink-0 relative border-r border-slate-200/80 bg-white">
-                        
-                        <!-- Hour Gridlines -->
-                        ${timeSlots.map(() => `
-                          <div class="timetable-grid-hour w-full"></div>
-                        `).join('')}
-
-                        <!-- Film Cards Positioned Along Time -->
+                        ${timeSlots.map(() => `<div class="timetable-grid-hour w-full"></div>`).join('')}
                         ${dayItems.map(m => {
                           const sMin = timeToMinutes(m.timeStart);
                           let eMin = timeToMinutes(m.timeEnd);
@@ -2624,15 +1468,12 @@
                           const heightPx = Math.max(38, eMin - sMin);
                           const hasConflict = conflictMap.has(m.id);
                           const conflictingMovies = conflictMap.get(m.id) || [];
-
-                          const overlappingInDay = dayItems.filter(other => other.id !== m.id && isConflicting(other, m));
-                          const isMultiOverlap = overlappingInDay.length > 0;
+                          const isMultiOverlap = dayItems.filter(other => other.id !== m.id && isConflicting(other, m)).length > 0;
                           
                           let widthStyle = "left: 4px; right: 4px;";
                           if (isMultiOverlap) {
                             const indexInDay = dayItems.indexOf(m);
-                            const isOdd = indexInDay % 2 === 1;
-                            widthStyle = isOdd ? "left: 48%; right: 4px;" : "left: 4px; right: 48%;";
+                            widthStyle = (indexInDay % 2 === 1) ? "left: 48%; right: 4px;" : "left: 4px; right: 48%;";
                           }
 
                           return `
@@ -2665,13 +1506,8 @@
                                 <span class="shrink-0 text-slate-500 font-mono ml-1">${m.runtime}분</span>
                               </div>
 
-                              ${hasConflict ? `
-                                <div class="mt-0.5 text-[9px] font-black text-white bg-biff-red px-1 py-0.5 rounded truncate">
-                                  ⚠️ 겹침: ${conflictingMovies.map(c => c.titleKo).join(', ')}
-                                </div>
-                              ` : ''}
+                              ${hasConflict ? `<div class="mt-0.5 text-[9px] font-black text-white bg-biff-red px-1 py-0.5 rounded truncate">⚠️ 겹침</div>` : ''}
 
-                              <!-- Quick Delete button -->
                               <button 
                                 onclick="event.stopPropagation(); removeMovieFromPlan('${m.id}');"
                                 title="일정 삭제"
@@ -2705,7 +1541,7 @@
       document.getElementById('modal-runtime').textContent = `${movie.runtime}분`;
       document.getElementById('modal-country').textContent = `${movie.country} (${movie.year})`;
       document.getElementById('modal-subtitles').textContent = movie.subtitles;
-      document.getElementById('modal-synopsis').textContent = movie.synopsis || "해당 작품에 대한 상세 프로그램 정보가 카탈로그에 수록되어 있습니다.";
+      document.getElementById('modal-synopsis').textContent = movie.synopsis || "상세 프로그램 정보가 카탈로그에 수록되어 있습니다.";
 
       const allSlots = SCREENINGS_DATA.filter(m => m.titleKo === movie.titleKo || m.titleEn === movie.titleEn);
       const currentPlan = appState.plans[appState.currentPlanId];
@@ -2727,15 +1563,9 @@
                 ${slot.gv ? '<span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-600 font-bold text-white">GV</span>' : ''}
               </div>
               <p class="text-[11px] text-slate-500 mt-0.5">${slot.theater}</p>
-              ${hasConflict ? `<p class="text-[10px] text-biff-red font-bold mt-0.5">⚠️ ${conflicts.map(c => c.titleKo).join(', ')}과 시간 겹침</p>` : ''}
+              ${hasConflict ? `<p class="text-[10px] text-biff-red font-bold mt-0.5">⚠️ 시간 겹침</p>` : ''}
             </div>
-
-            <button 
-              onclick="toggleMovieInCurrentPlan(SCREENINGS_DATA.find(x => x.id === '${slot.id}')); openModal('${movie.id}')"
-              class="px-3 py-1.5 rounded-xl text-xs font-black transition ${
-                isAdded ? 'bg-biff-red text-white' : 'bg-slate-200 text-slate-800 hover:bg-slate-300'
-              }"
-            >
+            <button onclick="toggleMovieInCurrentPlan(SCREENINGS_DATA.find(x => x.id === '${slot.id}')); openModal('${movie.id}')" class="px-3 py-1.5 rounded-xl text-xs font-black transition ${isAdded ? 'bg-biff-red text-white' : 'bg-slate-200 text-slate-800 hover:bg-slate-300'}">
               ${isAdded ? '선택됨' : '+ 담기'}
             </button>
           </div>
@@ -2750,17 +1580,13 @@
     }
 
     function scrollToTimetable() {
-      if (window.innerWidth < 1024) {
-        setMobileView('schedule');
-      }
+      if (window.innerWidth < 1024) setMobileView('schedule');
       document.getElementById('section-schedule').scrollIntoView({ behavior: 'smooth' });
     }
 
-    // Feedback Toast Notification
     function showToast(message, type = 'info') {
       const container = document.getElementById('toast-container');
       const toast = document.createElement('div');
-      
       let bg = 'bg-white border-slate-300 text-slate-900 shadow-lg';
       if (type === 'success') bg = 'bg-slate-900 border-slate-900 text-white shadow-lg';
       if (type === 'warning') bg = 'bg-amber-50 border-amber-400 text-amber-900 shadow-md';
@@ -2768,13 +1594,8 @@
 
       toast.className = `p-3 sm:p-3.5 rounded-2xl border text-xs sm:text-sm font-bold transition-all duration-300 transform translate-y-2 opacity-0 pointer-events-auto ${bg} flex items-center space-x-2 max-w-sm`;
       toast.innerHTML = `<span>${message}</span>`;
-      
       container.appendChild(toast);
-
-      requestAnimationFrame(() => {
-        toast.classList.remove('translate-y-2', 'opacity-0');
-      });
-
+      requestAnimationFrame(() => toast.classList.remove('translate-y-2', 'opacity-0'));
       setTimeout(() => {
         toast.classList.add('opacity-0', 'translate-y-2');
         setTimeout(() => toast.remove(), 300);
@@ -2787,47 +1608,26 @@
     }
 
     document.getElementById('detail-modal').addEventListener('click', (e) => {
-      if (e.target.id === 'detail-modal') {
-        closeModal();
-      }
+      if (e.target.id === 'detail-modal') closeModal();
     });
 
     document.addEventListener('click', (e) => {
       const btn = e.target.closest('button');
       const copyMenu = document.getElementById('plan-copy-menu');
-      if (copyMenu && !btn && !e.target.closest('#plan-copy-menu')) {
-        copyMenu.classList.add('hidden');
-      }
-
+      if (copyMenu && !btn && !e.target.closest('#plan-copy-menu')) copyMenu.classList.add('hidden');
       const clearMenu = document.getElementById('clear-plan-menu');
-      if (clearMenu && !btn && !e.target.closest('#clear-plan-menu')) {
-        clearMenu.classList.add('hidden');
-      }
+      if (clearMenu && !btn && !e.target.closest('#clear-plan-menu')) clearMenu.classList.add('hidden');
     });
 
     window.addEventListener('DOMContentLoaded', () => {
-      // Seed initial mock schedule
-      const demo1 = SCREENINGS_DATA.find(s => s.code === "005"); // 사토코는 언제나
-      const demo2 = SCREENINGS_DATA.find(s => s.code === "009"); // 천사의 알 (Overlap demo)
-      const demo3 = SCREENINGS_DATA.find(s => s.code === "074"); // 긴긴밤
-      const demo4 = SCREENINGS_DATA.find(s => s.code === "165"); // 도라
-
-      if (demo1 && demo2 && demo3 && demo4) {
-        appState.plans[1].push(demo1, demo2, demo3, demo4);
-      }
-
-      const demoP2_1 = SCREENINGS_DATA.find(s => s.code === "001"); // 낮과 밤은 서로에게
-      const demoP2_2 = SCREENINGS_DATA.find(s => s.code === "070"); // 아름다운 초저녁달
-      if (demoP2_1 && demoP2_2) {
-        appState.plans[2].push(demoP2_1, demoP2_2);
-      }
+      // Ensure plans 1, 2, and 3 start completely empty
+      appState.plans[1] = [];
+      appState.plans[2] = [];
+      appState.plans[3] = [];
 
       updateBadges();
       renderAll();
-
-      if (window.innerWidth < 1024) {
-        setMobileView('schedule');
-      }
+      if (window.innerWidth < 1024) setMobileView('schedule');
     });
   </script>
 </body>
