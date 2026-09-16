@@ -7,8 +7,6 @@
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- SheetJS CDN (추후 추가 엑셀 연동이 필요할 때를 대비해 유지) -->
-  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <!-- Google Fonts: Inter & Noto Sans KR -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -85,7 +83,7 @@
       border-bottom: 1px solid rgba(203, 213, 225, 0.7);
     }
     .safe-top {
-      padding-top: max(0.75rem, env(safe-area-inset-top));
+      padding-top: max(0.5rem, env(safe-area-inset-top));
     }
     .safe-bottom {
       padding-bottom: max(1rem, env(safe-area-inset-bottom));
@@ -101,87 +99,45 @@
 </head>
 <body class="min-h-screen flex flex-col antialiased selection:bg-biff-red selection:text-white pb-20 lg:pb-6">
 
+  <!-- TOP HEADER (Cleaned: Logo 🦭 + Plan Switcher Only) -->
   <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-xl border-b border-slate-200 shadow-sm safe-top">
-    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-18 flex items-center justify-between gap-2">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between gap-2">
       
-      <!-- Brand Logo -->
-      <div class="flex items-center space-x-2.5 sm:space-x-3 shrink-0">
-        <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-slate-100 flex items-center justify-center text-xl sm:text-2xl select-none border border-slate-200 shadow-sm">
-          🎬
+      <!-- Brand Logo with Seal Icon -->
+      <div class="flex items-center space-x-2 sm:space-x-2.5 shrink-0">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-slate-100 flex items-center justify-center text-xl sm:text-2xl select-none border border-slate-200 shadow-xs">
+          🦭
         </div>
-        <div>
-          <div class="flex items-center space-x-1.5 sm:space-x-2">
-            <h1 class="text-xs sm:text-lg font-black tracking-tight text-slate-900 flex items-center gap-1.5">
-              <span>BIFF 2026</span>
-              <span class="text-[9px] sm:text-xs font-bold px-1.5 py-0.5 rounded bg-biff-red text-white">31st</span>
-            </h1>
-            <span class="hidden sm:inline-block text-[11px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200 font-medium">10.06 - 10.15</span>
-          </div>
-          <p class="text-[10px] sm:text-[11px] text-slate-500 font-medium hidden xs:block">부산국제영화제 스마트 시간표 플래너</p>
+        <div class="flex items-center space-x-1.5">
+          <h1 class="text-sm sm:text-lg font-black tracking-tight text-slate-900 flex items-center gap-1.5">
+            <span>BIFF 2026</span>
+            <span class="text-[9px] sm:text-xs font-bold px-1.5 py-0.5 rounded bg-biff-red text-white">31st</span>
+          </h1>
+          <span class="hidden md:inline-block text-[11px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200 font-medium">10.06 - 10.15</span>
         </div>
       </div>
 
       <!-- Plan Switcher (1안 / 2안 / 3안) -->
       <div class="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200 shadow-inner shrink-0">
-        <button id="plan-btn-1" onclick="switchPlan(1)" class="px-2.5 sm:px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-black transition-all flex items-center space-x-1 bg-biff-red text-white shadow-glow-red">
+        <button id="plan-btn-1" onclick="switchPlan(1)" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs sm:text-sm font-black transition-all flex items-center space-x-1 bg-biff-red text-white shadow-glow-red">
           <span>1안</span>
           <span id="badge-plan-1" class="text-[10px] px-1.5 py-0.2 rounded-full bg-black/20 text-white font-bold">0</span>
         </button>
-        <button id="plan-btn-2" onclick="switchPlan(2)" class="px-2.5 sm:px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold transition-all flex items-center space-x-1 text-slate-600 hover:text-slate-900">
+        <button id="plan-btn-2" onclick="switchPlan(2)" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs sm:text-sm font-bold transition-all flex items-center space-x-1 text-slate-600 hover:text-slate-900">
           <span>2안</span>
           <span id="badge-plan-2" class="text-[10px] px-1.5 py-0.2 rounded-full bg-white text-slate-600 border border-slate-200">0</span>
         </button>
-        <button id="plan-btn-3" onclick="switchPlan(3)" class="px-2.5 sm:px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold transition-all flex items-center space-x-1 text-slate-600 hover:text-slate-900">
+        <button id="plan-btn-3" onclick="switchPlan(3)" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-xs sm:text-sm font-bold transition-all flex items-center space-x-1 text-slate-600 hover:text-slate-900">
           <span>3안</span>
           <span id="badge-plan-3" class="text-[10px] px-1.5 py-0.2 rounded-full bg-white text-slate-600 border border-slate-200">0</span>
         </button>
       </div>
 
-      <!-- Actions: Save & Storage Menu -->
-      <div class="flex items-center space-x-1.5 sm:space-x-2 shrink-0">
-        <!-- Manual Local Save Button -->
-        <button onclick="saveScheduleToDevice(false)" title="내 기기 브라우저에 임시 저장" class="h-9 px-2.5 sm:px-3.5 flex items-center justify-center rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition active:scale-95 shadow-sm space-x-1.5">
-          <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"></path></svg>
-          <span class="hidden sm:inline">임시 저장</span>
-        </button>
-
-        <!-- Dropdown Storage & Export Menu -->
-        <div class="relative inline-block text-left">
-          <button onclick="toggleStorageMenu(event)" title="내보내기 / 데이터 관리" class="h-9 w-9 flex items-center justify-center rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200 transition active:scale-95 shadow-sm">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"></path></svg>
-          </button>
-          <div id="storage-menu" class="hidden absolute right-0 mt-2 w-56 rounded-2xl bg-white border border-slate-200 shadow-xl z-50 py-1.5 text-xs divide-y divide-slate-100">
-            <div class="px-3.5 py-1.5 text-[11px] font-bold text-slate-400 uppercase tracking-wider">시간표 백업 & 복원</div>
-            <div class="py-1">
-              <button onclick="exportBackupJson(); closeStorageMenu();" class="w-full text-left px-3.5 py-2 text-slate-700 hover:bg-slate-50 flex items-center space-x-2">
-                <span>📥 시간표 백업 파일 다운로드 (.json)</span>
-              </button>
-              <label class="w-full text-left px-3.5 py-2 text-slate-700 hover:bg-slate-50 flex items-center space-x-2 cursor-pointer">
-                <span>📤 백업 파일 복원하기 (.json)</span>
-                <input type="file" id="import-file-input" accept=".json" class="hidden" onchange="importBackupJson(event)" />
-              </label>
-              <label class="w-full text-left px-3.5 py-2 text-slate-700 hover:bg-slate-50 flex items-center space-x-2 cursor-pointer">
-                <span>📂 새로운 엑셀 파일 반영 (.xlsx)</span>
-                <input type="file" accept=".xlsx, .xls" class="hidden" onchange="handleExcelFileUpload(event)" />
-              </label>
-            </div>
-            <div class="py-1">
-              <button onclick="promptClearPlan('current'); closeStorageMenu();" class="w-full text-left px-3.5 py-2 text-biff-red hover:bg-red-50 font-bold">현재 플랜 비우기</button>
-              <button onclick="promptClearPlan('all'); closeStorageMenu();" class="w-full text-left px-3.5 py-2 text-biff-red hover:bg-red-50 font-black">모든 플랜 초기화</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Creator Credit Badge -->
-        <div class="h-9 px-2.5 sm:px-3 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center text-[11px] sm:text-xs font-bold text-slate-600 select-none shrink-0 shadow-xs">
-          <span>만든이 : <span class="font-black text-biff-red">Y</span></span>
-        </div>
-
-      </div>
     </div>
   </header>
 
-  <div class="lg:hidden sticky top-16 z-30 bg-white/95 backdrop-blur border-b border-slate-200 px-3 py-2 flex items-center gap-1.5 shadow-sm">
+  <!-- Mobile View Switcher Tab (Search vs Schedule vs Recommend) -->
+  <div class="lg:hidden sticky top-14 z-30 bg-white/95 backdrop-blur border-b border-slate-200 px-3 py-2 flex items-center gap-1.5 shadow-sm">
     <button id="mobile-tab-search" onclick="setMobileView('search')" class="flex-1 py-2 rounded-xl text-xs font-black transition flex items-center justify-center space-x-1 bg-slate-100 text-slate-700 border border-slate-200 shadow-sm">
       <svg class="w-3.5 h-3.5 text-biff-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
       <span>상영작 검색</span>
@@ -191,14 +147,14 @@
       <span>내 시간표 (<span id="mobile-schedule-count">0</span>)</span>
     </button>
     <button id="mobile-tab-recommend" onclick="setMobileView('recommend')" class="flex-1 py-2 rounded-xl text-xs font-black transition flex items-center justify-center space-x-1 bg-slate-100 text-slate-700 border border-slate-200">
-      <span>✨ 스마트 추천</span>
+      <span>✨ 추천</span>
     </button>
   </div>
 
   <main class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-5 flex-1 w-full space-y-4 sm:space-y-5">
 
     <!-- Built-in Data Notification Banner -->
-    <div class="px-4 py-3 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-wrap items-center justify-between gap-2.5">
+    <div class="px-4 py-3 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-wrap items-center justify-between gap-2">
       <div class="flex items-center space-x-2.5">
         <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
         <span class="text-xs sm:text-sm font-black text-slate-800">
@@ -299,9 +255,9 @@
             </div>
             <div class="grid grid-cols-4 gap-1.5" id="time-slot-filters">
               <button onclick="setTimeSlotFilter('ALL')" data-slot="ALL" class="time-slot-btn py-1.5 rounded-lg text-xs font-black bg-slate-900 text-white transition">전체</button>
-              <button onclick="setTimeSlotFilter('morning')" data-slot="morning" class="time-slot-btn py-1.5 rounded-lg text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200 transition border border-slate-200">조조·오전 (~12시)</button>
+              <button onclick="setTimeSlotFilter('morning')" data-slot="morning" class="time-slot-btn py-1.5 rounded-lg text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200 transition border border-slate-200">오전 (~12시)</button>
               <button onclick="setTimeSlotFilter('afternoon')" data-slot="afternoon" class="time-slot-btn py-1.5 rounded-lg text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200 transition border border-slate-200">오후 (12~18시)</button>
-              <button onclick="setTimeSlotFilter('night')" data-slot="night" class="time-slot-btn py-1.5 rounded-lg text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200 transition border border-slate-200">저녁·심야 (18시~)</button>
+              <button onclick="setTimeSlotFilter('night')" data-slot="night" class="time-slot-btn py-1.5 rounded-lg text-xs font-bold bg-slate-100 text-slate-600 hover:bg-slate-200 transition border border-slate-200">저녁 (18시~)</button>
             </div>
           </div>
 
@@ -349,6 +305,7 @@
         </div>
       </section>
 
+      <!-- RIGHT COLUMN: Schedule & Toolbar -->
       <section id="section-schedule" class="lg:col-span-7 xl:col-span-7 space-y-3 sm:space-y-4">
         
         <div class="bg-white p-3.5 sm:p-4 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-3">
@@ -360,8 +317,9 @@
             <p class="text-xs text-slate-500 mt-1 font-mono font-medium" id="current-plan-summary">0편 관람 | 총 러닝타임 0분</p>
           </div>
 
-          <!-- View Mode & Action Tools -->
+          <!-- Schedule Toolbar -->
           <div class="flex flex-wrap items-center gap-2 self-start md:self-auto">
+            
             <!-- View Mode Switcher -->
             <div class="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200">
               <button id="view-mode-timeline" onclick="setViewMode('timeline')" class="px-2.5 py-1.5 rounded-lg text-xs font-bold bg-white text-slate-900 transition shadow-sm">
@@ -399,6 +357,36 @@
                 </div>
               </div>
             </div>
+
+            <!-- Manual Local Save Button -->
+            <button onclick="saveScheduleToDevice(false)" title="내 기기 브라우저에 임시 저장" class="px-2.5 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition active:scale-95 shadow-sm flex items-center space-x-1">
+              <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"></path></svg>
+              <span>임시 저장</span>
+            </button>
+
+            <!-- Dropdown Storage & Export Menu -->
+            <div class="relative inline-block text-left">
+              <button onclick="toggleStorageMenu(event)" title="내보내기 / 데이터 관리" class="h-8 w-8 flex items-center justify-center rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200 transition active:scale-95 shadow-sm">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"></path></svg>
+              </button>
+              <div id="storage-menu" class="hidden absolute right-0 mt-2 w-56 rounded-2xl bg-white border border-slate-200 shadow-xl z-50 py-1.5 text-xs divide-y divide-slate-100">
+                <div class="px-3.5 py-1.5 text-[11px] font-bold text-slate-400 uppercase tracking-wider">시간표 백업 & 복원</div>
+                <div class="py-1">
+                  <button onclick="exportBackupJson(); closeStorageMenu();" class="w-full text-left px-3.5 py-2 text-slate-700 hover:bg-slate-50 flex items-center space-x-2">
+                    <span>📥 시간표 백업 파일 다운로드 (.json)</span>
+                  </button>
+                  <label class="w-full text-left px-3.5 py-2 text-slate-700 hover:bg-slate-50 flex items-center space-x-2 cursor-pointer">
+                    <span>📤 백업 파일 복원하기 (.json)</span>
+                    <input type="file" id="import-file-input" accept=".json" class="hidden" onchange="importBackupJson(event)" />
+                  </label>
+                </div>
+                <div class="py-1">
+                  <button onclick="promptClearPlan('current'); closeStorageMenu();" class="w-full text-left px-3.5 py-2 text-biff-red hover:bg-red-50 font-bold">현재 플랜 비우기</button>
+                  <button onclick="promptClearPlan('all'); closeStorageMenu();" class="w-full text-left px-3.5 py-2 text-biff-red hover:bg-red-50 font-black">모든 플랜 초기화</button>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
@@ -524,139 +512,124 @@
   <div id="toast-container" class="fixed bottom-5 right-5 z-50 space-y-2 pointer-events-none"></div>
 
   <script>
-    /*
-      2026 BIFF 12개 공식 상영관 구분 및 테마 색상 정의 (파스텔 & 톤다운)
-    */
     const VENUE_CONFIG = {
       "CGV센텀시티": {
         name: "CGV센텀시티",
         shortName: "CGV",
-        bg: "#F0FDF4",        // emerald-50
-        border: "#86EFAC",    // emerald-300
-        text: "#166534",      // emerald-800
+        bg: "#F0FDF4",
+        border: "#86EFAC",
+        text: "#166534",
         badgeBg: "#10B981",
-        badgeText: "#FFFFFF",
         canvasBg: "#F0FDF4",
         canvasBorder: "#86EFAC"
       },
       "동서대학교-경남정보대학교 4층 북카페 라운지": {
         name: "동서대학교-경남정보대학교 4층 북카페 라운지",
         shortName: "동서대 북카페",
-        bg: "#FFFBEB",        // amber-50
-        border: "#FCD34D",    // amber-300
-        text: "#92400E",      // amber-800
+        bg: "#FFFBEB",
+        border: "#FCD34D",
+        text: "#92400E",
         badgeBg: "#F59E0B",
-        badgeText: "#FFFFFF",
         canvasBg: "#FFFBEB",
         canvasBorder: "#FCD34D"
       },
       "롯데시네마 센텀시티": {
         name: "롯데시네마 센텀시티",
         shortName: "롯데시네마",
-        bg: "#FFF1F2",        // rose-50
-        border: "#FDA4AF",    // rose-300
-        text: "#9F1239",      // rose-800
+        bg: "#FFF1F2",
+        border: "#FDA4AF",
+        text: "#9F1239",
         badgeBg: "#F43F5E",
-        badgeText: "#FFFFFF",
         canvasBg: "#FFF1F2",
         canvasBorder: "#FDA4AF"
       },
       "부산시청자미디어센터 공개홀": {
         name: "부산시청자미디어센터 공개홀",
         shortName: "시청자미디어센터",
-        bg: "#F5F3FF",        // violet-50
-        border: "#C4B5FD",    // violet-300
-        text: "#5B21B6",      // violet-800
+        bg: "#F5F3FF",
+        border: "#C4B5FD",
+        text: "#5B21B6",
         badgeBg: "#8B5CF6",
-        badgeText: "#FFFFFF",
         canvasBg: "#F5F3FF",
         canvasBorder: "#C4B5FD"
       },
       "소향씨어터 우리은행홀": {
         name: "소향씨어터 우리은행홀",
         shortName: "소향씨어터",
-        bg: "#FDF2F8",        // pink-50
-        border: "#F9A8D4",    // pink-300
-        text: "#9D174D",      // pink-800
+        bg: "#FDF2F8",
+        border: "#F9A8D4",
+        text: "#9D174D",
         badgeBg: "#EC4899",
-        badgeText: "#FFFFFF",
         canvasBg: "#FDF2F8",
         canvasBorder: "#F9A8D4"
       },
       "신세계백화점 센텀시티점 9층 문화홀": {
         name: "신세계백화점 센텀시티점 9층 문화홀",
         shortName: "신세계 문화홀",
-        bg: "#FEFCE8",        // yellow-50
-        border: "#FDE047",    // yellow-300
-        text: "#854D0E",      // yellow-800
+        bg: "#FEFCE8",
+        border: "#FDE047",
+        text: "#854D0E",
         badgeBg: "#EAB308",
-        badgeText: "#FFFFFF",
         canvasBg: "#FEFCE8",
         canvasBorder: "#FDE047"
       },
       "영화의전당 루프씨어터": {
         name: "영화의전당 루프씨어터",
         shortName: "루프씨어터 (야외)",
-        bg: "#EEF2FF",        // indigo-50
-        border: "#A5B4FC",    // indigo-300
-        text: "#3730A3",      // indigo-800
+        bg: "#EEF2FF",
+        border: "#A5B4FC",
+        text: "#3730A3",
         badgeBg: "#6366F1",
-        badgeText: "#FFFFFF",
         canvasBg: "#EEF2FF",
         canvasBorder: "#A5B4FC"
       },
       "영화의전당 소극장": {
         name: "영화의전당 소극장",
         shortName: "영전 소극장",
-        bg: "#F7FEE7",        // lime-50
-        border: "#BEF264",    // lime-300
-        text: "#3F6212",      // lime-800
+        bg: "#F7FEE7",
+        border: "#BEF264",
+        text: "#3F6212",
         badgeBg: "#84CC16",
-        badgeText: "#FFFFFF",
         canvasBg: "#F7FEE7",
         canvasBorder: "#BEF264"
       },
       "영화의전당 시네마테크": {
         name: "영화의전당 시네마테크",
         shortName: "시네마테크",
-        bg: "#F0FDFA",        // teal-50
-        border: "#5EEAD4",    // teal-300
-        text: "#115E59",      // teal-800
+        bg: "#F0FDFA",
+        border: "#5EEAD4",
+        text: "#115E59",
         badgeBg: "#14B8A6",
-        badgeText: "#FFFFFF",
         canvasBg: "#F0FDFA",
         canvasBorder: "#5EEAD4"
       },
       "영화의전당 중극장": {
         name: "영화의전당 중극장",
         shortName: "영전 중극장",
-        bg: "#EFF6FF",        // blue-50
-        border: "#93C5FD",    // blue-300
-        text: "#1E40AF",      // blue-800
+        bg: "#EFF6FF",
+        border: "#93C5FD",
+        text: "#1E40AF",
         badgeBg: "#3B82F6",
-        badgeText: "#FFFFFF",
         canvasBg: "#EFF6FF",
         canvasBorder: "#93C5FD"
       },
       "영화의전당 하늘연극장": {
         name: "영화의전당 하늘연극장",
         shortName: "하늘연극장",
-        bg: "#FAF5FF",        // purple-50
-        border: "#D8B4FE",    // purple-300
-        text: "#6B21A8",      // purple-800
+        bg: "#FAF5FF",
+        border: "#D8B4FE",
+        text: "#6B21A8",
         badgeBg: "#A855F7",
-        badgeText: "#FFFFFF",
         canvasBg: "#FAF5FF",
         canvasBorder: "#D8B4FE"
       },
       "영화진흥위원회 표준시사실": {
         name: "영화진흥위원회 표준시사실",
         shortName: "KOFIC 표준시사실",
-        bg: "#F1F5F9",        // slate-100
-        border: "#94A3B8",    // slate-400
-        text: "#1E293B",      // slate-800
+        bg: "#F1F5F9",
+        border: "#94A3B8",
+        text: "#1E293B",
         badgeBg: "#64748B",
-        badgeText: "#FFFFFF",
         canvasBg: "#F1F5F9",
         canvasBorder: "#94A3B8"
       }
@@ -685,7 +658,6 @@
       return VENUE_CONFIG[groupKey] || VENUE_CONFIG["영화의전당 중극장"];
     }
 
-    // Render 12 Venue Legend Badges
     function renderVenueLegend() {
       const container = document.getElementById('venue-legend-pills');
       if (!container) return;
@@ -699,27 +671,15 @@
         `;
       }).join('');
     }
-  </script>
 
-  <script>
-    /*
-      2026 부산국제영화제(BIFF) 마스터 데이터 저장소
-      엑셀 업로드 없이 웹페이지 내부에 226개 작품과 749개 회차 데이터가 영구 내장되어 있습니다.
-    */
     let MOVIES_MASTER = {};
     let SCREENINGS = [];
 
     const STORAGE_KEY_PLANS = "BIFF_2026_SCHEDULE_LOCAL_PLANS";
-    const STORAGE_KEY_EXCEL_MOVIES = "BIFF_2026_EXCEL_MOVIES_DATA";
-    const STORAGE_KEY_EXCEL_SCREENINGS = "BIFF_2026_EXCEL_SCREENINGS_DATA";
 
     const appState = {
       currentPlanId: 1,
-      plans: {
-        1: [],
-        2: [],
-        3: []
-      },
+      plans: { 1: [], 2: [], 3: [] },
       filter: {
         query: "",
         date: "ALL",
@@ -774,11 +734,10 @@
     }
 
     function initializeBuiltinDatabase() {
-      // 226개 핵심 영화 마스터 데이터셋 구축
       const builtinFilms = [
-        { id: "M001", titleKo: "낮과 밤은 서로에게", titleEn: "The Table: Day and Night", director: "김종관", country: "한국", year: "2026", runtime: 80, rating: "12세", section: "개막작", synopsis: "동일한 카페 공간을 교차하는 네 쌍의 남녀가 나누는 애틋하고 섬세한 대화록. 김종관 감독 특유의 정취가 묻어나는 신작.", hot: true },
+        { id: "M001", titleKo: "낮과 밤은 서로에게", titleEn: "The Table: Day and Night", director: "김종관", country: "한국", year: "2026", runtime: 80, rating: "12세", section: "개막작", synopsis: "동일한 카페 공간을 교차하는 네 쌍의 남녀가 나누는 애틋하고 섬세한 대화록.", hot: true },
         { id: "M002", titleKo: "부산 어워드 수상작 (폐막작)", titleEn: "Closing Ceremony & Winner", director: "BIFF 수상 감독", country: "아시아", year: "2026", runtime: 240, rating: "15세", section: "폐막작", synopsis: "제31회 부산국제영화제의 대미를 장식하는 폐막식 및 최고 수상작 특별 상영.", hot: true },
-        { id: "M003", titleKo: "룩백 (실사판)", titleEn: "Look Back", director: "고레에다 히로카즈", country: "일본", year: "2025", runtime: 100, rating: "전체", section: "오픈 시네마", synopsis: "후지모토 타츠키의 만화를 거장 고레에다 히로카즈가 실사화한 기적의 작품. 두 소녀의 우정과 만화 창작의 희열.", hot: true },
+        { id: "M003", titleKo: "룩백 (실사판)", titleEn: "Look Back", director: "고레에다 히로카즈", country: "일본", year: "2025", runtime: 100, rating: "전체", section: "오픈 시네마", synopsis: "후지모토 타츠키의 만화를 거장 고레에다 히로카즈가 실사화한 기적의 작품.", hot: true },
         { id: "M004", titleKo: "아버지의 방", titleEn: "In My Father's Room", director: "하라다 마하", country: "일본", year: "2026", runtime: 109, rating: "12세", section: "아시아영화의 창", synopsis: "아버지가 남긴 오래된 서재의 열쇠를 찾아 나선 딸의 치유와 가족의 비밀 탐색기." },
         { id: "M005", titleKo: "사토코는 언제나", titleEn: "Satoko Always", director: "오키타 슈이치", country: "일본", year: "2026", runtime: 138, rating: "12세", section: "경쟁 (뉴 커런츠)", synopsis: "세 명의 서로 다른 사토코가 편지를 주고받으며 삶의 온기와 위로를 발견해 가는 따스한 휴먼 드라마." },
         { id: "M006", titleKo: "처음 만난 외로움", titleEn: "The First Taste of Loneliness", director: "구유", country: "중국", year: "2026", runtime: 135, rating: "12세", section: "경쟁 (뉴 커런츠)", synopsis: "저우쉰 주연. 모녀 삼대의 상실과 고독을 유려한 수묵화풍 영상미로 담아낸 수작." },
@@ -790,19 +749,18 @@
         { id: "M012", titleKo: "첫세계", titleEn: "The World Before", director: "윤단비", country: "한국", year: "2026", runtime: 115, rating: "15세", section: "한국영화의 오늘 - 파노라마", synopsis: "<남매의 여름밤> 윤단비 감독 신작. 고교 졸업반 소녀 진과 친구 두재가 맞이하는 세상과의 첫 대면." },
         { id: "M013", titleKo: "호프 (HOPE)", titleEn: "HOPE", director: "나홍진", country: "한국", year: "2026", runtime: 156, rating: "15세", section: "한국영화의 오늘 - 스페셜", synopsis: "외딴 시골 마을 호포항에 찾아온 정체불명의 외계 존재와 고립된 주민들의 숨 막히는 서바이벌. 황정민, 조인성, 정호연 주연.", hot: true },
         { id: "M014", titleKo: "가능한 사랑", titleEn: "Possible Love", director: "이창동", country: "한국", year: "2026", runtime: 164, rating: "15세", section: "아이콘", synopsis: "전도연, 설경구 주연. 상처 입은 세 인물이 우연히 동행하며 사랑과 구원의 가능성을 묻는 이창동 감독의 대작.", hot: true },
-        { id: "M015", titleKo: "피오르 (Fjord)", titleEn: "Fjord", director: "크리스티안 문쥬", country: "루마니아/프랑스", year: "2026", runtime: 146, rating: "15세", section: "아이콘", synopsis: "황금종려상 수상 감독 크리스티안 문쥬. 북유럽 아동 복지 제도와 이민자 가정의 충돌을 냉철하게 조명한 스릴러." },
+        { id: "M015", titleKo: "피오르 (Fjord)", titleEn: "Fjord", director: "크리스티안 문쥬", country: "루마니아/프랑스", year: "2026", runtime: 146, rating: "15세", section: "아이콘", synopsis: "황금종려상 수상 감독 크리스티안 문쥬의 냉철한 사회 드라마.", hot: true },
         { id: "M016", titleKo: "도라 (Dora)", titleEn: "Dora", director: "정주리", country: "한국/프랑스", year: "2026", runtime: 138, rating: "15세", section: "갈라 프레젠테이션", synopsis: "김도연, 안도 사쿠라 주연. 국경을 넘어 조우한 두 여인이 마주하는 연대와 슬픔의 무게.", hot: true },
         { id: "M017", titleKo: "미드나잇 패션 1 (사피엔스+장미의사슬+스파이럴)", titleEn: "Midnight Passion I", director: "다양한 감독", country: "한국/일본/이탈리아", year: "2026", runtime: 299, rating: "청불", section: "미드나잇 패션", synopsis: "금요일 밤부터 새벽까지 이어지는 극한의 장르 영화 3편 연속 밤샘 상영.", midnight: true },
         { id: "M018", titleKo: "미드나잇 패션 2 (붉은실+수라도+불청객)", titleEn: "Midnight Passion II", director: "다양한 감독", country: "베트남/대만/캐나다", year: "2026", runtime: 332, rating: "청불", section: "미드나잇 패션", synopsis: "아시아와 북미를 아우르는 고어/오컬트/호러 화제작 3편 연속 올나잇 상영.", midnight: true },
-        { id: "M019", titleKo: "갑자기 병세가 악화되다", titleEn: "All of a Sudden", director: "하마구치 류스케", country: "일본/프랑스", year: "2026", runtime: 196, rating: "15세", section: "아이콘", synopsis: "하마구치 류스케 감독 신작. 일상적인 대화 뒤편으로 서서히 모습을 드러내는 인간 관계의 심연.", hot: true },
-        { id: "M020", titleKo: "칠수와 만수 (4K 복원)", titleEn: "Chil-su and Man-su", director: "박광수", country: "한국", year: "1988", runtime: 108, rating: "15세", section: "특별기획 (한국영화 회고)", synopsis: "안성기, 박중훈 주연. 1980년대 청춘들의 절규와 꿈을 빌딩 옥상 간판 위에서 그려낸 걸작." },
-        { id: "M021", titleKo: "스파이럴", titleEn: "The Spiral", director: "파올로 스트리폴리", country: "이탈리아/프랑스", year: "2026", runtime: 115, rating: "15세", section: "오픈 시네마", synopsis: "야외극장의 서늘한 밤공기와 함께 만나는 감각적인 심리 미스터리 스릴러." },
-        { id: "M022", titleKo: "긴긴밤 (애니메이션)", titleEn: "Long Long Night", director: "염규복", country: "한국", year: "2026", runtime: 99, rating: "전체", section: "경쟁 (뉴 커런츠)", synopsis: "베스트셀러 원작. 코뿔소 노든과 버려진 알에서 태어난 펭귄이 함께 바다를 찾아가는 눈물겨운 여정.", hot: true },
+        { id: "M019", titleKo: "갑자기 병세가 악화되다", titleEn: "All of a Sudden", director: "하마구치 류스케", country: "일본/프랑스", year: "2026", runtime: 196, rating: "15세", date: "10/10(토)", section: "아이콘", synopsis: "하마구치 류스케 감독 신작. 대화 뒤편으로 드러나는 인간 관계의 심연.", hot: true },
+        { id: "M020", titleKo: "칠수와 만수 (4K 복원)", titleEn: "Chil-su and Man-su", director: "박광수", country: "한국", year: "1988", runtime: 108, rating: "15세", section: "특별기획 (한국영화 회고)", synopsis: "안성기, 박중훈 주연의 한국 영화사 대표 명작." },
+        { id: "M021", titleKo: "스파이럴", titleEn: "The Spiral", director: "파올로 스트리폴리", country: "이탈리아/프랑스", year: "2026", runtime: 115, rating: "15세", section: "오픈 시네마", synopsis: "야외극장에서 만나는 감각적인 심리 미스터리 스릴러." },
+        { id: "M022", titleKo: "긴긴밤 (애니메이션)", titleEn: "Long Long Night", director: "염규복", country: "한국", year: "2026", runtime: 99, rating: "전체", section: "경쟁 (뉴 커런츠)", synopsis: "코뿔소 노든과 버려진 알에서 태어난 펭귄의 눈물겨운 여정.", hot: true },
         { id: "M023", titleKo: "면도", titleEn: "Shaving", director: "김정훈", country: "한국", year: "2026", runtime: 93, rating: "15세", section: "경쟁 (뉴 커런츠)", synopsis: "소설가와 면도기를 든 연인 사이의 팽팽한 심리적 서스펜스." },
-        { id: "M024", titleKo: "인헤릿 (Inherit)", titleEn: "Inherit", director: "반종 피산다나쿤", country: "태국", year: "2026", runtime: 129, rating: "15세", section: "오픈 시네마", synopsis: "<랑종> 반종 피산다나쿤 감독 신작 오컬트 호러. 가문의 저주를 물려받은 여인의 공포." }
+        { id: "M024", titleKo: "인헤릿 (Inherit)", titleEn: "Inherit", director: "반종 피산다나쿤", country: "태국", year: "2026", runtime: 129, rating: "15세", section: "오픈 시네마", synopsis: "가문의 저주를 물려받은 여인의 공포를 그린 오컬트 호러." }
       ];
 
-      // 226편 전체 마스터 카탈로그 생성
       const sections = ["오픈 시네마", "갈라 프레젠테이션", "경쟁 (뉴 커런츠)", "아시아영화의 창", "한국영화의 오늘 - 파노라마", "한국영화의 오늘 - 비전", "월드 시네마", "플래시 포워드", "와이드 앵글", "미드나잇 패션", "온 스크린", "특별기획 프로그램"];
       const countries = ["한국", "일본", "중국", "대만", "프랑스", "미국", "독일", "이탈리아", "태국", "베트남", "인도네시아", "이란", "영국", "스페인"];
       const ratings = ["전체", "12세", "15세", "청불"];
@@ -815,7 +773,6 @@
         };
       });
 
-      // 226편까지 자동으로 완성 등록
       for (let i = builtinFilms.length + 1; i <= 226; i++) {
         const id = `M${String(i).padStart(3, '0')}`;
         const sec = sections[(i * 3) % sections.length];
@@ -840,7 +797,6 @@
         };
       }
 
-      // 12개 공식 상영관 목록
       const venueList = Object.keys(VENUE_CONFIG);
       const dates = ["10/06(화)", "10/07(수)", "10/08(목)", "10/09(금)", "10/10(토)", "10/11(일)", "10/12(월)", "10/13(화)", "10/14(수)", "10/15(목)"];
       const startTimes = ["09:00", "09:30", "10:00", "10:30", "12:00", "12:30", "13:00", "13:30", "14:00", "15:00", "15:30", "16:00", "16:30", "17:00", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30"];
@@ -848,7 +804,6 @@
       SCREENINGS = [];
       const filmKeys = Object.keys(MOVIES_MASTER);
 
-      // 정확히 749개의 상영 스케줄 회차 생성
       for (let sIdx = 1; sIdx <= 749; sIdx++) {
         const code = String(sIdx).padStart(3, '0');
         const filmId = filmKeys[(sIdx - 1) % filmKeys.length];
@@ -887,7 +842,6 @@
         });
       }
 
-      // UI 통계 갱신
       document.getElementById('stat-films-count').textContent = Object.keys(MOVIES_MASTER).length;
       document.getElementById('stat-screenings-count').textContent = SCREENINGS.length;
     }
@@ -932,7 +886,7 @@
       document.body.appendChild(downloadAnchor);
       downloadAnchor.click();
       downloadAnchor.remove();
-      showToast("내 PC/폰에 시간표 백업 파일(.json)이 다운로드되었습니다.", "success");
+      showToast("시간표 백업 파일(.json)이 다운로드되었습니다.", "success");
     }
 
     function importBackupJson(event) {
@@ -947,22 +901,15 @@
             updateBadges();
             renderAll();
             saveScheduleToDevice(true);
-            showToast("시간표 백업 파일이 성공적으로 복원되었습니다!", "success");
+            showToast("시간표 백업 파일이 복원되었습니다!", "success");
           } else {
-            showToast("올바른 BIFF 시간표 백업 파일 형식이 아닙니다.", "warning");
+            showToast("올바른 시간표 백업 파일 형식이 아닙니다.", "warning");
           }
         } catch (err) {
           showToast("파일을 읽는 중 오류가 발생했습니다.", "error");
         }
       };
       reader.readAsText(file);
-      event.target.value = '';
-    }
-
-    function handleExcelFileUpload(event) {
-      const file = event.target.files[0];
-      if (!file) return;
-      showToast(`'${file.name}' 엑셀 분석을 진행합니다...`, "info");
       event.target.value = '';
     }
 
@@ -1013,9 +960,9 @@
 
       const labelMap = {
         ALL: "전체 시간",
-        morning: "조조·오전 (~12:00)",
+        morning: "오전 (~12:00)",
         afternoon: "오후 (12:00~18:00)",
-        night: "저녁·심야 (18:00~)"
+        night: "저녁 (18:00~)"
       };
       document.getElementById('active-time-label').textContent = labelMap[slot];
       renderMovieList();
@@ -1135,7 +1082,6 @@
                 </h4>
                 <p class="text-[11px] text-slate-500 line-clamp-1">${item.titleEn ? item.titleEn + ' · ' : ''}${item.director}</p>
                 
-                <!-- Venue Badge with distinctive 12 color scheme -->
                 <div class="text-[10px] sm:text-[11px] mt-1.5 flex items-center gap-1.5 flex-wrap">
                   <span class="px-2 py-0.5 rounded font-bold border flex items-center gap-1" style="background-color: ${theme.bg}; border-color: ${theme.border}; color: ${theme.text};">
                     <span class="w-1.5 h-1.5 rounded-full" style="background-color: ${theme.badgeBg};"></span>
@@ -1182,9 +1128,9 @@
       [1, 2, 3].forEach(id => {
         const btn = document.getElementById(`plan-btn-${id}`);
         if (id === planId) {
-          btn.className = "px-2.5 sm:px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-black transition-all flex items-center space-x-1 bg-biff-red text-white shadow-glow-red";
+          btn.className = "px-2.5 sm:px-3 py-1.5 rounded-lg text-xs sm:text-sm font-black transition-all flex items-center space-x-1 bg-biff-red text-white shadow-glow-red";
         } else {
-          btn.className = "px-2.5 sm:px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold transition-all flex items-center space-x-1 text-slate-600 hover:text-slate-900";
+          btn.className = "px-2.5 sm:px-3 py-1.5 rounded-lg text-xs sm:text-sm font-bold transition-all flex items-center space-x-1 text-slate-600 hover:text-slate-900";
         }
       });
       document.getElementById('current-plan-title-badge').textContent = `${planId}안 시간표`;
@@ -1208,7 +1154,6 @@
       document.getElementById('mobile-schedule-count').textContent = appState.plans[appState.currentPlanId].length;
     }
 
-    // Toggle movie without popping up annoying '임시 저장' toasts
     function toggleMovieInCurrentPlan(movie) {
       if (!movie) return;
       const currentList = appState.plans[appState.currentPlanId];
@@ -1226,7 +1171,7 @@
       }
       updateBadges();
       renderAll();
-      saveScheduleToDevice(true); // silent auto-save
+      saveScheduleToDevice(true);
     }
 
     function removeMovieFromPlan(movieId) {
@@ -1236,7 +1181,7 @@
         currentList.splice(idx, 1);
         updateBadges();
         renderAll();
-        saveScheduleToDevice(true); // silent auto-save
+        saveScheduleToDevice(true);
       }
     }
 
@@ -1713,7 +1658,6 @@
       ctx.fillStyle = "#FFFFFF";
       ctx.fillRect(0, 0, baseWidth, baseHeight);
 
-      // Top brand bar
       ctx.fillStyle = "#E50914";
       ctx.fillRect(0, 0, baseWidth, 6);
 
