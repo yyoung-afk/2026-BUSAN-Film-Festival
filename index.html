@@ -773,7 +773,7 @@
 
     function calculateEndTime(startTime, runtime) {
       if (!startTime || !Number.isFinite(Number(runtime))) return startTime || '';
-      const match = String(startTime).match(/^(\\d{1,2}):(\\d{2})$/);
+      const match = String(startTime).match(/^(\d{1,2}):(\d{2})$/);
       if (!match) return startTime;
       const total = Number(match[1]) * 60 + Number(match[2]) + Number(runtime);
       const end = total % 1440;
