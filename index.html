@@ -348,7 +348,7 @@
                 <span>플랜 복사</span>
                 <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
               </button>
-              <div id="plan-copy-menu" class="hidden absolute right-0 mt-2 w-36 rounded-2xl bg-white border border-slate-200 shadow-xl z-50 py-1 text-xs divide-y divide-slate-100">
+              <div id="plan-copy-menu" class="hidden absolute left-0 sm:left-auto sm:right-0 mt-2 w-36 max-w-[calc(100vw-2rem)] rounded-2xl bg-white border border-slate-200 shadow-xl z-50 py-1 text-xs divide-y divide-slate-100">
                 <div class="px-3 py-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider">복사 대상 선택</div>
                 <div class="py-1">
                   <button onclick="copyCurrentPlanTo(1)" class="w-full text-left px-3.5 py-2 text-slate-700 hover:bg-slate-50">1안으로 복사</button>
@@ -369,7 +369,7 @@
               <button onclick="toggleStorageMenu(event)" title="내보내기 / 데이터 관리" class="h-8 w-8 flex items-center justify-center rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200 transition active:scale-95 shadow-sm">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"></path></svg>
               </button>
-              <div id="storage-menu" class="hidden absolute right-0 mt-2 w-56 rounded-2xl bg-white border border-slate-200 shadow-xl z-50 py-1.5 text-xs divide-y divide-slate-100">
+              <div id="storage-menu" class="hidden absolute right-0 mt-2 w-56 max-w-[calc(100vw-2rem)] rounded-2xl bg-white border border-slate-200 shadow-xl z-50 py-1.5 text-xs divide-y divide-slate-100">
                 <div class="px-3.5 py-1.5 text-[11px] font-bold text-slate-400 uppercase tracking-wider">시간표 백업 & 복원</div>
                 <div class="py-1">
                   <button onclick="exportBackupJson(); closeStorageMenu();" class="w-full text-left px-3.5 py-2 text-slate-700 hover:bg-slate-50 flex items-center space-x-2">
@@ -445,6 +445,7 @@
           </div>
           <h3 id="modal-title-ko" class="text-lg sm:text-xl font-black text-slate-900">영화 제목</h3>
           <p id="modal-title-en" class="text-xs text-slate-500">English Title</p>
+          <p id="modal-id-warning" class="hidden mt-1.5 inline-flex items-center gap-1 px-2 py-1 rounded-lg text-[11px] font-black bg-red-600 text-white">🪪 19세 이상 관람가 · 신분증(신분증명서) 지참 필수</p>
         </div>
         <button onclick="closeModal()" class="text-slate-400 hover:text-slate-700 p-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 transition">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
@@ -498,11 +499,12 @@
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
         </button>
       </div>
-      <p class="text-xs text-slate-600">아래 이미지를 <strong>우클릭 후 [이미지 복사]</strong> 하거나 스마트폰에서 <strong>길게 탭 후 [복사]</strong>하여 카카오톡에 바로 공유하세요.</p>
+      <p class="text-xs text-slate-600">아래 이미지를 <strong>우클릭 후 [이미지 복사]</strong> 하거나 스마트폰에서 <strong>길게 탭 후 [이미지 저장/복사]</strong>하세요. 저장이 잘 안 되면 아래 <strong>다운로드</strong> 버튼을 눌러 사진 앱에 저장한 뒤 카카오톡에서 첨부해도 됩니다.</p>
       <div class="max-h-[60vh] overflow-auto rounded-xl border border-slate-200 bg-slate-50 p-2 flex justify-center">
         <img id="clipboard-preview-img" class="max-w-full h-auto rounded-lg shadow-md" alt="BIFF 2026 시간표" />
       </div>
-      <div class="flex justify-end pt-1">
+      <div class="flex justify-end gap-2 pt-1">
+        <a id="clipboard-download-btn" download class="px-4 py-2 bg-biff-red hover:bg-red-700 text-xs font-bold rounded-xl text-white flex items-center gap-1">⬇️ 이미지 다운로드</a>
         <button onclick="closeImageCopyModal()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-xs font-bold rounded-xl text-slate-700 border border-slate-300">닫기</button>
       </div>
     </div>
@@ -979,6 +981,7 @@
                   <span class="text-[11px] font-bold text-slate-700">${item.date}</span>
                   <span class="text-[11px] font-black text-slate-900 bg-white px-1.5 py-0.5 rounded border border-slate-200 shadow-xs">${item.timeStart} ~ ${item.timeEnd}</span>
                   ${item.gv ? '<span class="text-[10px] font-black px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-800 border border-emerald-300">GV</span>' : ''}
+                  ${item.rating === '청불' ? '<span class="text-[10px] font-black px-1.5 py-0.2 rounded bg-biff-red text-white">🪪 19세</span>' : ''}
                 </div>
                 
                 <h4 class="text-xs sm:text-sm font-black text-slate-900 group-hover:text-biff-red transition flex items-center gap-1">
@@ -1366,11 +1369,12 @@
                               <div>
                                 <div class="flex items-center justify-between gap-1 mb-0.5">
                                   <span class="font-mono text-[10px] font-black text-slate-900 bg-white/90 px-1.5 py-0.2 rounded border border-slate-200/80 shrink-0">
-                                    ${m.timeStart}
+                                    ${m.timeStart}~${m.timeEnd}
                                   </span>
                                   <div class="flex items-center space-x-1 shrink-0">
                                     <span class="text-[10px] font-mono font-black text-biff-red">#${m.code}</span>
                                     ${m.gv ? '<span class="text-[9px] font-black px-1 rounded bg-emerald-600 text-white">GV</span>' : ''}
+                                    ${m.rating === '청불' ? '<span class="text-[9px] font-black px-1 rounded bg-biff-red text-white">19</span>' : ''}
                                   </div>
                                 </div>
                                 <h4 class="font-black text-xs text-slate-900 leading-tight line-clamp-2 group-hover:text-biff-red transition">
@@ -1378,8 +1382,8 @@
                                 </h4>
                               </div>
 
-                              <div class="mt-1 pt-1 border-t border-black/5 flex items-center justify-between text-[10px] font-bold" style="color: ${theme.text};">
-                                <span class="truncate">${theme.shortName}</span>
+                              <div class="mt-1 pt-1 border-t border-black/5 flex items-center justify-between text-[10px] font-bold gap-1" style="color: ${theme.text};" title="${m.theater}">
+                                <span class="truncate">${m.theater}</span>
                                 <span class="shrink-0 font-mono ml-1">${m.runtime}분</span>
                               </div>
 
@@ -1473,8 +1477,9 @@
             <div class="flex-1 cursor-pointer" onclick="openModal('${item.id}')">
               <div class="flex items-center gap-1.5 mb-1">
                 <span class="font-mono text-[10px] font-black px-1.5 py-0.2 rounded bg-biff-red text-white">#${item.code}</span>
-                <span class="font-bold text-slate-800">${item.date} ${item.timeStart}</span>
+                <span class="font-bold text-slate-800">${item.date} ${item.timeStart}~${item.timeEnd}</span>
                 ${item.gv ? '<span class="text-[9px] font-black px-1.5 py-0.2 rounded bg-emerald-600 text-white">GV</span>' : ''}
+                ${item.rating === '청불' ? '<span class="text-[9px] font-black px-1.5 py-0.2 rounded bg-biff-red text-white">19</span>' : ''}
               </div>
               <h4 class="font-black text-slate-900 leading-tight truncate">${item.titleKo}</h4>
               <p class="text-[11px] truncate mt-0.5 font-bold" style="color: ${theme.text};">${item.theater} · ${item.runtime}분</p>
@@ -1616,23 +1621,58 @@
       });
 
       try {
-        const blobPromise = new Promise(resolve => canvas.toBlob(resolve, "image/png"));
+        const blob = await new Promise(resolve => canvas.toBlob(resolve, "image/png"));
+        if (!blob) throw new Error("이미지 생성 실패");
+
+        const fileName = `BIFF2026_${appState.currentPlanId}안_시간표.png`;
+
+        // 1순위: 클립보드 이미지 복사 (PC 브라우저, 최신 모바일 브라우저 일부에서 동작)
+        // 모바일에서는 카카오톡 인앱 브라우저 등 Clipboard API를 지원하지 않는 환경이 많아
+        // 여기서 실패하는 게 정상적인 경우가 많으므로, 실패 시 조용히 다음 단계로 넘어간다.
         if (navigator.clipboard && window.ClipboardItem) {
           try {
-            const item = new ClipboardItem({ "image/png": blobPromise });
+            const item = new ClipboardItem({ "image/png": blob });
             await navigator.clipboard.write([item]);
             showToast("시간표 이미지가 클립보드에 복사되었습니다! 카톡에 붙여넣기 하세요.", "success");
             return;
           } catch (clipErr) {
-            console.warn("Direct clipboard fallback:", clipErr);
+            console.warn("Clipboard write failed, falling back:", clipErr);
           }
         }
-        const blob = await blobPromise;
-        if (blob) {
-          const previewImg = document.getElementById('clipboard-preview-img');
-          previewImg.src = URL.createObjectURL(blob);
-          document.getElementById('image-copy-modal').classList.remove('hidden');
+
+        // 2순위(모바일 최적): Web Share API로 이미지 파일 자체를 공유
+        // iOS Safari / 최신 Android Chrome 등 대부분의 모바일 브라우저에서 지원되며,
+        // 카카오톡 등 공유 대상 앱을 직접 선택할 수 있어 클립보드 복사보다 모바일에서 훨씬 안정적으로 동작한다.
+        const canUseShare = typeof navigator.share === 'function';
+        if (canUseShare) {
+          try {
+            const file = new File([blob], fileName, { type: "image/png" });
+            const shareData = { files: [file], title: "BIFF 2026 시간표" };
+            const canShareFiles = typeof navigator.canShare !== 'function' || navigator.canShare(shareData);
+            if (canShareFiles) {
+              await navigator.share(shareData);
+              showToast("공유 시트에서 카카오톡 등 원하는 앱을 선택해 보내세요.", "success");
+              return;
+            }
+          } catch (shareErr) {
+            if (shareErr && shareErr.name === 'AbortError') {
+              // 사용자가 공유 시트를 취소한 경우: 오류로 취급하지 않고 조용히 종료
+              return;
+            }
+            console.warn("Web Share failed, falling back:", shareErr);
+          }
         }
+
+        // 3순위: 미리보기 모달(길게 눌러 저장) + 직접 다운로드 버튼
+        const objectUrl = URL.createObjectURL(blob);
+        const previewImg = document.getElementById('clipboard-preview-img');
+        previewImg.src = objectUrl;
+        const downloadBtn = document.getElementById('clipboard-download-btn');
+        if (downloadBtn) {
+          downloadBtn.href = objectUrl;
+          downloadBtn.download = fileName;
+        }
+        document.getElementById('image-copy-modal').classList.remove('hidden');
       } catch (err) {
         showToast("이미지 생성 중 오류가 발생했습니다.", "error");
       }
@@ -1649,7 +1689,16 @@
       document.getElementById('modal-title-ko').textContent = screening.titleKo;
       document.getElementById('modal-title-en').textContent = screening.titleEn;
       document.getElementById('modal-section').textContent = screening.section;
-      document.getElementById('modal-rating').textContent = screening.rating;
+      const modalRatingEl = document.getElementById('modal-rating');
+      modalRatingEl.textContent = screening.rating;
+      const modalIdWarning = document.getElementById('modal-id-warning');
+      if (screening.rating === '청불') {
+        modalRatingEl.className = 'px-2 py-0.5 rounded text-[11px] font-black bg-biff-red text-white border border-biff-red';
+        modalIdWarning.classList.remove('hidden');
+      } else {
+        modalRatingEl.className = 'px-2 py-0.5 rounded text-[11px] font-bold bg-slate-100 text-slate-700 border border-slate-200';
+        modalIdWarning.classList.add('hidden');
+      }
       document.getElementById('modal-director').textContent = screening.director;
       document.getElementById('modal-runtime').textContent = `${screening.runtime}분`;
       document.getElementById('modal-country').textContent = `${screening.country} (${screening.year})`;
